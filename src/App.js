@@ -7,6 +7,7 @@ import HowItWorks from './components/HowItWorks';
 import FeaturedBrands from './components/FeaturedBrands';
 import Testimonials from './components/Testimonials';
 import CTASection from './components/CTASection';
+import Dashboard from './components/Dashboard';
 import Footer from './components/Footer';
 import { app, analytics } from './firebaseConfig';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -35,6 +36,7 @@ function App() {
         <Routes>
           <Route path="/" element={<><Hero /><HowItWorks /><FeaturedBrands /><Testimonials /><CTASection /></>} />
           <Route path="/passwordless-auth" element={<PasswordlessAuth />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
         <Footer />
       </Router>

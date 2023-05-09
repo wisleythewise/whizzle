@@ -4,8 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { auth } from './firebaseConfig';
-import { sendSignInLinkToEmail } from "firebase/auth";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { isSignInWithEmailLink as firebaseIsSignInWithEmailLink } from "firebase/auth"; // Import the function
 
