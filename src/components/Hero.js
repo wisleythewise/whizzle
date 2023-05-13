@@ -23,23 +23,17 @@ const Hero = () => {
     <div className="hero">
       <div className="hero-content">
         <h1 className="headline">
-            Are you annoyed by the number of newsletters overcrowding your inbox? <br></br>
-            We are too.
+            Always buy your favourite items on a discount
         </h1>
         <h2 className="subheadline">
-          From now on:    <span className="highlight">Only </span> <span className="highlight">Relevant </span> <span className="highlight">Newsletters. </span>
+            Select your favourite brands or webshops and we will notify you whenever there is a sale!
         </h2>
-       <p className="description">
-            Want to know when your favorite brands or webstore are on sale and nothing else? No problem. <br></br>
-            Want to know when your favorite designer releases new products? We can do that too.  <br></br>
-            <br></br>
-            From now on, you can receive just the newsletters you are interested in. Never be annoyed again.
-        </p> 
-        <button className="cta-button" id="scrollToBrands" onClick ={scrollToHowItWorks}>Let's get started!</button>
-      </div>    
         <div className="video-container">
              <video src="your-video.mp4" autoplay muted loop></video> 
         </div>
+        <button className="cta-button" id="scrollToBrands" onClick ={scrollToHowItWorks}>Let's get started!</button>
+      </div>    
+
       </div>
     
   );
