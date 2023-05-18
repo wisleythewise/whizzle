@@ -7,12 +7,13 @@ import HowItWorks from './components/HowItWorks';
 import FeaturedBrands from './components/FeaturedBrands';
 import Testimonials from './components/Testimonials';
 import CTASection from './components/CTASection';
-import Dashboard from './components/Dashboard';
+import Dashboard from './components/UserDashboard';
 import Footer from './components/Footer';
 import { app, analytics } from './firebaseConfig';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PasswordlessAuth from './components/PasswordlessAuth'; 
 import { auth } from './firebaseConfig';
+import UserDashboard from './components/UserDashboard';
 
 function App() {
   useEffect(() => {
@@ -34,9 +35,9 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route path="/" element={<><Hero /><HowItWorks /><FeaturedBrands /><Testimonials /><CTASection /></>} />
+          <Route path="/" element={<><Hero /><HowItWorks /><FeaturedBrands /><Testimonials /><CTASection /><UserDashboard /></>} />
           <Route path="/passwordless-auth" element={<PasswordlessAuth />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" element={<UserDashboard />} />
         </Routes>
         <Footer />
       </Router>
