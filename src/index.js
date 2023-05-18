@@ -1,31 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+
+import "./assets/vendor/aos/aos.css"
+import "./assets/vendor/bootstrap/css/bootstrap.min.css"
+import "./assets/vendor/bootstrap-icons/bootstrap-icons.css"
+import "./assets/vendor/boxicons/css/boxicons.min.css" 
+import "./assets/vendor/glightbox/css/glightbox.min.css"
+import "./assets/vendor/remixicon/remixicon.css"
+import "./assets/vendor/swiper/swiper-bundle.min.css"
 import './index.css';
+
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { auth } from './firebaseConfig';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { isSignInWithEmailLink as firebaseIsSignInWithEmailLink } from "firebase/auth"; // Import the function
 
-const handleSignIn = async () => {
-  if (!firebaseIsSignInWithEmailLink(auth, window.location.href)) return; // Call the function with the auth instance
-
-  let email = window.localStorage.getItem("emailForSignIn");
-  if (!email) {
-    email = window.prompt("Please provide your email for confirmation");
-  }
-
-  try {
-    await auth.signInWithEmailLink(email, window.location.href);
-    window.localStorage.removeItem("emailForSignIn");
-  } catch (error) {
-    console.error("Error signing in:", error);
-  }
-};
-
-handleSignIn();
-handleSignIn();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

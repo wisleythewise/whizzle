@@ -7,22 +7,25 @@ import Logo from "../designs/whistleiconv2.png"
 
 const Footer = (props) => {
   return (        
-  <footer className="footer">
-      <div className="footer-logo">
-          <img src={Logo} alt="Your Web App Logo" className="footer-logo-img"></img>
+    <footer id="footer">
+    <div className="container">
+      <div className="row d-flex align-items-center">
+        <div className="col-lg-6 text-lg-left text-center">
+          <div className="copyright">
+            &copy; Copyright <strong>Whizzle</strong>. All Rights Reserved
+          </div>
+          
+        </div>
+        <div className="col-lg-6">
+          <nav className="footer-links text-lg-right text-center pt-2 pt-lg-0">
+            <a href="#intro" className="scrollto">Home</a>
+            <a href="#about" className="scrollto">About</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Use</a>
+          </nav>
+        </div>
       </div>
-      <div className="footer-links">
-          <a href="#" className="footer-link">About Us</a>
-          |
-          <a href="#" className="footer-link">Contact Us</a>
-          |
-          <a href="#" className="footer-link">Privacy Policy  </a>
-      </div>
-      <div className="footer-social">
-          <a href="#" className="social-icon"><img src={Facebook} alt="Facebook"></img></a>
-          <a href="#" className="social-icon"><img src={Twitter} alt="Twitter"></img></a>
-          <a href="#" className="social-icon"><img src={Instagram} alt="Instagram"></img></a>
-      </div>
+    </div>
   </footer>
   );
 };

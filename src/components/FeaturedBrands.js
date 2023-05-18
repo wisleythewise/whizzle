@@ -4,12 +4,16 @@ import BrandCard from './BrandsCard';
 import { collection, addDoc, getDocs } from 'firebase/firestore';
 import { db } from '../firebaseConfig'; 
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 const FeaturedBrands = () => {
 
   const [brand, setBrands] = useState([]);
   const [allCards, setAllCards] = useState("");
   const [selectedBrands, setSelectedBrands] = useState([])
   const [email, setEmail] = useState('');
+  const [submit, setSubmitted] = useState(false);
 
   const selectedBrand = (name, set) => {
     if (set){
@@ -40,12 +44,17 @@ const FeaturedBrands = () => {
     console.log('Email:', email);
     console.log('Selected brands:', selectedBrands);
     addDocument()
+    setSubmitted(true)
   };
 
   console.log("These are the selected brands")
   console.log(selectedBrands)
 
   useEffect(() => {
+    AOS.init({
+      duration : 2000 // duration of the animations in milliseconds
+    });
+
     const fetchData = async () => {
       const brandsCollection = collection(db, 'Brands');
       const brandsSnapshot = await getDocs(brandsCollection);
@@ -73,28 +82,59 @@ const FeaturedBrands = () => {
   }, []);
 
 
+  const emailForm = () => {
+    return (      
+    <div>
+      <div className="row portfolio-container" data-aos="fade-up" data-aos-delay="400">
+
+        {allCards}
+
+      </div>
+
+    <div className="email-container">
+    <form className="email-form" method="POST"  onSubmit={handleSubmit}>
+
+      <input type="email" className="email-input" name="email" required placeholder="Email Adress" value={email} onChange={(e) => setEmail(e.target.value)} ></input>
+
+      <button type="submit" className="submit-button">Subscribe!</button>
+    </form>
+    </div>
+    </div>
+    )
+  }
+
+  const sumbitted = () => {
+    return (
+     <div>
+      <p>Thank you for submitting</p>
+     </div>)
+  }
+
+
 
   return (
-    <section className="featured-brands" id="brandsSection">
-    <h2 className="featured-brands-header">Select your favourite brands</h2>
+  <section id="portfolio" className="portfolio">
+    <div className="container">
 
-    <div className="search-container">
-      <input type="text" className="search-input" placeholder="Search for your favourite brand...." onfocus="this.placeholder = ''" onblur="if (this.value == '') { this.placeholder = 'Search for your favourite brand....'; }"></input>
-    </div>
+      <div className="section-title" data-aos="fade-up">
+        <h2>Select your favourite brands!</h2>
+        <p>Get notified for free whenever your favourite brand is having a sale!</p>
+      </div>
+
+      {/* <div className="row" data-aos="fade-up" data-aos-delay="200">
+        <div className="col-lg-12 d-flex justify-content-center">
+          <ul id="portfolio-flters">
+            <li data-filter="*" className="filter-active">All</li>
+            <li data-filter=".filter-app">App</li>
+            <li data-filter=".filter-card">Card</li>
+            <li data-filter=".filter-web">Web</li>
+          </ul>
+        </div>
+      </div> */}
 
 
-  <div className="brand-logos">
-    {allCards}
-  </div>
-  
-    <div className="email-container">
-      <form className="email-form" method="POST"  onSubmit={handleSubmit}>
-
-        <input type="email" className="email-input" name="email" required placeholder="Email Adress" value={email} onChange={(e) => setEmail(e.target.value)} ></input>
-
-        <button type="submit" className="submit-button">Subscribe!</button>
-      </form>
-    </div>
+      {submit ? sumbitted(): emailForm() }
+      </div>
   </section>
 
   );

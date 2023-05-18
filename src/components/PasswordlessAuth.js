@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { auth } from "../firebaseConfig";
 import { sendSignInLinkToEmail as firebaseSendSignInLinkToEmail } from "firebase/auth"; // Import the function
 
@@ -6,6 +6,16 @@ const PasswordlessAuth = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState(null);
   const [message, setMessage] = useState(null);
+  const [url, setUrl] = useState('')
+
+  useEffect(() =>{
+    const url = window.location.origin + "/dashboard"
+    
+    console.log("this is correct forward url")
+    console.log(url)
+
+    setUrl(url)
+  },[])
 
   const sendSignInLinkToEmail = async (e) => {
     e.preventDefault();
@@ -14,7 +24,7 @@ const PasswordlessAuth = () => {
 
     try {
       const actionCodeSettings = {
-        url: window.location.href,
+        url: url,
         handleCodeInApp: true,
       };
 
@@ -27,6 +37,9 @@ const PasswordlessAuth = () => {
   };
 
   return (
+    <section id="hero" className="d-flex align-items-center">
+
+    <div className="container">
     <div>
       <h1>Passwordless Authentication</h1>
       <form onSubmit={sendSignInLinkToEmail}>
@@ -42,6 +55,11 @@ const PasswordlessAuth = () => {
       {error && <p>{error}</p>}
       {message && <p>{message}</p>}
     </div>
+    </div>
+
+  </section>
+
+
   );
 };
 

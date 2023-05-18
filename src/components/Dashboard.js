@@ -1,9 +1,37 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
+import { auth } from '../firebaseConfig';
 
+import { isSignInWithEmailLink ,signInWithEmailLink  } from "firebase/auth"; // Import the function
 
 const Dashboard = () => {
+
+  useEffect(() => {
+    let email = window.localStorage.getItem('emailForSignIn');
+
+    if (isSignInWithEmailLink(auth, window.location.href)) {
+      if (!email) {
+        // Ask user for their email for confirmation
+        email = window.prompt('Please provide your email for confirmation');
+        window.localStorage.setItem('emailForSignIn', email);
+      }
+      
+      signInWithEmailLink(auth, email, window.location.href)
+        .then((result) => {
+          window.localStorage.removeItem('emailForSignIn');
+        })
+        .catch((error) => {
+          console.error("Error signing in with email link:", error);
+        });
+    }
+  }, []);
+
+
   return (
+
+    <section id="hero" className="d-flex align-items-center">
+
+    <div className="container">
     <Container>
       <h1 className="my-4">Dashboard</h1>
       <Row>
@@ -39,6 +67,13 @@ const Dashboard = () => {
         </Col>
       </Row>
     </Container>
+
+
+    </div>
+
+  </section>
+
+
   );
 };
 

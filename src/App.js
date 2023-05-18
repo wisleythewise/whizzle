@@ -1,18 +1,20 @@
 import React, { useEffect } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import HowItWorks from './components/HowItWorks';
+import Contact from './components/Contact';
 import FeaturedBrands from './components/FeaturedBrands';
 import Testimonials from './components/Testimonials';
-import CTASection from './components/CTASection';
+import FAQ from './components/FAQ';
 import Dashboard from './components/Dashboard';
 import Footer from './components/Footer';
-import { app, analytics } from './firebaseConfig';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PasswordlessAuth from './components/PasswordlessAuth'; 
 import { auth } from './firebaseConfig';
+
+import { isSignInWithEmailLink as firebaseIsSignInWithEmailLink } from "firebase/auth"; // Import the function
+
 
 function App() {
   useEffect(() => {
@@ -34,8 +36,17 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route path="/" element={<><Hero /><HowItWorks /><FeaturedBrands /><Testimonials /><CTASection /></>} />
-          <Route path="/passwordless-auth" element={<PasswordlessAuth />} />
+          <Route path="/" element={<>
+          <Hero />
+          <Testimonials />
+          <HowItWorks />
+          <FeaturedBrands />
+          <FAQ />
+          <Contact/> 
+          </>} />
+          <Route path="/login" element={<>
+          <PasswordlessAuth />
+          </>} />
           <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
         <Footer />
