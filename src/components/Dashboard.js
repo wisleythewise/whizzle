@@ -6,6 +6,10 @@ import { isSignInWithEmailLink ,signInWithEmailLink  } from "firebase/auth"; // 
 
 const Dashboard = () => {
 
+  // Add check if the user is present in our user db
+  // if not show a screen where it states oops seems you are not signed up
+  // Otherwise show the dashboard based on the user data.
+
   useEffect(() => {
     let email = window.localStorage.getItem('emailForSignIn');
 
