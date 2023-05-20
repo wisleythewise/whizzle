@@ -7,7 +7,7 @@ import Contact from './components/Contact';
 import FeaturedBrands from './components/FeaturedBrands';
 import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
-import Dashboard from './components/Dashboard';
+import Dashboard from './components/UserDashboard';
 import Footer from './components/Footer';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PasswordlessAuth from './components/PasswordlessAuth'; 
@@ -47,7 +47,7 @@ function App() {
           <Route path="/login" element={<>
           <PasswordlessAuth />
           </>} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard/*" element={<Dashboard />} />
         </Routes>
         <Footer />
       </Router>

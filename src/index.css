@@ -1634,3 +1634,58 @@ section {
 #footer .footer-links a:hover {
   color: #3498db;
 }
+
+/* 
+----------------------------------------
+# Dashboard
+---------------------------------------- */
+
+
+/*--------------------------------------------------------------
+# dashboard
+--------------------------------------------------------------*/
+.dashboard {
+  display: flex;
+  padding-top: 100px;
+  height: 100vh;
+}
+
+.menu {
+  flex: 1;
+  background-color: #f7f7f7; /* light gray */
+  padding: 20px;
+  box-shadow: 2px 0 5px 0 rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #333; /* dark gray */
+  padding: 10px;
+  display: block;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  transition: background-color 0.2s;
+}
+
+.menu a:hover {
+  background-color: #e0e0e0; /* gray */
+}
+
+.menu a.active {
+  background-color: #007bff; /* blue */
+  color: #fff; /* white */
+}
+
+.content {
+  flex: 4;
+  padding: 20px;
+  overflow-y: auto;
+}
+.radioButton {
+  display: block;
+  width: fit-content;
+  height: 50px;
+  color: blue;
+}

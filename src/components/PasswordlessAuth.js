@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import { auth } from "../firebaseConfig";
 import { sendSignInLinkToEmail as firebaseSendSignInLinkToEmail } from "firebase/auth"; // Import the function
 
-const PasswordlessAuth = () => {
+const PasswordlessAuth = ( ) => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState(null);
   const [message, setMessage] = useState(null);
   const [url, setUrl] = useState('')
+
 
   useEffect(() =>{
     const url = window.location.origin + "/dashboard"

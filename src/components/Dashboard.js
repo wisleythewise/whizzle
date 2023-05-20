@@ -10,25 +10,7 @@ const Dashboard = () => {
   // if not show a screen where it states oops seems you are not signed up
   // Otherwise show the dashboard based on the user data.
 
-  useEffect(() => {
-    let email = window.localStorage.getItem('emailForSignIn');
 
-    if (isSignInWithEmailLink(auth, window.location.href)) {
-      if (!email) {
-        // Ask user for their email for confirmation
-        email = window.prompt('Please provide your email for confirmation');
-        window.localStorage.setItem('emailForSignIn', email);
-      }
-      
-      signInWithEmailLink(auth, email, window.location.href)
-        .then((result) => {
-          window.localStorage.removeItem('emailForSignIn');
-        })
-        .catch((error) => {
-          console.error("Error signing in with email link:", error);
-        });
-    }
-  }, []);
 
 
   return (
