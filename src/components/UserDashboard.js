@@ -28,6 +28,7 @@ function UserDashboard() {
         // Ask user for their email for confirmation
         email = window.prompt('Please provide your email for confirmation');
         window.localStorage.setItem('emailForSignIn', email);
+        fetchData(email)
       }
       
       signInWithEmailLink(auth, email, window.location.href)
