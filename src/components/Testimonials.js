@@ -59,8 +59,9 @@ const Testimonials = () => {
       <Swiper
         spaceBetween={50}
         slidesPerView={1}
-        autoplay={{ delay: 2500, disableOnInteraction: false }} 
+        autoplay={{ delay: 3500, disableOnInteraction: true }} 
         pagination={{ clickable: true }}
+        speed = {1000}
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log('slide change')}
       >
