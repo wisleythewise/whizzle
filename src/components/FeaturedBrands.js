@@ -84,7 +84,25 @@ const FeaturedBrands = () => {
 
   const emailForm = () => {
     return (      
+
     <div>
+
+        <div id="brand-search-container" data-aos="fade-up" data-aos-delay="200" className="brand-search-container form-group">
+          <input type="text" name="brand-search" className="brand-search form-control" id="brand-search" placeholder="Search for your favourite brands" required=""></input>
+      </div>
+      
+      <div className="row" data-aos="fade-up" data-aos-delay="200">
+          <div className="col-lg-12 d-flex justify-content-center">
+            <ul id="portfolio-flters">
+              <li data-filter="*" className="filter-active">All</li>
+              <li data-filter=".filter-app">Men</li>
+              <li data-filter=".filter-app">Woman</li>
+              <li data-filter=".filter-app">Kids</li>
+            </ul>
+          </div>
+        </div>
+  
+
       <div className="row portfolio-container" data-aos="fade-up" data-aos-delay="400">
 
         {allCards}
