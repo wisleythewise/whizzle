@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
+import { getUserData } from '../services/api';  // If getUserData is your API call to fetch userId
 
 import PersonalInformation from './PersonalInformation';
 import SubscriptionDetails from './SubscriptionDetails';
@@ -9,9 +10,32 @@ import WhizzleProPricingAndFeatures from './WhizzleProPricingAndFeatures';
 import Unsubscribe from './Unsubscribe';
 import LogOut from './LogOut';
 
-function UserDashboard({ userId }) {
+function UserDashboard() {
+  const [userId, setUserId] = useState(null);
+
+  //let op: nu wordt zowel hier als in de subcomponenten een api request gedaan. Nog kiezen of het beter is om dit q
+  useEffect(() => {
+    const fetchUserId = async () => {
+      try {
+        const data = await getUserData(); 
+        setUserId(data.id);  
+      } catch (error) {
+        console.error('Failed to fetch user id: ', error);
+      }
+    };
+
+    fetchUserId();
+  }, []);
+
+
+  if (!userId) {
+    return <p>Loading...</p>;
+  }
+
   return (
-      <div className="dashboard">
+         <div className="dashboard">
+          <PersonalInformation userId={userId} />
+
         <div className="menu">
           <NavLink to="/dashboard/personal-information" activeClassName="active">Personal Information</NavLink>
           <NavLink to="/dashboard/subscription-details" activeClassName="active">Subscription Details</NavLink>
