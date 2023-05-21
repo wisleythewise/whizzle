@@ -17,11 +17,11 @@ const FeaturedBrands = () => {
 
   const selectedBrand = (name, set) => {
     if (set){
-      setSelectedBrands([...selectedBrands, name]);
-    }else{
-      setSelectedBrands(selectedBrands.filter(brand => brand !== name));
+      setSelectedBrands(prevBrands => [...prevBrands, name]);
+    } else {
+      setSelectedBrands(prevBrands => prevBrands.filter(brand => brand !== name));
     }
-    
+  
   }
 
   const addDocument = async () => {
@@ -103,7 +103,7 @@ const FeaturedBrands = () => {
         </div>
   
 
-      <div className="row portfolio-container" data-aos="fade-up" data-aos-delay="400">
+        <div class="brand-grid" data-aos="fade-up" data-aos-delay="400">
 
         {allCards}
 

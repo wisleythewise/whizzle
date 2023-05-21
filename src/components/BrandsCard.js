@@ -16,20 +16,17 @@ const BrandsCard = (props) => {
 
 
   return (
-    <div
-      onClick={() => {
+
+      <div onClick={() => {
         handleClick(name);
-      }}
-      className='col-lg-4 col-md-6 portfolio-item filter-app'
-    >
-      <div className={`portfolio-wrap ${selected ? 'selected' : '' }` }>
-        <img src={url} className="img-fluid" alt={url} />
-        <div className="portfolio-info">
-          <h4>{name}</h4>
-          <div className="portfolio-links"></div>
-        </div>
+      }} className={`brand-container ${selected ? 'selected' : '' }` }>
+              <img src={url} className="brand-logo" alt={url}></img>
+              <div className="brand-overlay"></div>  
+            
       </div>
-    </div>
+
+
+
   );
 };
 
