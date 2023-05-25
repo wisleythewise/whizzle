@@ -887,7 +887,9 @@ section {
 .testimonials .testimonial-wrap {
   padding-left: 50px;
 }
-
+.sectionpadding {
+  padding: 0px 0px; 
+}
 .testimonials .testimonials-carousel,
 .testimonials .testimonials-slider {
   overflow: hidden;
@@ -895,9 +897,9 @@ section {
 
 .testimonials .testimonial-item {
   box-sizing: content-box;
-  padding: 30px 30px 30px 60px;
-  margin: 30px 15px;
-  min-height: 200px;
+  padding: 20px 20px 30px 60px;
+  margin: 20px 20px 0px 5px;
+  min-height: 100px;
   box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
   position: relative;
   background: #fff;
@@ -919,8 +921,9 @@ section {
 }
 
 .testimonials .testimonial-item h4 {
-  font-size: 14px;
-  color: #999;
+  font-size: 16px;
+  color: #2a2929;
+  font-weight: 700;
   margin: 0;
 }
 
@@ -989,6 +992,82 @@ section {
 /*--------------------------------------------------------------
 # Portfolio
 --------------------------------------------------------------*/
+.brand-search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 25px;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.brand-search {
+  width: 30%;
+  max-width: 400px;
+  min-width: 300px;
+  padding: 10px 15px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.brand-search::placeholder {
+  color: #aaa;
+}
+
+.brand-search:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.email-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.email-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.email-form .form-control {
+  width: 250px;
+  height: 40px;
+  padding: 0 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #555;
+  background: #fff;
+  margin-right: 10px;
+}
+
+.email-form .form-control::placeholder {
+  color: #aaa;
+}
+
+.email-form .btn {
+  height: 40px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #fff;
+  background: #3498db;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.email-form .btn:hover {
+  background: #4aa3df;
+}
+
 .portfolio .portfolio-item {
   margin-bottom: 30px;
 }

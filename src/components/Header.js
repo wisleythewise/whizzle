@@ -1,4 +1,4 @@
-import whistleLogo from "../designs/whistleiconv2.png";
+import whistleLogo from "../designs/logo.png";
 import React, { useState } from 'react';
 
 

@@ -109,14 +109,12 @@ const FeaturedBrands = () => {
 
       </div>
 
-    <div className="email-container">
-    <form className="email-form" method="POST"  onSubmit={handleSubmit}>
-
-      <input type="email" className="email-input" name="email" required placeholder="Email Adress" value={email} onChange={(e) => setEmail(e.target.value)} ></input>
-
-      <button type="submit" className="submit-button">Subscribe!</button>
-    </form>
-    </div>
+      <div className="email-container form-group" data-aos="fade-up" data-aos-delay="600">
+        <form className="email-form" method="POST"  onSubmit={handleSubmit}>
+          <input type="email" className="form-control email-input" name="email" required placeholder="Email Adress" value={email} onChange={(e) => setEmail(e.target.value)} ></input>
+          <button type="submit" className="btn btn-outline-primary">Subscribe!</button>
+        </form>
+      </div>
     </div>
     )
   }

@@ -35,8 +35,9 @@ const Testimonials = () => {
         console.log('url:', docData.url);
         return {
           url: docData.url,
-          quote: docData.quote,
-          name: docData.name
+          name: docData.name,
+          quote: docData.quote
+          
         };
       });
 
@@ -54,7 +55,7 @@ const Testimonials = () => {
 
   return (
 
-    <section id="testimonials" className="testimonials section-bg">
+    <section id="testimonials" className="testimonials sectionpadding section-bg" >
     <div className="container">
       <Swiper
         spaceBetween={50}
@@ -69,8 +70,8 @@ const Testimonials = () => {
           <SwiperSlide key={index}>
             <TestimonialCards
               url={testimonial.url}
-              quote={testimonial.quote}
               name={testimonial.name}
+              quote={testimonial.quote}
             />
           </SwiperSlide>
         ))}
