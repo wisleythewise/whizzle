@@ -93,7 +93,7 @@ const FeaturedBrands = () => {
       
       <div className="row" data-aos="fade-up" data-aos-delay="200">
           <div className="col-lg-12 d-flex justify-content-center">
-            <ul id="portfolio-flters">
+            <ul id="featuredbrands-flters">
               <li data-filter="*" className="filter-active">All</li>
               <li data-filter=".filter-app">Men</li>
               <li data-filter=".filter-app">Woman</li>
@@ -129,7 +129,7 @@ const FeaturedBrands = () => {
 
 
   return (
-  <section id="portfolio" className="portfolio">
+  <section id="featuredbrands" className="featuredbrands">
     <div className="container">
 
       <div className="section-title" data-aos="fade-up">
@@ -139,7 +139,7 @@ const FeaturedBrands = () => {
 
       {/* <div className="row" data-aos="fade-up" data-aos-delay="200">
         <div className="col-lg-12 d-flex justify-content-center">
-          <ul id="portfolio-flters">
+          <ul id="featuredbrands-flters">
             <li data-filter="*" className="filter-active">All</li>
             <li data-filter=".filter-app">App</li>
             <li data-filter=".filter-card">Card</li>

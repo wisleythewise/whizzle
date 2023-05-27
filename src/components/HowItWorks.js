@@ -11,7 +11,7 @@ const HowItWorks = () => {
 
 
   return (
-    <section id="services" className="services">
+    <section id="howitworks" className="services">
       <div className="container">
 
         <div className="section-title" data-aos="fade-up">

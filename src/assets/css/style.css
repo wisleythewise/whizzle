@@ -981,20 +981,20 @@ section {
 }
 
 /*--------------------------------------------------------------
-# Portfolio
+# featuredbrands
 --------------------------------------------------------------*/
-.portfolio .portfolio-item {
+.featuredbrands .featuredbrands-item {
   margin-bottom: 30px;
 }
 
-.portfolio #portfolio-flters {
+.featuredbrands #featuredbrands-flters {
   padding: 0;
   margin: 0 auto 20px auto;
   list-style: none;
   text-align: center;
 }
 
-.portfolio #portfolio-flters li {
+.featuredbrands #featuredbrands-flters li {
   cursor: pointer;
   display: inline-block;
   padding: 8px 15px 10px 15px;
@@ -1008,17 +1008,17 @@ section {
   border-radius: 3px;
 }
 
-.portfolio #portfolio-flters li:hover,
-.portfolio #portfolio-flters li.filter-active {
+.featuredbrands #featuredbrands-flters li:hover,
+.featuredbrands #featuredbrands-flters li.filter-active {
   color: #fff;
   background: #3498db;
 }
 
-.portfolio #portfolio-flters li:last-child {
+.featuredbrands #featuredbrands-flters li:last-child {
   margin-right: 0;
 }
 
-.portfolio .portfolio-wrap {
+.featuredbrands .featuredbrands-wrap {
   transition: 0.3s;
   position: relative;
   overflow: hidden;
@@ -1026,7 +1026,7 @@ section {
   background: rgba(34, 34, 34, 0.6);
 }
 
-.portfolio .portfolio-wrap::before {
+.featuredbrands .featuredbrands-wrap::before {
   content: "";
   background: rgba(34, 34, 34, 0.6);
   position: absolute;
@@ -1039,11 +1039,11 @@ section {
   opacity: 0;
 }
 
-.portfolio .portfolio-wrap img {
+.featuredbrands .featuredbrands-wrap img {
   transition: all ease-in-out 0.3s;
 }
 
-.portfolio .portfolio-wrap .portfolio-info {
+.featuredbrands .featuredbrands-wrap .featuredbrands-info {
   opacity: 0;
   position: absolute;
   top: 0;
@@ -1059,13 +1059,13 @@ section {
   padding: 20px;
 }
 
-.portfolio .portfolio-wrap .portfolio-info h4 {
+.featuredbrands .featuredbrands-wrap .featuredbrands-info h4 {
   font-size: 20px;
   color: #fff;
   font-weight: 600;
 }
 
-.portfolio .portfolio-wrap .portfolio-info p {
+.featuredbrands .featuredbrands-wrap .featuredbrands-info p {
   color: rgba(255, 255, 255, 0.7);
   font-size: 14px;
   text-transform: uppercase;
@@ -1074,12 +1074,12 @@ section {
   font-style: italic;
 }
 
-.portfolio .portfolio-wrap .portfolio-links {
+.featuredbrands .featuredbrands-wrap .featuredbrands-links {
   text-align: center;
   z-index: 4;
 }
 
-.portfolio .portfolio-wrap .portfolio-links a {
+.featuredbrands .featuredbrands-wrap .featuredbrands-links a {
   color: #fff;
   margin: 0 5px 0 0;
   font-size: 28px;
@@ -1087,39 +1087,39 @@ section {
   transition: 0.3s;
 }
 
-.portfolio .portfolio-wrap .portfolio-links a:hover {
+.featuredbrands .featuredbrands-wrap .featuredbrands-links a:hover {
   color: #3498db;
 }
 
-.portfolio .portfolio-wrap:hover::before {
+.featuredbrands .featuredbrands-wrap:hover::before {
   opacity: 1;
 }
 
-.portfolio .portfolio-wrap:hover img {
+.featuredbrands .featuredbrands-wrap:hover img {
   transform: scale(1.2);
 }
 
-.portfolio .portfolio-wrap:hover .portfolio-info {
+.featuredbrands .featuredbrands-wrap:hover .featuredbrands-info {
   opacity: 1;
 }
 
 /*--------------------------------------------------------------
-# Portfolio Details
+# featuredbrands Details
 --------------------------------------------------------------*/
-.portfolio-details {
+.featuredbrands-details {
   padding-top: 40px;
 }
 
-.portfolio-details .portfolio-details-slider img {
+.featuredbrands-details .featuredbrands-details-slider img {
   width: 100%;
 }
 
-.portfolio-details .portfolio-details-slider .swiper-pagination {
+.featuredbrands-details .featuredbrands-details-slider .swiper-pagination {
   margin-top: 20px;
   position: relative;
 }
 
-.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet {
+.featuredbrands-details .featuredbrands-details-slider .swiper-pagination .swiper-pagination-bullet {
   width: 12px;
   height: 12px;
   background-color: #fff;
@@ -1127,16 +1127,16 @@ section {
   border: 1px solid #3498db;
 }
 
-.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet-active {
+.featuredbrands-details .featuredbrands-details-slider .swiper-pagination .swiper-pagination-bullet-active {
   background-color: #3498db;
 }
 
-.portfolio-details .portfolio-info {
+.featuredbrands-details .featuredbrands-info {
   padding: 30px;
   box-shadow: 0px 0 30px rgba(34, 34, 34, 0.08);
 }
 
-.portfolio-details .portfolio-info h3 {
+.featuredbrands-details .featuredbrands-info h3 {
   font-size: 22px;
   font-weight: 700;
   margin-bottom: 20px;
@@ -1144,27 +1144,27 @@ section {
   border-bottom: 1px solid #eee;
 }
 
-.portfolio-details .portfolio-info ul {
+.featuredbrands-details .featuredbrands-info ul {
   list-style: none;
   padding: 0;
   font-size: 15px;
 }
 
-.portfolio-details .portfolio-info ul li+li {
+.featuredbrands-details .featuredbrands-info ul li+li {
   margin-top: 10px;
 }
 
-.portfolio-details .portfolio-description {
+.featuredbrands-details .featuredbrands-description {
   padding-top: 30px;
 }
 
-.portfolio-details .portfolio-description h2 {
+.featuredbrands-details .featuredbrands-description h2 {
   font-size: 26px;
   font-weight: 700;
   margin-bottom: 20px;
 }
 
-.portfolio-details .portfolio-description p {
+.featuredbrands-details .featuredbrands-description p {
   padding: 0;
 }
 
