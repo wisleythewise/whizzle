@@ -15,7 +15,7 @@ const HowItWorks = () => {
       <div className="container">
 
         <div className="section-title" data-aos="fade-up">
-          <h2>How does it work?</h2>
+          <h2><span>How does it work?</span></h2>
           <p>Whizzle.AI is the perfect tool for people who want to save money on their favourite brands. In a few clicks you can subscribe to receive alerts whenever your favourite brand is having a sale</p>
         </div>
 

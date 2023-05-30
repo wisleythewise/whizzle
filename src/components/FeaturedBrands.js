@@ -133,7 +133,7 @@ const FeaturedBrands = () => {
     <div className="container">
 
       <div className="section-title" data-aos="fade-up">
-        <h2>Select your favourite brands!</h2>
+        <h2><span>Select your favourite brands!</span></h2>
         <p>Get notified for free whenever your favourite brand is having a sale!</p>
       </div>
 

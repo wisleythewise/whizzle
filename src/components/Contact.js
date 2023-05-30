@@ -14,7 +14,7 @@ const Contact = (props) => {
   <div className="container">
 
     <div className="section-title" data-aos="fade-up">
-      <h2>Contact Us</h2>
+      <h2><span>Contact Us</span></h2>
     </div>
 
     <div className="row">
