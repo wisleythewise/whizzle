@@ -8,16 +8,21 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout Repo
+    - name: Checkout Repository
       uses: actions/checkout@v2
 
-    - name: Install Dependencies
-      run: npm install
+    - name: Use Node.js 16
+      uses: actions/setup-node@v2
+      with:
+        node-version: 16
 
-    - name: Build
+    - name: Install Project Dependencies
+      run: npm ci
+
+    - name: Build Project
       run: npm run build
 
-    - name: Deploy to Firebase
+    - name: Deploy to Firebase Hosting
       uses: w9jds/firebase-action@master
       with:
         args: deploy --only hosting
