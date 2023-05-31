@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { auth, signInWithEmailAndPassword } from "../firebaseConfig";
+import { auth } from "../firebaseConfig";
 
 const PasswordAuth = () => {
   const [email, setEmail] = useState("");
@@ -17,19 +17,19 @@ const PasswordAuth = () => {
     }
 
     setLoading(true);
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-    } catch (error) {
-      if (error.code === "auth/invalid-email") {
-        setError("Invalid email address");
-      } else if (error.code === "auth/user-not-found") {
-        setError("No user found with this email");
-      } else if (error.code === "auth/wrong-password") {
-        setError("Incorrect password");
-      } else {
-        setError("Error signing in");
-      }
-    }
+    // try {
+    //   await signInWithEmailAndPassword(auth, email, password);
+    // } catch (error) {
+    //   if (error.code === "auth/invalid-email") {
+    //     setError("Invalid email address");
+    //   } else if (error.code === "auth/user-not-found") {
+    //     setError("No user found with this email");
+    //   } else if (error.code === "auth/wrong-password") {
+    //     setError("Incorrect password");
+    //   } else {
+    //     setError("Error signing in");
+    //   }
+    // }
     setLoading(false);
   };
 
