@@ -489,7 +489,7 @@ section {
 }
 
 .section-title h2 {
-  font-size: 24px;
+  font-size: calc(16px + 1.5vw);
   font-weight: bold;
   text-transform: uppercase;
   position: relative;
@@ -1788,8 +1788,76 @@ section {
 
 /* 
 ----------------------------------------
-# Dashboard
+# Login
 ---------------------------------------- */
+#signin-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f7fbfe;
+  font-family: 'Roboto', sans-serif;
+}
+
+.signin-container {
+  background: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.signin-container h1 {
+  text-align: center;
+  color: #222222;
+  font-size: 2.5em;
+  margin-bottom: 30px;
+}
+
+.signin-container label {
+  display: block;
+  color: #222222;
+  font-size: 1.2em;
+  margin-bottom: 5px;
+}
+
+.signin-container input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1em;
+  margin-bottom: 20px;
+}
+
+.signin-container button {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  background-color: #3498db;
+  cursor: pointer;
+  font-size: 1.2em;
+  transition: background-color 0.3s ease;
+}
+
+.signin-container button:disabled {
+  background-color: #bbb;
+  cursor: not-allowed;
+}
+
+.signin-container button:hover:not(:disabled) {
+  background-color: #2980b9;
+}
+
+.signin-container p {
+  color: red;
+  text-align: center;
+}
 
 
 /*--------------------------------------------------------------

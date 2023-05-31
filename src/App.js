@@ -11,6 +11,7 @@ import Dashboard from './components/UserDashboard';
 import Footer from './components/Footer';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PasswordlessAuth from './components/PasswordlessAuth'; 
+import PWlogin from './components/PWlogin';
 import { auth } from './firebaseConfig';
 
 import { isSignInWithEmailLink as firebaseIsSignInWithEmailLink } from "firebase/auth"; // Import the function
@@ -46,6 +47,9 @@ function App() {
           </>} />
           <Route path="/login" element={<>
           <PasswordlessAuth />
+          </>} />
+          <Route path="/login2" element={<>
+          <PWlogin />
           </>} />
           <Route path="/dashboard/*" element={<Dashboard />} />
         </Routes>
