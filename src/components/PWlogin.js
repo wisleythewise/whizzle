@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { auth } from "../firebaseConfig";
 
 const PasswordAuth = () => {
@@ -32,6 +32,19 @@ const PasswordAuth = () => {
     // }
     setLoading(false);
   };
+
+  useEffect(() => {
+    const header = document.querySelector('header');
+    if (header) {
+      header.style.backgroundColor = 'transparent';
+    }
+
+    return () => {
+      if (header) {
+        header.style.backgroundColor = ''; // Reset the background color when the component is unmounted
+      }
+    };
+  }, []);
 
   return (
     <section id="signin-section" className="d-flex align-items-center">

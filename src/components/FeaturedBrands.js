@@ -137,16 +137,6 @@ const FeaturedBrands = () => {
         <p>Get notified for free whenever your favourite brand is having a sale!</p>
       </div>
 
-      {/* <div className="row" data-aos="fade-up" data-aos-delay="200">
-        <div className="col-lg-12 d-flex justify-content-center">
-          <ul id="featuredbrands-flters">
-            <li data-filter="*" className="filter-active">All</li>
-            <li data-filter=".filter-app">App</li>
-            <li data-filter=".filter-card">Card</li>
-            <li data-filter=".filter-web">Web</li>
-          </ul>
-        </div>
-      </div> */}
 
 
       {submit ? sumbitted(): emailForm() }

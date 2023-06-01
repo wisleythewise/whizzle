@@ -163,6 +163,7 @@ h6 {
 .navbar .active:focus,
 .navbar li:hover>a {
   color: #3498db;
+  cursor: pointer;
 }
 
 .navbar .getstarted,
@@ -734,13 +735,16 @@ section {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  align-items: center;
 }
 
 .howitworks-card {
   width: 100%;
+  max-width: 960px;
   box-sizing: border-box;
-  margin-bottom: 3rem; /* Equivalent of Bootstrap's mb-5 */
+  margin-bottom: 2rem; 
+  transition: all 0.3s ease;
+
 }
 
 .howitworks-content{
@@ -759,6 +763,7 @@ section {
 
 
 .services .icon-box {
+  /* deze moet nog aangepast worden dat het niet breder wordt dan ong 960px */
   display: flex;
   flex-direction: row;
   text-align: center;
@@ -788,15 +793,16 @@ section {
   transition: all 0.3s;
   z-index: -1;
 }
-
+/* 
 .services .icon-box:hover::before {
-  background: #3498db;
-  right: 0;
+  background: #ffffff2e;  */
+  /* dit aanpassen voor de hoover animatie */
+  /* right: 0;
   top: 0;
   width: 100%;
   height: 100%;
   border-radius: 0px;
-}
+} */
 
 .services .icon {
   position: absolute;
@@ -838,7 +844,29 @@ section {
   margin-bottom: 0;
 }
 
-.services .icon-box:hover .title a,
+
+.howitworks-card {
+  transition: all 0.3s ease;
+}
+
+.howitworks-card:hover .icon {
+  animation: wiggle 1.5s infinite;
+}
+
+@keyframes wiggle {
+  0%, 100% {
+    scale:1.1;
+    transform: rotate(0deg);
+  }
+  25%, 75% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+}
+
+/* .services .icon-box:hover .title a,
 .services .icon-box:hover .description {
   color: #fff;
 }
@@ -849,7 +877,7 @@ section {
 
 .services .icon-box:hover .icon i {
   color: #3498db;
-}
+} */
 
 /*--------------------------------------------------------------
 # More Services
