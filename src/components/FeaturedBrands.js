@@ -1,21 +1,57 @@
 // FeaturedBrands.js
-import React , { useState, useEffect }  from 'react';
+import React , { useState, useEffect, useContext }  from 'react';
 import BrandCard from './BrandsCard';
 import { collection, addDoc, getDocs,query, where } from 'firebase/firestore';
-import { db } from '../firebaseConfig'; 
+import { auth, db } from '../firebaseConfig'; 
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { UserContext } from './CTX/UserContext';
+
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 const FeaturedBrands = () => {
-
   const [brand, setBrands] = useState([]);
   const [allCards, setAllCards] = useState("");
   const [selectedBrands, setSelectedBrands] = useState([])
   const [email, setEmail] = useState('');
   const [submit, setSubmitted] = useState(false);
   const [presentt, setPresent] = useState(false);
+  const {currentUser, setCurrentUser} = useContext(UserContext)
 
+  // Fetch all the brand data that is available in the database
+  useEffect(() => {
+    AOS.init({
+      duration : 2000 // duration of the animations in milliseconds
+    });
+
+    const fetchData = async () => {
+      const brandsCollection = collection(db, 'Brands');
+      const brandsSnapshot = await getDocs(brandsCollection);
+
+      const brandsData = brandsSnapshot.docs.map((doc) => {
+        const docData = doc.data();
+        console.log('url:', docData.name);
+        return {
+          url: docData.url,
+          name : docData.name
+        };
+      });
+
+      setBrands(brandsData);
+
+      const allCards = brandsData.map((brand, index) => {
+        return <BrandCard key={index}  url={brand.url} name = {brand.name} callBack = {selectedBrand} />
+      });
+
+      setAllCards(allCards);
+    };
+
+    fetchData();
+
+  }, []);
+
+  // The user has selected these brand and there are set in the state using this funtion
   const selectedBrand = (name, set) => {
     if (set){
       setSelectedBrands(prevBrands => [...prevBrands, name]);
@@ -25,10 +61,34 @@ const FeaturedBrands = () => {
   
   }
 
+  // Generate a temporary password 
+  const generateTempPassword = () => {
+    const list_of_character = "qazwsxedcrfvtgbyhnujmik,ol.p;/[']1234567890";
+    let password = "";
+  
+    for (let i = 0; i < 10; i++) {
+      password += list_of_character.charAt(Math.floor(Math.random() * list_of_character.length));
+    }
+  
+    return password;
+  };
+
+  // Create an account for the user
+  const handleCreateAccount = async () => {
+    const tempPassword = generateTempPassword();
+    const userCredential = await createUserWithEmailAndPassword(auth, email, tempPassword)
+    setCurrentUser(userCredential.user)
+    return userCredential.user;
+    }
+
+
+  // Create the user in the firestore database
   const addDocument = async () => {
+    const user = handleCreateAccount();
     try {
       const usersCollection = collection(db, 'Users');
       const docRef = await addDoc(usersCollection, {
+        id : user.uid,
         email: email,
         brands: selectedBrands,
       });
@@ -38,6 +98,10 @@ const FeaturedBrands = () => {
       console.error('Error adding document:', error);
     }
   }
+
+  // Send an email to user
+
+
 
   const does_user_exist = async (email) => {
    
@@ -74,41 +138,6 @@ const FeaturedBrands = () => {
     }
 
   };
-
-  console.log("These are the selected brands")
-  console.log(selectedBrands)
-
-  useEffect(() => {
-    AOS.init({
-      duration : 2000 // duration of the animations in milliseconds
-    });
-
-    const fetchData = async () => {
-      const brandsCollection = collection(db, 'Brands');
-      const brandsSnapshot = await getDocs(brandsCollection);
-
-      const brandsData = brandsSnapshot.docs.map((doc) => {
-        const docData = doc.data();
-        console.log('url:', docData.name);
-        return {
-          url: docData.url,
-          name : docData.name
-        };
-      });
-
-      setBrands(brandsData);
-
-      const allCards = brandsData.map((brand, index) => {
-        return <BrandCard key={index}  url={brand.url} name = {brand.name} callBack = {selectedBrand} />
-      });
-
-      setAllCards(allCards);
-    };
-
-    fetchData();
-
-  }, []);
-
 
   const emailForm = () => {
     return (      
@@ -173,19 +202,6 @@ const FeaturedBrands = () => {
         <h2><span>Select your favourite brands!</span></h2>
         <p>Get notified for free whenever your favourite brand is having a sale!</p>
       </div>
-
-      {/* <div className="row" data-aos="fade-up" data-aos-delay="200">
-        <div className="col-lg-12 d-flex justify-content-center">
-          <ul id="featuredbrands-flters">
-            <li data-filter="*" className="filter-active">All</li>
-            <li data-filter=".filter-app">App</li>
-            <li data-filter=".filter-card">Card</li>
-            <li data-filter=".filter-web">Web</li>
-          </ul>
-        </div>
-      </div> */}
-
-
       {submit ? sumbitted(): emailForm() }
       </div>
   </section>
