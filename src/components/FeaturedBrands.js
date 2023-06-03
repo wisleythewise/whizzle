@@ -84,7 +84,10 @@ const FeaturedBrands = () => {
 
   // Create the user in the firestore database
   const addDocument = async () => {
-    const user = handleCreateAccount();
+    const user = await handleCreateAccount();
+    console.log("This si the user")
+    console.log(user)
+
     try {
       const usersCollection = collection(db, 'Users');
       const docRef = await addDoc(usersCollection, {
