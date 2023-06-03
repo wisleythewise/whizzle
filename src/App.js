@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './App.css';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -9,30 +9,39 @@ import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
 import Dashboard from './components/UserDashboard';
 import Footer from './components/Footer';
+import CheckOutTheDashboard from "./components/CheckOutTheDashboard"
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import PasswordlessAuth from './components/PasswordlessAuth'; 
-import PWlogin from './components/PWlogin';
+import PasswordAuth from './components/PasswordAuth'; 
 import { auth } from './firebaseConfig';
-
-import { isSignInWithEmailLink as firebaseIsSignInWithEmailLink } from "firebase/auth"; // Import the function
-
+import { UserContext } from './components/CTX/UserContext';
+import {onAuthStateChanged} from "firebase/auth"
 
 function App() {
+  const [currentUser, setCurrentUser] = useState(null);
+
+  const value = {
+    currentUser,
+    setCurrentUser : useCallback((user) => setCurrentUser(user), [])
+  }
+
+  // Listen if the user is logged in
   useEffect(() => {
-    const unregisterAuthObserver = auth.onAuthStateChanged(async (user) => {
-      if (user) {
-        console.log("User signed in:", user);
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        console.log("The user is signed in")
+        setCurrentUser(currentUser)
       } else {
-        console.log("User not signed in");
+        console.log("The user is signed out")
       }
     });
 
-    return () => {
-      unregisterAuthObserver();
-    };
+    // Cleanup subscription on unmount
+    return () => unsubscribe();
   }, []);
 
+
   return (
+    <UserContext.Provider value={value}>
     <div className="App">
       <Router>
         <Header />
@@ -41,21 +50,21 @@ function App() {
           <Hero />
           <Testimonials />
           <HowItWorks />
-          <FeaturedBrands />
+          {currentUser ? <CheckOutTheDashboard/>: <FeaturedBrands /> }
           <FAQ />
           <Contact/> 
           </>} />
           <Route path="/login" element={<>
-          <PasswordlessAuth />
+          <PasswordAuth />
           </>} />
           <Route path="/login2" element={<>
-          <PWlogin />
           </>} />
           <Route path="/dashboard/*" element={<Dashboard />} />
         </Routes>
         <Footer />
       </Router>
     </div>
+    </UserContext.Provider>
   );
 }
 
