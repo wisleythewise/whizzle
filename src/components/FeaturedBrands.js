@@ -1,7 +1,7 @@
 // FeaturedBrands.js
 import React , { useState, useEffect }  from 'react';
 import BrandCard from './BrandsCard';
-import { collection, addDoc, getDocs } from 'firebase/firestore';
+import { collection, addDoc, getDocs,query, where } from 'firebase/firestore';
 import { db } from '../firebaseConfig'; 
 
 import AOS from 'aos';
@@ -14,6 +14,7 @@ const FeaturedBrands = () => {
   const [selectedBrands, setSelectedBrands] = useState([])
   const [email, setEmail] = useState('');
   const [submit, setSubmitted] = useState(false);
+  const [presentt, setPresent] = useState(false);
 
   const selectedBrand = (name, set) => {
     if (set){
@@ -38,13 +39,40 @@ const FeaturedBrands = () => {
     }
   }
 
-  const handleSubmit = (event) => {
+  const does_user_exist = async (email) => {
+   
+    // Query the database where 'email' field equals to the provided email
+    const userCollection = collection(db, 'Users');    
+    const q = query(userCollection, where("email", "==", email));
+
+    const querySnapshot = await getDocs(q);
+
+    if (!querySnapshot.empty) {
+      return true
+    } else {
+      return false;
+    }
+
+  }
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
     // Your form submission logic goes here
     console.log('Email:', email);
     console.log('Selected brands:', selectedBrands);
-    addDocument()
-    setSubmitted(true)
+
+    // Check if the user is already present in the database
+    let user_already_exits = await does_user_exist(email)
+
+    if (user_already_exits){
+      console.log("The user already exits")
+      setPresent(true)
+      setSubmitted(true)
+    }else{
+      addDocument()
+      setSubmitted(true)
+    }
+
   };
 
   console.log("These are the selected brands")
@@ -119,11 +147,20 @@ const FeaturedBrands = () => {
     )
   }
 
-  const sumbitted = () => {
-    return (
+  const sumbitted = ( ) => {
+    const not_a_user = (     
      <div>
       <p>Thank you for submitting</p>
-     </div>)
+     </div>
+     )
+
+     const a_user = (
+      <div>
+      <p>You already have an account with us. Please check out your preferences</p>
+     </div>
+
+     )
+    return presentt ?  a_user : not_a_user
   }
 
 
