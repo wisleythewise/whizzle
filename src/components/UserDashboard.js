@@ -52,7 +52,7 @@ function UserDashboard() {
         </div>
         <div className="content">
           <Routes>
-            <Route path="personal-information" element={<PersonalInformation userId={userId} userData={userData} />} />
+            <Route path="/" element={<PersonalInformation/>} />
             <Route path="subscription-details" element={<SubscriptionDetails userId={userId}  userData={userData} />} />
             <Route path="currently-selected-brands" element={<CurrentlySelectedBrands userId={userId} userData={userData} />} />
             <Route path="favourite-item-tracker" element={<FavouriteItemTracker userId={userId} userData={userData} />} />
