@@ -78,15 +78,16 @@ const FeaturedBrands = () => {
     const tempPassword = generateTempPassword();
     const userCredential = await createUserWithEmailAndPassword(auth, email, tempPassword)
     setCurrentUser(userCredential.user)
-    return userCredential.user;
+    return { user: userCredential.user, password: tempPassword };
     }
 
 
   // Create the user in the firestore database
   const addDocument = async () => {
-    const user = await handleCreateAccount();
+    const {user, password} = await handleCreateAccount();
     console.log("This si the user")
     console.log(user)
+    
 
     try {
       const usersCollection = collection(db, 'Users');
@@ -95,6 +96,23 @@ const FeaturedBrands = () => {
         email: email,
         brands: selectedBrands,
       });
+
+      try{
+        const mailingCollection = collection(db, "mail");
+        const docRefmail = await addDoc(mailingCollection , {
+          to : email,
+          message : {
+            subject : "Welcome at Whizzle",
+            text : `Thank you for signing up, use the following password to login ${password}`,
+            html : ""
+
+          }
+        })
+
+        console.log("Sending mail to", docRefmail.id)
+      }catch (error){
+        console.log("Something went wrong with sending the mail")
+      }
   
       console.log('Document written with ID:', docRef.id);
     } catch (error) {
