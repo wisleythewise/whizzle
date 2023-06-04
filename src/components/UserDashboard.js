@@ -34,7 +34,7 @@ function UserDashboard() {
   return (
       <div className="dashboard">
         <div className="menu">
-          <NavLink to="personal-information" activeClassName="active">Personal Information</NavLink>
+          <NavLink to="/dashboard" activeClassName="active">Personal Information</NavLink>
           <NavLink to="subscription-details" activeClassName="active">Subscription Details</NavLink>
           <NavLink to="currently-selected-brands" activeClassName="active">Selected Brands</NavLink>
           <NavLink to="favourite-item-tracker" activeClassName="active">Favourite Items</NavLink>
@@ -54,7 +54,7 @@ function UserDashboard() {
           <Routes>
             <Route path="/" element={<PersonalInformation/>} />
             <Route path="subscription-details" element={<SubscriptionDetails userId={userId}  userData={userData} />} />
-            <Route path="currently-selected-brands" element={<CurrentlySelectedBrands userId={userId} userData={userData} />} />
+            <Route path="currently-selected-brands" element={<CurrentlySelectedBrands />} />
             <Route path="favourite-item-tracker" element={<FavouriteItemTracker userId={userId} userData={userData} />} />
             <Route path="whizzle-pro-pricing-and-features" element={<WhizzleProPricingAndFeatures userId={userId}  userData={userData} />} />
             <Route path="unsubscribe" element={<Unsubscribe userId={userId} userData={userData} />} />

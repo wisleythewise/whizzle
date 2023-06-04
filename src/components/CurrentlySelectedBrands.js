@@ -1,16 +1,40 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { getUserData } from '../services/api';
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from '../firebaseConfig'; 
 import { collection, getDocs } from 'firebase/firestore';
+import { UserContext } from './CTX/UserContext';
 
 
 
-function CurrentlySelectedBrands({userData, userId}) {
+function CurrentlySelectedBrands() {
   const [selectedBrands, setSelectedBrands] = useState([]);
   const [brands, setBrands] = useState([])
+  const {currentUser , setCurrentUser } = useContext(UserContext)
+  const [docid, setDocId] = useState('')
 
   useEffect(() => {
+    
+    const brandsOfUser = async () => {
+      const userCollection = collection(db, "Users")
+      const userSnapshot = await  getDocs(userCollection)
+
+      const preferredBrands = userSnapshot.docs.find((doc) => {
+        const data = doc.data();
+        return data.id == currentUser.uid
+        })
+
+      if (preferredBrands){
+        setDocId(preferredBrands.uid)
+        return preferredBrands.data().brands;
+      } else {
+        console.error('No user found with id:', currentUser.uid);
+        return null;
+      }
+
+    }
+
+
     const fetchData = async () => {
       const brandsCollection = collection(db, 'Brands');
       const brandsSnapshot = await getDocs(brandsCollection);
@@ -22,13 +46,13 @@ function CurrentlySelectedBrands({userData, userId}) {
         console.log('url:', docData.name);
         return docData.name ;
       });
-      console.log("lksajdfglvskdjf gsdjflgk;sdj")
-      console.log(userData)
-      setSelectedBrands(userData.brands)
-      setBrands(brandsData);
-      console.log("THese are all the brands")
-      console.log(brandsData)
+      // Fetch the data of the brands of ther user
+      const userBrands = await brandsOfUser()
 
+      setSelectedBrands(userBrands)
+      setBrands(brandsData);
+      console.log("These are the selected brands")
+      console.log(userBrands)
   }
   fetchData()
 
@@ -44,7 +68,7 @@ function CurrentlySelectedBrands({userData, userId}) {
   }
 
   const update = async () => {
-    const userDoc = doc(db, 'Users', userId); 
+    const userDoc = doc(db, 'Users', docid); 
 
     await updateDoc(userDoc, {
       brands: selectedBrands, 
@@ -68,7 +92,7 @@ function CurrentlySelectedBrands({userData, userId}) {
     )
   })
 
-  return userData.brands ? (
+  return selectedBrands ? (
     <div>
       <h1>Currently Selected Brands</h1>
       {checkboxes}
