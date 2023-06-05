@@ -199,15 +199,25 @@ const FeaturedBrands = () => {
 
   const sumbitted = ( ) => {
     const not_a_user = (     
-     <div>
-      <p>Thank you for submitting</p>
+      <div className="submitted-container">
+      <div className="welcome-icon">
+        <i className="fas fa-check-circle"></i>
+      </div>
+      <h2 className="welcome-title">Submission Successful!</h2>
+      <p className="submitted-text">
+        Thank you for submitting your information! Welcome to our community. You are now part of an exciting journey. Find out more in your personal dashboard.
+      </p>
      </div>
      )
 
      const a_user = (
       <div>
       <p>You already have an account with us. Please check out your preferences</p>
-     </div>
+      <a className="dashboard-button" href="/dashboard">
+                Go to Dashboard
+      </a>
+    </div>
+     
 
      )
     return presentt ?  a_user : not_a_user
@@ -223,6 +233,19 @@ const FeaturedBrands = () => {
         <h2><span>Select your favourite brands!</span></h2>
         <p>Get notified for free whenever your favourite brand is having a sale!</p>
       </div>
+
+      {/* <div className="row" data-aos="fade-up" data-aos-delay="200">
+        <div className="col-lg-12 d-flex justify-content-center">
+          <ul id="featuredbrands-flters">
+            <li data-filter="*" className="filter-active">All</li>
+            <li data-filter=".filter-app">App</li>
+            <li data-filter=".filter-card">Card</li>
+            <li data-filter=".filter-web">Web</li>
+          </ul>
+        </div>
+      </div> */}
+
+
       {submit ? sumbitted(): emailForm() }
       </div>
   </section>

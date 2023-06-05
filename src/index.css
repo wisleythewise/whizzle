@@ -163,6 +163,7 @@ h6 {
 .navbar .active:focus,
 .navbar li:hover>a {
   color: #3498db;
+  cursor: pointer;
 }
 
 .navbar .getstarted,
@@ -734,13 +735,16 @@ section {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  align-items: center;
 }
 
 .howitworks-card {
   width: 100%;
+  max-width: 960px;
   box-sizing: border-box;
-  margin-bottom: 3rem; /* Equivalent of Bootstrap's mb-5 */
+  margin-bottom: 2rem; 
+  transition: all 0.3s ease;
+
 }
 
 .howitworks-content{
@@ -759,6 +763,7 @@ section {
 
 
 .services .icon-box {
+  /* deze moet nog aangepast worden dat het niet breder wordt dan ong 960px */
   display: flex;
   flex-direction: row;
   text-align: center;
@@ -788,15 +793,16 @@ section {
   transition: all 0.3s;
   z-index: -1;
 }
-
+/* 
 .services .icon-box:hover::before {
-  background: #3498db;
-  right: 0;
+  background: #ffffff2e;  */
+  /* dit aanpassen voor de hoover animatie */
+  /* right: 0;
   top: 0;
   width: 100%;
   height: 100%;
   border-radius: 0px;
-}
+} */
 
 .services .icon {
   position: absolute;
@@ -824,7 +830,7 @@ section {
 
 .services .title {
   font-weight: 700;
-  margin-bottom: 15px;
+  /* margin-bottom: 15px; */
   font-size: 18px;
 }
 
@@ -838,7 +844,39 @@ section {
   margin-bottom: 0;
 }
 
-.services .icon-box:hover .title a,
+
+.services .description {
+  display: none;
+}
+
+@media (min-width: 480px) {
+  .services .description {
+    display: block;
+  }
+}
+
+.howitworks-card {
+  transition: all 0.3s ease;
+}
+
+.howitworks-card:hover .icon {
+  animation: wiggle 1.5s infinite;
+}
+
+@keyframes wiggle {
+  0%, 100% {
+    scale:1.1;
+    transform: rotate(0deg);
+  }
+  25%, 75% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+}
+
+/* .services .icon-box:hover .title a,
 .services .icon-box:hover .description {
   color: #fff;
 }
@@ -849,7 +887,7 @@ section {
 
 .services .icon-box:hover .icon i {
   color: #3498db;
-}
+} */
 
 /*--------------------------------------------------------------
 # More Services
@@ -2004,4 +2042,66 @@ feature brands
   .brand-grid {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
+}
+
+/*  */
+/* welcome message */
+/*  */
+
+/* submitted.css */
+
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css');
+
+.submitted-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 40px;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  animation: fadeIn ease 3s;
+}
+
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+.welcome-icon {
+  color: #007bff;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.welcome-title {
+  color: #333;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.submitted-text {
+  font-size: 1.25em;
+  line-height: 1.6;
+  color: #333;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.dashboard-button {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+  padding: 10px 20px;
+  font-size: 1.1em;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.dashboard-button:hover {
+  background-color: #0056b3;
+  border-color: #004085;
 }
