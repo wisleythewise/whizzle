@@ -24,6 +24,8 @@ const Header = () => {
     return () => {
       document.removeEventListener('scroll', handleScroll);
     };
+
+
   }, [headerScrolled]);
 
   return (
