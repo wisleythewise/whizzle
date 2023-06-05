@@ -1,18 +1,14 @@
 import whistleLogo from "../designs/logo.png";
-import React, { useState, useEffect , useContext} from 'react';
-import { Link } from 'react-scroll';
+import React, { useState, useEffect, useContext } from 'react';
 import { UserContext } from "./CTX/UserContext";
 
 const Header = () => {
   const {currentUser, setCurrentUser}= useContext(UserContext)
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [dropdownActive, setDropdownActive] = useState(false);
-  const [headerScrolled, setHeaderScrolled] = useState(false); 
+  const [headerScrolled, setHeaderScrolled] = useState(false); // Added this state
 
-  const handleNavbarToggle = (event) => {
-    if (event) {
-      event.preventDefault();
-    }
+  const handleNavbarToggle = () => {
     setNavbarOpen(!navbarOpen);
   };
 
@@ -31,88 +27,20 @@ const Header = () => {
   }, [headerScrolled]);
 
   return (
-    <header id="header" className={`fixed-top d-flex align-items-center ${headerScrolled ? 'header-scrolled' : ''}`}>
-      <div className="container d-flex align-items-center justify-content-between">
+    <header id="header" className={`fixed-top d-flex align-items-center ${headerScrolled ? 'header-scrolled' : ''}`}>      <div className="container d-flex align-items-center justify-content-between">
 
-        <div className="logo">
-          <a href="/"><img src={whistleLogo} alt="" className="img-fluid" /></a>
-        </div>
+      <div class="logo">        
+        <a href="/"><img src={whistleLogo} alt="" class="img-fluid"></img></a>
+      </div>
 
         <nav id="navbar" className={navbarOpen ? "navbar navbar-mobile" : "navbar"}>
           <ul>
-            <li>
-              <Link 
-                activeClass="active"
-                to="hero"
-                spy={true}
-                smooth={true}
-                offset={-70}
-                duration={200}
-                className="nav-link scrollto"
-                onClick={handleNavbarToggle}
-              >
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link 
-                activeClass="active"
-                to="howitworks"
-                spy={true}
-                smooth={true}
-                offset={-70}
-                duration={200}
-                className="nav-link scrollto"
-                onClick={handleNavbarToggle}
-              >
-                How It Works
-              </Link>
-            </li>
-            <li>
-              <Link 
-                activeClass="active"
-                to="faq"
-                spy={true}
-                smooth={true}
-                offset={-70}
-                duration={200}
-                className="nav-link scrollto"
-                onClick={handleNavbarToggle}
-              >
-                FAQ's
-              </Link>
-            </li>
-            <li>
-              <Link 
-                activeClass="active"
-                to="contact"
-                spy={true}
-                smooth={true}
-                offset={-70}
-                duration={200}
-                className="nav-link scrollto"
-                onClick={handleNavbarToggle}
-              >
-                Contact Us
-              </Link>
-            </li>
-            <li>
-              <a className="nav-link scrollto" href="/login2" onClick={handleNavbarToggle}>Login</a>
-            </li>
-            <li>
-              <Link 
-                activeClass="active"
-                to="featuredbrands"
-                spy={true}
-                smooth={true}
-                offset={-70}
-                duration={200}
-                className="getstarted scrollto"
-                onClick={handleNavbarToggle}
-              >
-                Get Started!
-              </Link>
-            </li>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#howitworks">How It Works</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact Us</a></li>
+          {currentUser ? <li><a class="nav-link scrollto" href="/dashboard">Dashboard</a></li> : <li><a class="nav-link scrollto" href="/login">Login</a></li>  }
+          <li><a class="getstarted scrollto" href="#featuredbrands">Get Started!</a></li>
+
           </ul>
           <i className={navbarOpen ? "bi bi-x mobile-nav-toggle" : "bi bi-list mobile-nav-toggle"} onClick={handleNavbarToggle}></i>
         </nav>
