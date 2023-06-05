@@ -1,6 +1,7 @@
 import whistleLogo from "../designs/logo.png";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect , useContext} from 'react';
 import { Link } from 'react-scroll';
+import { UserContext } from "./CTX/UserContext";
 
 const Header = () => {
   const {currentUser, setCurrentUser}= useContext(UserContext)
