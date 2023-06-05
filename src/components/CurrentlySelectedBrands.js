@@ -11,11 +11,13 @@ function CurrentlySelectedBrands() {
   const [selectedBrands, setSelectedBrands] = useState([]);
   const [brands, setBrands] = useState([])
   const {currentUser , setCurrentUser } = useContext(UserContext)
+
   const [docid, setDocId] = useState('')
 
   useEffect(() => {
     
     const brandsOfUser = async () => {
+      
       const userCollection = collection(db, "Users")
       const userSnapshot = await  getDocs(userCollection)
 
