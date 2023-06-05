@@ -27,7 +27,7 @@ function CurrentlySelectedBrands() {
         })
 
       if (preferredBrands){
-        setDocId(preferredBrands.uid)
+        setDocId(preferredBrands.id)
         return preferredBrands.data().brands;
       } else {
         console.error('No user found with id:', currentUser.uid);
@@ -70,7 +70,10 @@ function CurrentlySelectedBrands() {
   }
 
   const update = async () => {
+
+    console.log("this is the docid", docid)
     const userDoc = doc(db, 'Users', docid); 
+    
 
     await updateDoc(userDoc, {
       brands: selectedBrands, 
