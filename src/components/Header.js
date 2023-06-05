@@ -7,7 +7,10 @@ const Header = () => {
   const [dropdownActive, setDropdownActive] = useState(false);
   const [headerScrolled, setHeaderScrolled] = useState(false); 
 
-  const handleNavbarToggle = () => {
+  const handleNavbarToggle = (event) => {
+    if (event) {
+      event.preventDefault();
+    }
     setNavbarOpen(!navbarOpen);
   };
 
@@ -28,8 +31,6 @@ const Header = () => {
     return () => {
       document.removeEventListener('scroll', handleScroll);
     };
-
-
   }, [headerScrolled]);
 
   return (
@@ -51,6 +52,7 @@ const Header = () => {
                 offset={-70}
                 duration={200}
                 className="nav-link scrollto"
+                onClick={handleNavbarToggle}
               >
                 Home
               </Link>
@@ -64,6 +66,7 @@ const Header = () => {
                 offset={-70}
                 duration={200}
                 className="nav-link scrollto"
+                onClick={handleNavbarToggle}
               >
                 How It Works
               </Link>
@@ -77,6 +80,7 @@ const Header = () => {
                 offset={-70}
                 duration={200}
                 className="nav-link scrollto"
+                onClick={handleNavbarToggle}
               >
                 FAQ's
               </Link>
@@ -90,12 +94,13 @@ const Header = () => {
                 offset={-70}
                 duration={200}
                 className="nav-link scrollto"
+                onClick={handleNavbarToggle}
               >
                 Contact Us
               </Link>
             </li>
             <li>
-              <a className="nav-link scrollto" href="/login2">Login</a>
+              <a className="nav-link scrollto" href="/login2" onClick={handleNavbarToggle}>Login</a>
             </li>
             <li>
               <Link 
@@ -106,6 +111,7 @@ const Header = () => {
                 offset={-70}
                 duration={200}
                 className="getstarted scrollto"
+                onClick={handleNavbarToggle}
               >
                 Get Started!
               </Link>

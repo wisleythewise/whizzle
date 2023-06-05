@@ -121,9 +121,19 @@ const FeaturedBrands = () => {
 
   const sumbitted = () => {
     return (
-     <div>
-      <p>Thank you for submitting</p>
-     </div>)
+      <div className="submitted-container">
+      <div className="welcome-icon">
+        <i className="fas fa-check-circle"></i>
+      </div>
+      <h2 className="welcome-title">Submission Successful!</h2>
+      <p className="submitted-text">
+        Thank you for submitting your information! Welcome to our community. You are now part of an exciting journey. Find out more in your personal dashboard.
+      </p>
+      <a className="dashboard-button" href="/dashboard">
+                Go to Dashboard
+      </a>
+    </div>
+     )
   }
 
 
