@@ -42,7 +42,7 @@ const FAQ = (props) => {
     <div class="container">
 
       <div class="section-title" data-aos="fade-up">
-        <h2>Frequently Asked Questions</h2>
+      <h2><span>Frequently Asked Questions</span></h2>
       </div>
 
       {allCards}
