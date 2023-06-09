@@ -6,9 +6,13 @@ const Header = () => {
   const {currentUser, setCurrentUser}= useContext(UserContext)
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [dropdownActive, setDropdownActive] = useState(false);
-  const [headerScrolled, setHeaderScrolled] = useState(false); // Added this state
-
-  const handleNavbarToggle = () => {
+  const [headerScrolled, setHeaderScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768); // Adjust the value 768 to the breakpoint you desire
+  
+  const handleNavbarToggle = (event) => {
+    if (event) {
+      event.preventDefault();
+    }
     setNavbarOpen(!navbarOpen);
   };
 
@@ -20,9 +24,16 @@ const Header = () => {
       }
     };
 
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768); // Again, adjust the value 768 to the breakpoint you desire
+    };
+
     document.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+
     return () => {
       document.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
     };
 
 
@@ -35,7 +46,7 @@ const Header = () => {
         <a href="/"><img src={whistleLogo} alt="" class="img-fluid"></img></a>
       </div>
 
-        <nav id="navbar" className={navbarOpen ? "navbar navbar-mobile" : "navbar"}>
+        <nav id="navbar" className={navbarOpen && isMobile ? "navbar navbar-mobile" : "navbar"}>
           <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#howitworks">How It Works</a></li>
