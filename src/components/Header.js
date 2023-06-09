@@ -5,8 +5,9 @@ import { Link } from 'react-scroll';
 const Header = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [dropdownActive, setDropdownActive] = useState(false);
-  const [headerScrolled, setHeaderScrolled] = useState(false); 
-
+  const [headerScrolled, setHeaderScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768); // Adjust the value 768 to the breakpoint you desire
+  
   const handleNavbarToggle = (event) => {
     if (event) {
       event.preventDefault();
@@ -27,9 +28,16 @@ const Header = () => {
       }
     };
 
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768); // Again, adjust the value 768 to the breakpoint you desire
+    };
+
     document.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+
     return () => {
       document.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
     };
   }, [headerScrolled]);
 
@@ -41,8 +49,7 @@ const Header = () => {
           <a href="/"><img src={whistleLogo} alt="" className="img-fluid" /></a>
         </div>
 
-        <nav id="navbar" className={navbarOpen ? "navbar navbar-mobile" : "navbar"}>
-          <ul>
+        <nav id="navbar" className={navbarOpen && isMobile ? "navbar navbar-mobile" : "navbar"}>          <ul>
             <li>
               <Link 
                 activeClass="active"
