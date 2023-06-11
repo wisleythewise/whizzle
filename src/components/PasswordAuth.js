@@ -1,10 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { auth } from "../firebaseConfig";
-import {  signInWithEmailAndPassword  } from "firebase/auth"; // Import the function
+import { signInWithEmailAndPassword } from "firebase/auth"; // Import the function
 import { UserContext } from "./CTX/UserContext"
 import { useNavigate } from 'react-router-dom';
 
-const PasswordAuth = ( ) => {
+const PasswordAuth = () => {
   const { currentUser, setCurrentUser } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [error, setError] = useState(null);
@@ -14,7 +14,22 @@ const PasswordAuth = ( ) => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    // Get the header element by its class or id
+    const header = document.querySelector("header");
 
+    if (header) {
+      // Save the current opacity to restore it later
+      const currentOpacity = header.style.opacity;
+      // Set the opacity of the header to 0
+      header.style.opacity = "0";
+
+      // Return a cleanup function to set the opacity back when component unmounts
+      return () => {
+        header.style.opacity = currentOpacity;
+      };
+    }
+  }, []);
 
   const signIn = async (e) => {
     e.preventDefault();
@@ -30,7 +45,7 @@ const PasswordAuth = ( ) => {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       // The user is signed in
       var user = userCredential.user;
-      setCurrentUser(user)
+      setCurrentUser(user);
       
       navigate('/dashboard');
       // ...
@@ -40,44 +55,41 @@ const PasswordAuth = ( ) => {
       var errorMessage = error.message;
       setError(errorMessage);
       
-    } 
-
-  }
-
-
+    }
+  };
 
   return (
     <div>
-    <section id="signin-section" className="d-flex align-items-center">
-    <div className="signin-container">
-      <h1>Password Authentication</h1>
-      <form onSubmit={(event) => {signIn(event)}}>
-      <input
-          className="email-signin"
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-      />
-      <input
-          className="password-signin"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-      />
-      {error !== "auth/wrong-password"? "": <div>You have entered the wrong password</div>}
-        <button type="submit" disabled={loading}>
-          {loading ? "Loading..." : "Sign In"}
-          
-        </button>
-      </form>
-      {error && <p>{error}</p>}
-    </div>
-    </section>
-  </div>)
+      <section id="signin-section" className="d-flex align-items-center">
+        <div className="signin-container">
+          <h1>Password Authentication</h1>
+          <form onSubmit={(event) => {signIn(event)}}>
+            <input
+                className="email-signin"
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+            />
+            <input
+                className="password-signin"
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+            />
+            {error !== "auth/wrong-password"? "": <div>You have entered the wrong password</div>}
+              <button type="submit" disabled={loading}>
+                {loading ? "Loading..." : "Sign In"}
+              </button>
+            </form>
+            {error && <p>{error}</p>}
+          </div>
+        </section>
+      </div>
+  );
 };
 
 export default PasswordAuth;

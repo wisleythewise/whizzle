@@ -842,6 +842,7 @@ section {
   font-size: 15px;
   line-height: 28px;
   margin-bottom: 0;
+  margin:5px;
 }
 
 
@@ -849,10 +850,19 @@ section {
   display: none;
 }
 
-@media (min-width: 480px) {
+/* On desktop, always show the description */
+@media screen and (min-width: 992px) {
   .services .description {
     display: block;
   }
+}
+
+/* When the show class is present, display the description on mobile */
+@media screen and (max-width: 991px) {
+  .services .description.show {
+    display: block;
+  }
+
 }
 
 .howitworks-card {
@@ -1135,6 +1145,7 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 
 .email-form {
@@ -1148,6 +1159,7 @@ section {
 
 .email-form .form-control {
   width: 250px;
+  max-width: 80vw;
   height: 40px;
   padding: 0 10px;
   border: 1px solid #ddd;

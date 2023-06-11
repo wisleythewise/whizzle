@@ -21,7 +21,7 @@ const Hero = () => {
           <h1 data-aos="fade-up">Never miss the sale of your favourite brands again!</h1>
           <h2 data-aos="fade-up" data-aos-delay="400">With Whizzle you can select all your favourite brands and get notified whenever there is a sale or a discount code</h2>
           <div data-aos="fade-up" data-aos-delay="800">
-            <a href="#howitworks" className="btn-get-started scrollto">Get Started</a>
+            <a href="#featuredbrands" className="btn-get-started scrollto">Get Started</a>
           </div>
         </div>
         <div className="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">
