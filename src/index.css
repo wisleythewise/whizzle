@@ -861,6 +861,7 @@ section {
 @media screen and (max-width: 991px) {
   .services .description.show {
     display: block;
+    margin-top: 7px;
   }
 
 }

@@ -19,14 +19,14 @@ const PasswordAuth = () => {
     const header = document.querySelector("header");
 
     if (header) {
-      // Save the current opacity to restore it later
-      const currentOpacity = header.style.opacity;
-      // Set the opacity of the header to 0
-      header.style.opacity = "0";
-
-      // Return a cleanup function to set the opacity back when component unmounts
+      // Save the current background color to restore it later
+      const currentBackgroundColor = header.style.backgroundColor;
+      // Set the background color of the header to transparent
+      header.style.backgroundColor = 'rgba(0, 0, 0, 0)'; // rgba format with 0 opacity
+    
+      // Return a cleanup function to set the background color back when component unmounts
       return () => {
-        header.style.opacity = currentOpacity;
+        header.style.backgroundColor = currentBackgroundColor;
       };
     }
   }, []);
