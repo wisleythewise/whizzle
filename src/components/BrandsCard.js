@@ -4,14 +4,11 @@ const BrandsCard = (props) => {
   const url = props.url;
   const name = props.name;
   const callback = props.callBack;
-  const [selected, setSelected] = useState(false);
+  const selected = props.selected;
 
   const handleClick = (name) => {
-    setSelected((prevSelected) => {
-      const updatedSelected = !prevSelected;
-      callback(name, updatedSelected);
-      return updatedSelected;
-    });
+      callback(name, !selected);
+
   };
 
 

@@ -5,6 +5,7 @@ import { collection, addDoc, getDocs,query, where } from 'firebase/firestore';
 import { auth, db } from '../firebaseConfig'; 
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { UserContext } from './CTX/UserContext';
+import ReactPaginate from 'react-paginate';
 
 
 import AOS from 'aos';
@@ -19,16 +20,20 @@ const FeaturedBrands = () => {
   const [presentt, setPresent] = useState(false);
   const {currentUser, setCurrentUser} = useContext(UserContext)
 
-  // Fetch all the brand data that is available in the database
+  // For pagination
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 6; // Change this to change the number of items per page
+
+
   useEffect(() => {
     AOS.init({
       duration : 2000 // duration of the animations in milliseconds
     });
-
+  
     const fetchData = async () => {
       const brandsCollection = collection(db, 'Brands');
       const brandsSnapshot = await getDocs(brandsCollection);
-
+  
       const brandsData = brandsSnapshot.docs.map((doc) => {
         const docData = doc.data();
         console.log('url:', docData.name);
@@ -37,29 +42,42 @@ const FeaturedBrands = () => {
           name : docData.name
         };
       });
-
+  
       setBrands(brandsData);
-
-      const allCards = brandsData.map((brand, index) => {
-        return <BrandCard key={index}  url={brand.url} name = {brand.name} callBack = {selectedBrand} />
-      });
-
-      setAllCards(allCards);
     };
-
+  
     fetchData();
-
-  }, []);
+  
+  }, []); // Removed 'brand' from the dependency array
+  
+  // Update the allCards state whenever currentPage changes
+  useEffect(() => {
+    const offset = currentPage * itemsPerPage;
+    const pageBrands = brand.slice(offset, offset + itemsPerPage);
+  
+    const allCards = pageBrands.map((brand, index) => {
+      return <BrandCard key={index}  url={brand.url} name = {brand.name} callBack = {selectedBrand} selected={selectedBrands.includes(brand.name)} />
+    });
+  
+    setAllCards(allCards);
+  }, [brand, currentPage,selectedBrands]);
 
   // The user has selected these brand and there are set in the state using this funtion
   const selectedBrand = (name, set) => {
     if (set){
       setSelectedBrands(prevBrands => [...prevBrands, name]);
+      console.log(selectedBrands)
     } else {
       setSelectedBrands(prevBrands => prevBrands.filter(brand => brand !== name));
     }
   
   }
+
+  // Handle pagination clicks
+  const handlePageClick = (data) => {
+    let selected = data.selected;
+    setCurrentPage(selected);
+  };
 
   // Generate a temporary password 
   const generateTempPassword = () => {
@@ -165,11 +183,11 @@ const FeaturedBrands = () => {
 
     <div>
 
-        <div id="brand-search-container" data-aos="fade-up" data-aos-delay="200" className="brand-search-container form-group">
+        <div id="brand-search-container" className="brand-search-container form-group">
           <input type="text" name="brand-search" className="brand-search form-control" id="brand-search" placeholder="Search for your favourite brands" required=""></input>
       </div>
       
-      <div className="row" data-aos="fade-up" data-aos-delay="200">
+      <div className="row">
           <div className="col-lg-12 d-flex justify-content-center">
             <ul id="featuredbrands-flters">
               <li data-filter="*" className="filter-active">All</li>
@@ -181,11 +199,24 @@ const FeaturedBrands = () => {
         </div>
   
 
-        <div class="brand-grid" data-aos="fade-up" data-aos-delay="400">
-
+        <div class="brand-grid">
         {allCards}
-
-      </div>
+        </div>
+        
+        <ReactPaginate
+          previousLabel={'previous'}
+          nextLabel={'next'}
+          breakLabel={'...'}
+          breakClassName={'break-me'}
+          pageCount={Math.ceil(brand.length / itemsPerPage)}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={5}
+          onPageChange={handlePageClick}
+          containerClassName={'pagination'}
+          subContainerClassName={'pages pagination'}
+          activeClassName={'active'}
+        />
+    
 
       <div className="email-container form-group" data-aos="fade-up" data-aos-delay="600">
         <form className="email-form" method="POST"  onSubmit={handleSubmit}>
