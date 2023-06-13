@@ -19,6 +19,8 @@ const FeaturedBrands = () => {
   const [submit, setSubmitted] = useState(false);
   const [presentt, setPresent] = useState(false);
   const {currentUser, setCurrentUser} = useContext(UserContext)
+  const [loading, setLoading] = useState(true); // Add this line
+
 
   // For pagination
   const [currentPage, setCurrentPage] = useState(0);
@@ -47,6 +49,7 @@ const FeaturedBrands = () => {
     };
   
     fetchData();
+    setLoading(false); // Add this line
   
   }, []); // Removed 'brand' from the dependency array
   
@@ -71,6 +74,15 @@ const FeaturedBrands = () => {
       setSelectedBrands(prevBrands => prevBrands.filter(brand => brand !== name));
     }
   
+  }
+
+  // handle loading
+  if (loading) {
+    return (
+      <div className="loading-div">
+        <div className="spinner"></div>
+      </div>
+    ); 
   }
 
   // Handle pagination clicks

@@ -18,6 +18,7 @@ const Testimonials = () => {
 
   const [testimonials, setTestimonials] = useState([]);
   const [allCards, setAllCards] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,7 +38,6 @@ const Testimonials = () => {
           url: docData.url,
           name: docData.name,
           quote: docData.quote
-          
         };
       });
 
@@ -48,14 +48,25 @@ const Testimonials = () => {
       });
 
       setAllCards(allCards);
+
+      setLoading(false); // Add this line
     };
 
     fetchData();
   }, []);
 
-  return (
+  if (loading) {
+    return (
+      <div className="loading-div">
+        <div className="spinner"></div>
+      </div>
+    ); 
+  }
 
+
+  return (
     <section id="testimonials" className="testimonials sectionpadding section-bg" >
+
     <div className="container">
       <Swiper
         spaceBetween={50}
@@ -71,7 +82,6 @@ const Testimonials = () => {
           <SwiperSlide key={index}>
             <TestimonialCards
               url={testimonial.url}
-
               name={testimonial.name}
               quote={testimonial.quote}
             />
@@ -80,7 +90,6 @@ const Testimonials = () => {
       </Swiper>
     </div>
   </section>
-
   );
 };
 
