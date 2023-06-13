@@ -63,6 +63,7 @@ const Testimonials = () => {
         autoplay={{ delay: 3500, disableOnInteraction: true }} 
         pagination={{ clickable: true }}
         speed = {1000}
+        loop={true}
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log('slide change')}
       >
@@ -70,6 +71,7 @@ const Testimonials = () => {
           <SwiperSlide key={index}>
             <TestimonialCards
               url={testimonial.url}
+
               name={testimonial.name}
               quote={testimonial.quote}
             />
