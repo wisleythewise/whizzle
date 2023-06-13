@@ -14,7 +14,8 @@ const HowItWorks = () => {
 
         <div className="section-title" data-aos="fade-up">
           <h2><span>How It Works</span></h2>
-          <p>Whizzle.AI is the perfect tool for people who want to save money on their favorite brands. In a few clicks you can subscribe to receive alerts whenever your favorite brand is having a sale</p>
+          <p><strong>Never pay full price again -</strong> save money effortlessly with our customizable sale notifications. </p>
+          <p><strong> No more cluttered inbox -</strong> receive only the notifications you care about. </p>
         </div>
 
         <div className="howitworks-container">
@@ -23,7 +24,7 @@ const HowItWorks = () => {
               <div className="icon"><i className="bx bxl-dribbble"></i></div>
               <div className='howitworks-text'>
               <h4 className="title">Select brands</h4>                
-              <p className={`description ${showDescriptionIndex === 0 ? 'show' : ''}`}>Select your favorite brands on our brand selector page</p>              </div>
+              <p className={`description ${showDescriptionIndex === 0 ? 'show' : ''}`}>Select your favorite brands and webshops</p>              </div>
             </div>
           </div>
 
@@ -31,7 +32,7 @@ const HowItWorks = () => {
               <div className="icon"><i className="bx bx-file"></i></div>
               <div className='howitworks-text'>
                 <h4 className="title">Enter your email</h4>
-                <p className={`description ${showDescriptionIndex === 1 ? 'show' : ''}`}>In just one click you can provide us your email so we can send you the latest discount codes or sale alerts</p>
+                <p className={`description ${showDescriptionIndex === 1 ? 'show' : ''}`}>You are in control, selecte the desired frequency to create the best online shopping experience</p>
               </div>
             </div>
           </div>
@@ -40,7 +41,7 @@ const HowItWorks = () => {
               <div className="icon"><i className="bx bx-tachometer"></i></div>
               <div className='howitworks-text'>
                 <h4 className="title">Automated Monitoring</h4>
-                <p className={`description ${showDescriptionIndex === 2 ? 'show' : ''}`}>Our automated systems will continuously monitor the webshops of your faourite brands, in order to detect sales or discount codes</p>
+                <p className={`description ${showDescriptionIndex === 2 ? 'show' : ''}`}>Our automated systems will continuously monitor your webshops to detect sales</p>
               </div>
             </div>
           </div>
@@ -49,7 +50,7 @@ const HowItWorks = () => {
               <div className="icon"><i className="bx bx-world"></i></div>
               <div className='howitworks-text'>
                 <h4 className="title">Personalized Alerts</h4>
-                <p className={`description ${showDescriptionIndex === 3 ? 'show' : ''}`}>The Whizzle.AI team will provide you with personalized alerts in your inbox, containing sale announcements or discount codes!</p>
+                <p className={`description ${showDescriptionIndex === 3 ? 'show' : ''}`}>Receive personalized sale alerts, stress free.</p>
               </div>
             </div>
           </div>

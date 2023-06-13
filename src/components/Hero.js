@@ -18,8 +18,8 @@ const Hero = () => {
     <div className="container">
       <div className="row">
         <div className="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
-          <h1 data-aos="fade-up">Never miss the sale of your favourite brands again!</h1>
-          <h2 data-aos="fade-up" data-aos-delay="400">With Whizzle you can select all your favourite brands and get notified whenever there is a sale or a discount code</h2>
+          <h1 data-aos="fade-up">Stop searching for deals, let Whizzle do the work for you!</h1>
+          <h2 data-aos="fade-up" data-aos-delay="400">Save time and money with Whizzle's personalized sale alerts.</h2>
           <div data-aos="fade-up" data-aos-delay="800">
             <a href="#featuredbrands" className="btn-get-started scrollto">Get Started</a>
           </div>
