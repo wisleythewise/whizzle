@@ -59,48 +59,36 @@ const PasswordAuth = () => {
   };
 
   return (
-<div>
-  <section id="signin-section" className="d-flex align-items-center">
-    <div className="signin-container">
-      <h1>Please Log In If You Have an Account</h1>
-      <form onSubmit={(event) => { signIn(event) }}>
-        <div className="input-group">
-          <label htmlFor="email" className="sr-only">Email</label>
-          <input
-            id="email"
-            className="email-signin"
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div className="input-group">
-          <label htmlFor="password" className="sr-only">Password</label>
-          <input
-            id="password"
-            className="password-signin"
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        {error === "auth/wrong-password" && <div className="error-message">You have entered the wrong password</div>}
-        <button type="submit" disabled={loading} className="signin-btn">
-          {loading ? "Loading..." : "Sign In"}
-        </button>
-        {error && <p className="error-message">{error}</p>}
-      </form>
-      <div className="register-link">
-        <p>Don't have an account? <a href="/register">Sign up</a></p>
+    <div>
+      <section id="signin-section" className="d-flex align-items-center">
+        <div className="signin-container">
+          <h1>Password Authentication</h1>
+          <form onSubmit={(event) => {signIn(event)}}>
+            <input
+                className="email-signin"
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+            />
+            <input
+                className="password-signin"
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+            />
+            {error !== "auth/wrong-password"? "": <div>You have entered the wrong password</div>}
+              <button type="submit" disabled={loading}>
+                {loading ? "Loading..." : "Sign In"}
+              </button>
+            </form>
+            {error && <p>{error}</p>}
+          </div>
+        </section>
       </div>
-    </div>
-  </section>
-</div>
-
   );
 };
 

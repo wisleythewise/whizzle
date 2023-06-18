@@ -65,7 +65,7 @@ const Testimonials = () => {
 
 
   return (
-    <section id="testimonials" style={{height:"20vh"}} className="testimonials sectionpadding section-bg" >
+    <section id="testimonials" className="testimonials sectionpadding section-bg" >
 
     <div className="container">
       <Swiper

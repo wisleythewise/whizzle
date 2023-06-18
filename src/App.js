@@ -57,6 +57,8 @@ function App() {
           <Route path="/login" element={<>
           <PasswordAuth />
           </>} />
+          <Route path="/login2" element={<>
+          </>} />
           <Route path="/dashboard/*" element={<Dashboard />} />
         </Routes>
         <Footer />
