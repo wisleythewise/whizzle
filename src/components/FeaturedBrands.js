@@ -21,6 +21,9 @@ const FeaturedBrands = () => {
   const {currentUser, setCurrentUser} = useContext(UserContext)
   const [loading, setLoading] = useState(true); // Add this line
 
+  const [filter, SetFilter] = useState("All")
+  const [filteredBrands, SetFilteredBrands] = useState([])
+
 
   // For pagination
   const [currentPage, setCurrentPage] = useState(0);
@@ -41,11 +44,13 @@ const FeaturedBrands = () => {
         console.log('url:', docData.name);
         return {
           url: docData.url,
-          name : docData.name
+          name : docData.name,
+          label : docData.label ? docData.label : "all" 
         };
       });
   
       setBrands(brandsData);
+      SetFilteredBrands(brandsData)
     };
   
     fetchData();
@@ -56,14 +61,14 @@ const FeaturedBrands = () => {
   // Update the allCards state whenever currentPage changes
   useEffect(() => {
     const offset = currentPage * itemsPerPage;
-    const pageBrands = brand.slice(offset, offset + itemsPerPage);
+    const pageBrands = filteredBrands.slice(offset, offset + itemsPerPage);
   
     const allCards = pageBrands.map((brand, index) => {
       return <BrandCard key={index}  url={brand.url} name = {brand.name} callBack = {selectedBrand} selected={selectedBrands.includes(brand.name)} />
     });
   
     setAllCards(allCards);
-  }, [brand, currentPage,selectedBrands]);
+  }, [filteredBrands, currentPage,selectedBrands]);
 
   // The user has selected these brand and there are set in the state using this funtion
   const selectedBrand = (name, set) => {
@@ -190,6 +195,29 @@ const FeaturedBrands = () => {
 
   };
 
+  const handleFilter = (category) =>  {
+    console.log("We are in handleFIlter")
+
+    if (category == "All"){
+      SetFilter("All")
+      SetFilteredBrands(brand)
+    } else if (category == "Men"){
+      const filteredBrands = brand.filter((brand) => brand.label == "Men" );
+      SetFilter("Men")
+      SetFilteredBrands(filteredBrands)
+    } else if (category == "Woman"){
+      const filteredBrands = brand.filter((brand) => brand.label == "Woman" );
+      SetFilter("Woman")
+      SetFilteredBrands(filteredBrands)
+    } else{
+      const filteredBrands = brand.filter((brand) => brand.label == "Kids" );
+      SetFilter("Kids")
+      SetFilteredBrands(filteredBrands)
+    } 
+
+    
+  }
+
   const emailForm = () => {
     return (      
 
@@ -202,10 +230,10 @@ const FeaturedBrands = () => {
       <div className="row">
           <div className="col-lg-12 d-flex justify-content-center">
             <ul id="featuredbrands-flters">
-              <li data-filter="*" className="filter-active">All</li>
-              <li data-filter=".filter-app">Men</li>
-              <li data-filter=".filter-app">Woman</li>
-              <li data-filter=".filter-app">Kids</li>
+              <li data-filter="*" className={filter == "All" ? "filter-active" : ""}  onClick={() => {handleFilter("All")}}>All</li>
+              <li data-filter=".filter-app" className={filter == "Men" ? "filter-active" : ""}  onClick={() => {handleFilter("Men")}}>Men</li>
+              <li data-filter=".filter-app" className={filter == "Woman" ? "filter-active" : ""}  onClick={() => {handleFilter("Woman")}}>Woman</li>
+              <li data-filter=".filter-app" className={filter == "Kids" ? "filter-active" : ""}  onClick={() => {handleFilter("Kids")}}>Kids</li>
             </ul>
           </div>
         </div>
@@ -277,16 +305,7 @@ const FeaturedBrands = () => {
         <p>Ontvang gratis meldingen wanneer je favoriete merk een uitverkoop heeft!</p>
       </div>
 
-      {/* <div className="row" data-aos="fade-up" data-aos-delay="200">
-        <div className="col-lg-12 d-flex justify-content-center">
-          <ul id="featuredbrands-flters">
-            <li data-filter="*" className="filter-active">All</li>
-            <li data-filter=".filter-app">App</li>
-            <li data-filter=".filter-card">Card</li>
-            <li data-filter=".filter-web">Web</li>
-          </ul>
-        </div>
-      </div> */}
+
 
 
       {submit ? sumbitted(): emailForm() }
