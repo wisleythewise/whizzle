@@ -1029,7 +1029,7 @@ section {
 # Testimonials
 --------------------------------------------------------------*/
 .testimonials{
-  height:20vh;
+  height:30vh;
 }
 .testimonials .testimonial-wrap {
   padding-left: 50px;
@@ -2169,3 +2169,48 @@ feature brands
   background-color: #0056b3;
   border-color: #004085;
 }
+
+
+/* Pagination */
+
+/* Pagination */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.pagination a {
+  margin: 0 10px;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  color: #666;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.pagination a:hover,
+.pagination .active a {
+  border-color: #007bff;
+  color: #007bff;
+}
+
+.pagination .break-me a {
+  cursor: default;
+  color: #999;
+}
+
+.pagination .previous a,
+.pagination .next a {
+  color: #fff;
+  background-color: #3498db;
+  border: 2px solid #3498db;
+  border-radius: 4px;
+}
+
+.pagination .previous a:hover,
+.pagination .next a:hover {
+  background-color: #0056b3;
+}
+

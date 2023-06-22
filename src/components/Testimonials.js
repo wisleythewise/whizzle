@@ -28,23 +28,39 @@ const Testimonials = () => {
         duration: 2000,
       });
 
-      const testimonialsCollection = collection(db, 'Testimonials');
-      const testimonialsSnapshot = await getDocs(testimonialsCollection);
+      // const testimonialsCollection = collection(db, 'Testimonials');
+      // const testimonialsSnapshot = await getDocs(testimonialsCollection);
 
-      const testimonialsData = testimonialsSnapshot.docs.map((doc) => {
-        const docData = doc.data();
-        console.log('url:', docData.url);
-        return {
-          url: docData.url,
-          name: docData.name,
-          quote: docData.quote
-        };
-      });
+      // const testimonialsData = testimonialsSnapshot.docs.map((doc) => {
+      //   const docData = doc.data();
+      //   console.log('url:', docData.url);
+      //   return {
+      //     url: docData.url,
+      //     name: docData.name,
+      //     quote: docData.quote
+      //   };
+      // });
+
+      const testimonialsData = [
+        { 
+          name : "Mark, V.", 
+          quote : "Ik heb sinds ik Whizzle gebruik nooit meer de volle prijs betaald. Echt ideaal. Wie houdt er nu niet van korting?" ,
+        },
+        { 
+          name : "Pieter, H.", 
+          quote : "Whizzle is een gamechanger. Ik wil alleen weten wanneer bepaalde merken in de sale zijn, en Whizzle biedt precies dat." ,
+        },
+        { 
+          name : "Vera, S.", 
+          quote : "Ik vind Whizzle echt geweldig. Nooit meer zelf op zoek naar sales"
+           ,
+        }
+      ]
 
       setTestimonials(testimonialsData);
 
       const allCards = testimonialsData.map((testimonial, index) => {
-        return <TestimonialCards key={index} url={testimonial.url} quote={testimonial.quote} name={testimonial.name} />
+        return <TestimonialCards key={index} quote={testimonial.quote} name={testimonial.name} />
       });
 
       setAllCards(allCards);

@@ -14,7 +14,7 @@ const Contact = (props) => {
   <div className="container">
 
     <div className="section-title" data-aos="fade-up">
-      <h2><span>Contact Us</span></h2>
+      <h2><span>Contact</span></h2>
     </div>
 
     <div className="row">
@@ -22,7 +22,7 @@ const Contact = (props) => {
       <div className="col-lg-5 col-md-12" data-aos="fade-up" data-aos-delay="100">
         <div className="contact-about">
           <h3>Whizzle</h3>
-          <p>Never pay fullprice</p>
+          <p>Betaal nooit teveel</p>
           <div className="social-links">
             <a href="#" className="twitter"><i className="bi bi-twitter"></i></a>
             <a href="#" className="facebook"><i className="bi bi-facebook"></i></a>

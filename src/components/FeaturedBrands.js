@@ -196,7 +196,7 @@ const FeaturedBrands = () => {
     <div>
 
         <div id="brand-search-container" className="brand-search-container form-group">
-          <input type="text" name="brand-search" className="brand-search form-control" id="brand-search" placeholder="Search for your favourite brands" required=""></input>
+          <input type="text" name="brand-search" className="brand-search form-control" id="brand-search" placeholder="Zoek naar je favoriete merken" required=""></input>
       </div>
       
       <div className="row">
@@ -233,7 +233,7 @@ const FeaturedBrands = () => {
       <div className="email-container form-group" data-aos="fade-up" data-aos-delay="600">
         <form className="email-form" method="POST"  onSubmit={handleSubmit}>
           <input type="email" className="form-control email-input" name="email" required placeholder="Email Adress" value={email} onChange={(e) => setEmail(e.target.value)} ></input>
-          <button type="submit" className="btn btn-outline-primary">Subscribe!</button>
+          <button type="submit" className="btn btn-outline-primary">Abboneer!</button>
         </form>
       </div>
     </div>
@@ -246,9 +246,9 @@ const FeaturedBrands = () => {
       <div className="welcome-icon">
         <i className="fas fa-check-circle"></i>
       </div>
-      <h2 className="welcome-title">Submission Successful!</h2>
+      <h2 className="welcome-title">Het aanmelden is gelukt!</h2>
       <p className="submitted-text">
-        Thank you for submitting your information! Welcome to our community. You are now part of an exciting journey. Find out more in your personal dashboard.
+        Bedankt voor het opgeven van jouw voorkeur, welkom bij Whizzle. Je maak nu deel uit van het spannede avontuur. Vind meer informatie in het gepersonaliseerde dashboard.
       </p>
      </div>
      )
@@ -273,8 +273,8 @@ const FeaturedBrands = () => {
     <div className="container">
 
       <div className="section-title" data-aos="fade-up">
-        <h2><span>Select your favourite brands!</span></h2>
-        <p>Get notified for free whenever your favourite brand is having a sale!</p>
+        <h2><span>SELECTEER JE FAVORIETE MERKEN</span></h2>
+        <p>Ontvang gratis meldingen wanneer je favoriete merk een uitverkoop heeft!</p>
       </div>
 
       {/* <div className="row" data-aos="fade-up" data-aos-delay="200">

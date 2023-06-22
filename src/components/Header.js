@@ -55,7 +55,7 @@ const Header = () => {
               href="/"
               className="nav-link scrollto"
               >
-              Go Back
+              Terug
             </a>
           </li>   
               </>
@@ -83,7 +83,7 @@ const Header = () => {
                     className="nav-link scrollto"
                     onClick={handleNavbarToggle}
                   >
-                    How It Works
+                    Hoe het werkt
                   </Link>
                 </li>
                 <li>
@@ -97,7 +97,7 @@ const Header = () => {
                     className="nav-link scrollto"
                     onClick={handleNavbarToggle}
                   >
-                    FAQ's
+                    Veelgestelde vragen
                   </Link>
                 </li>
                 <li>
@@ -111,7 +111,7 @@ const Header = () => {
                     className="nav-link scrollto"
                     onClick={handleNavbarToggle}
                   >
-                    Contact Us
+                    Contact
                   </Link>
                 </li>
                 <li>
@@ -119,7 +119,7 @@ const Header = () => {
                     href="/login"
                     className="nav-link scrollto"
                   >
-                    Login
+                    Inloggen
                   </a>
                 </li>
                 <li>
@@ -133,7 +133,7 @@ const Header = () => {
                     className="getstarted scrollto"
                     onClick={handleNavbarToggle}
                   >
-                    Get Started!
+                    Aan de slag!
                   </Link>
                 </li>
               </>

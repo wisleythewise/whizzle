@@ -62,7 +62,7 @@ const PasswordAuth = () => {
     <div>
       <section id="signin-section" className="d-flex align-items-center">
         <div className="signin-container">
-          <h1>Password Authentication</h1>
+          <h1>Dashboard</h1>
           <form onSubmit={(event) => {signIn(event)}}>
             <input
                 className="email-signin"
@@ -80,9 +80,9 @@ const PasswordAuth = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
             />
-            {error !== "auth/wrong-password"? "": <div>You have entered the wrong password</div>}
+            {error !== "auth/wrong-password"? "": <div>Dit is het verkeerde wachtwoord</div>}
               <button type="submit" disabled={loading}>
-                {loading ? "Loading..." : "Sign In"}
+                {loading ? "Loading..." : "Inloggen"}
               </button>
             </form>
             {error && <p>{error}</p>}
