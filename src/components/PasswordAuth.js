@@ -86,8 +86,18 @@ const PasswordAuth = () => {
               </button>
             </form>
             {error && <p>{error}</p>}
+            <div className="link-container">
+              <a href="/reset-password" className="forgot-password-link">
+                Forgot password
+              </a>
+              <a href="/#featuredbrands" className="register-link">
+                New user
+              </a>
+            </div>
           </div>
         </section>
+        {/* Remove the style tag */}
+        
       </div>
   );
 };

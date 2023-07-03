@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import { UserContext } from "./CTX/UserContext"
 import { BrowserRouter as Router, Routes, Route, NavLink, useNavigate } from "react-router-dom";
 
@@ -19,6 +19,7 @@ function UserDashboard() {
 
   const handleLogOut = async () => {
     try {
+      // hier nog een "weet je het zeker" melding toevoegen
       const auth = getAuth();
       await signOut(auth);
       console.log('User signed out');
@@ -29,35 +30,32 @@ function UserDashboard() {
     }
   };
 
+  // header transparant maken
+  // useEffect(() => {
+  //   const header = document.querySelector("header");
+
+  //   if (header) {
+  //     const currentBackgroundColor = header.style.backgroundColor;
+  //     header.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+    
+  //     return () => {
+  //       header.style.backgroundColor = currentBackgroundColor;
+  //     };
+  //   }
+  // }, []);
 
   // update the data from the user
   return (
       <div className="dashboard">
         <div className="menu">
-          <NavLink to="/dashboard" activeClassName="active">Personal Information</NavLink>
-          <NavLink to="subscription-details" activeClassName="active">Subscription Details</NavLink>
-          <NavLink to="currently-selected-brands" activeClassName="active">Selected Brands</NavLink>
-          <NavLink to="favourite-item-tracker" activeClassName="active">Favourite Items</NavLink>
-          <NavLink to="whizzle-pro-pricing-and-features" activeClassName="active">Whizzle Pro</NavLink>
-          <NavLink to="unsubscribe" activeClassName="active">Unsubscribe</NavLink>
-          <div  onClick = {() => {handleLogOut()}}>
-            <button style = {{
-              backgroundColor : "red",
-              borderRadius : "3px", 
-              borderBlockColor : "black",
-              color : "white" }} >
-            Log out
-              </button>
-          </div>
+          <NavLink to="/dashboard" activeClassName="active"><i class="bi bi-bag-heart"></i></NavLink>
+          <NavLink to="settings" activeClassName="active"><i class="bi bi-person-gear"></i></NavLink>
+          <NavLink to="/" activeClassName="active"><i onClick = {() => {handleLogOut()}} class="bi bi-door-closed"></i></NavLink>
         </div>
         <div className="content">
           <Routes>
-            <Route path="/" element={<PersonalInformation/>} />
-            <Route path="subscription-details" element={<SubscriptionDetails userId={userId}  userData={userData} />} />
-            <Route path="currently-selected-brands" element={<CurrentlySelectedBrands />} />
-            <Route path="favourite-item-tracker" element={<FavouriteItemTracker userId={userId} userData={userData} />} />
-            <Route path="whizzle-pro-pricing-and-features" element={<WhizzleProPricingAndFeatures userId={userId}  userData={userData} />} />
-            <Route path="unsubscribe" element={<Unsubscribe userId={userId} userData={userData} />} />
+            <Route path="/" element={<CurrentlySelectedBrands/>} />
+            <Route path="settings" element={<SubscriptionDetails userId={userId}  userData={userData} />} />
           </Routes>
         </div>
       </div>
@@ -65,3 +63,13 @@ function UserDashboard() {
 }
 
 export default UserDashboard;
+
+
+  {/* <Route path="currently-selected-brands" element={<CurrentlySelectedBrands />} /> */}
+  {/* <Route path="favourite-item-tracker" element={<FavouriteItemTracker userId={userId} userData={userData} />} />
+  <Route path="whizzle-pro-pricing-and-features" element={<WhizzleProPricingAndFeatures userId={userId}  userData={userData} />} />
+  <Route path="unsubscribe" element={<Unsubscribe userId={userId} userData={userData} />} /> */}
+            {/* <NavLink to="currently-selected-brands" activeClassName="active">Selected Brands</NavLink>
+<NavLink to="favourite-item-tracker" activeClassName="active">Favourite Items</NavLink>
+<NavLink to="whizzle-pro-pricing-and-features" activeClassName="active">Whizzle Pro</NavLink> */}
+{/* <NavLink to="unsubscribe" activeClassName="active"><i class="bi bi-door-closed"></i></NavLink> */}

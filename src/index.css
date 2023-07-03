@@ -1952,26 +1952,30 @@ section {
   background-color: #2980b9;
 }
 
-.signin-container p {
-  color: red;
+
+.link-container {
+  margin-top: 10px;
   text-align: center;
+  display: flex;
+  justify-content: space-between;
 }
 
-
-.register-link p {
-  text-align: center;
-  font-size: 1em;
-  margin-top: 20px;
-}
-
-.register-link a {
-  color: #3498db;
+.forgot-password-link,
+.register-link  {
+  color: #808080;
   text-decoration: none;
+  font-size: 14px;
+  margin-right: 10px;
 }
 
-.register-link a:hover {
+.forgot-password-link:hover,
+.register-link:hover {
+  color: #3498db;
   text-decoration: underline;
 }
+
+
+
 
 /*--------------------------------------------------------------
 # dashboard
@@ -1980,6 +1984,7 @@ section {
   display: flex;
   padding-top: 100px;
   height: 100vh;
+  background-color: #f7fbfe;
 }
 
 .menu {

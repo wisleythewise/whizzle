@@ -223,11 +223,11 @@ const FeaturedBrands = () => {
 
     <div>
 
-        <div id="brand-search-container" className="brand-search-container form-group">
+        <div id="brand-search-container" className="brand-search-container form-group" data-aos="fade-up">
           <input type="text" name="brand-search" className="brand-search form-control" id="brand-search" placeholder="Zoek naar je favoriete merken" required=""></input>
       </div>
       
-      <div className="row">
+      <div className="row" data-aos="fade-up">
           <div className="col-lg-12 d-flex justify-content-center">
             <ul id="featuredbrands-flters">
               <li data-filter="*" className={filter == "All" ? "filter-active" : ""}  onClick={() => {handleFilter("All")}}>All</li>
@@ -239,7 +239,7 @@ const FeaturedBrands = () => {
         </div>
   
 
-        <div class="brand-grid">
+        <div class="brand-grid" data-aos="fade-up">
         {allCards}
         </div>
         
@@ -255,6 +255,7 @@ const FeaturedBrands = () => {
           containerClassName={'pagination'}
           subContainerClassName={'pages pagination'}
           activeClassName={'active'}
+          data-aos="fade-up"
         />
     
 
