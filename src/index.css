@@ -83,7 +83,7 @@ h6 {
 /* set default aos offset for mobile  */
 @media (max-width: 768px) {
   [data-aos] {
-    --aos-offset: 80px;
+    --aos-offset: 30px;
   }
 }
 /*--------------------------------------------------------------
@@ -366,13 +366,13 @@ h6 {
 --------------------------------------------------------------*/
 #hero {
   width: 100%;
-  height: 70vh;
+  height: 65vh;
   margin-top: 70px;
 }
 
 #hero h1 {
   margin: 0 0 10px 0;
-  font-size: 48px;
+  font-size: 44px;
   font-weight: 700;
   line-height: 56px;
   color: black;
@@ -414,7 +414,7 @@ h6 {
 
 @media (max-width: 991px) {
   #hero {
-    height: 100vh;
+    height: 65vh;
   }
 
   #hero .animated {
@@ -531,7 +531,7 @@ section {
 }
 
 .section-title p {
-  margin: 15px 0 0 0;
+  margin: 25px 0 0 0;
 }
 
 @media (max-width: 480px){
@@ -749,7 +749,7 @@ section {
   width: 100%;
   max-width: 960px;
   box-sizing: border-box;
-  margin-bottom: 1.5rem; 
+  margin-bottom: 2rem; 
   transition: all 0.3s ease;
 
 }
@@ -887,7 +887,7 @@ section {
   }
 
   .services .howitworks-card{
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
   }
 }
 
@@ -1040,7 +1040,7 @@ section {
 # Testimonials
 --------------------------------------------------------------*/
 .testimonials{
-  height:30vh;
+  max-height:30vh;
 }
 .testimonials .testimonial-wrap {
   padding-left: 50px;
@@ -1056,13 +1056,12 @@ section {
 
 .testimonials .testimonial-item {
   box-sizing: content-box;
-  padding: 20px 20px 30px 60px;
+  padding: 20px 20px 10px 30px;
   margin: 20px 20px 0px 5px;
   min-height: 100px;
   box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
   position: relative;
   background: #fff;
-  max-height: 25vh;
 }
 
 .testimonials .testimonial-item .testimonial-img {
@@ -1146,6 +1145,17 @@ section {
   .testimonials .testimonial-item .testimonial-img {
     position: static;
     left: auto;
+  }
+  .testimonials .testimonial-item {
+    /* hier alles aanpassen zodat voor mobile de testimonal kleiner wordt */
+    /* box-sizing: content-box;
+    
+    margin: 20px 20px 0px 5px;
+    min-height: 100px;
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
+    position: relative;
+    background: #fff; */
+    padding: 5px 5px 10px 20px;  
   }
 }
 
@@ -1633,7 +1643,7 @@ section {
 # Contact
 --------------------------------------------------------------*/
 .contact {
-  height:75vh;
+  height:80vh;
 }
 .contact .contact-about h3 {
   font-size: 28px;
@@ -1954,7 +1964,7 @@ section {
 
 
 .link-container {
-  margin-top: 10px;
+  margin-top: 20px;
   text-align: center;
   display: flex;
   justify-content: space-between;
@@ -1965,12 +1975,11 @@ section {
   color: #808080;
   text-decoration: none;
   font-size: 14px;
-  margin-right: 10px;
 }
 
 .forgot-password-link:hover,
 .register-link:hover {
-  color: #3498db;
+  color: #2980b9;
   text-decoration: underline;
 }
 
@@ -2025,6 +2034,10 @@ section {
   width: fit-content;
   height: 50px;
   color: blue;
+}
+
+.dashboardicon {
+  margin-left:10px;
 }
 
 /* _________________________________________________________

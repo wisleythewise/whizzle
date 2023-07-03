@@ -14,7 +14,9 @@ const HowItWorks = () => {
 
         <div className="section-title" data-aos="fade-up" data-aos-offset="60">
           <h2><span>Hoe het werkt</span></h2>
-          <p><strong>Betaal nooit meer de volle prijs -</strong> bespaar moeiteloos geld met de aanpasbare sale alerts van Whizzle.  </p>
+          <p><strong>Betaal nooit meer de volle prijs</strong> </p>
+          {/* hier jsx toevoegen om de margin-top=0px te maken */}
+          <p>bespaar moeiteloos geld met de aanpasbare sale alerts van Whizzle.  </p>
         </div>
 
         <div className="howitworks-container">
@@ -45,22 +47,22 @@ const HowItWorks = () => {
               <div className="icon"><i className="bi bi-search-heart"></i></div>
               <div className='numbercontainer'><p className="howitworksnumber">3</p></div>               
               <div className='howitworks-text'>
-                <h4 className="title">Geautomatiseerde scanners</h4>
-                <p className={`description ${showDescriptionIndex === 2 ? 'show' : ''}`}>Onze geautomatiseerde systemen controleren continu je webshops om sale te detecteren.</p>
+                <h4 className="title">Gepersonaliseerde notificaties</h4>
+                <p className={`description ${showDescriptionIndex === 2 ? 'show' : ''}`}>Ontvang alleen de sale alerts die jij wil, stressvrij. </p>
               </div>
             </div>
           </div>
 
-          <div className="howitworks-card" onClick={() => handleToggleDescription(3)}>            
+          {/* <div className="howitworks-card" onClick={() => handleToggleDescription(3)}>           
             <div className="icon-box" data-aos="fade-up" data-aos-delay="400" data-aos-offset="60">
               <div className="icon"><i className="bi bi-chat-right-heart"></i></div>
               <div className='numbercontainer'><p className="howitworksnumber">4</p></div>               
               <div className='howitworks-text'>
                 <h4 className="title">Gepersonaliseerde notificaties</h4>
-                <p className={`description ${showDescriptionIndex === 3 ? 'show' : ''}`}>Ontvang alleen de sale alerts die jij wil, stressvrij.</p>
+                <p className={`description ${showDescriptionIndex === 3 ? 'show' : ''}`}>Onze geautomatiseerde systemen controleren continu je webshops om sale te detecteren.</p>
               </div>
             </div>
-          </div>
+          </div> */}
 
         </div>
 

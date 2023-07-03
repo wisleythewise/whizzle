@@ -62,7 +62,7 @@ const PasswordAuth = () => {
     <div>
       <section id="signin-section" className="d-flex align-items-center">
         <div className="signin-container">
-          <h1>Dashboard</h1>
+          <h1>Dashboard<i class="bi bi-person dashboardicon"></i></h1>
           <form onSubmit={(event) => {signIn(event)}}>
             <input
                 className="email-signin"
@@ -88,10 +88,10 @@ const PasswordAuth = () => {
             {error && <p>{error}</p>}
             <div className="link-container">
               <a href="/reset-password" className="forgot-password-link">
-                Forgot password
+                Wachtwoord vergeten
               </a>
               <a href="/#featuredbrands" className="register-link">
-                New user
+                Nieuwe gebruiker
               </a>
             </div>
           </div>

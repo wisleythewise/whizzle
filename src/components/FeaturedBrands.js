@@ -224,7 +224,7 @@ const FeaturedBrands = () => {
     <div>
 
         <div id="brand-search-container" className="brand-search-container form-group" data-aos="fade-up">
-          <input type="text" name="brand-search" className="brand-search form-control" id="brand-search" placeholder="Zoek naar je favoriete merken" required=""></input>
+          <input type="text" name="brand-search" className="brand-search form-control" id="brand-search" placeholder="Zoek naar je favoriete merken..." required=""></input>
       </div>
       
       <div className="row" data-aos="fade-up">
@@ -259,7 +259,7 @@ const FeaturedBrands = () => {
         />
     
 
-      <div className="email-container form-group" data-aos="fade-up" data-aos-delay="600">
+      <div className="email-container form-group" data-aos="fade-up">
         <form className="email-form" method="POST"  onSubmit={handleSubmit}>
           <input type="email" className="form-control email-input" name="email" required placeholder="Email Adress" value={email} onChange={(e) => setEmail(e.target.value)} ></input>
           <button type="submit" className="btn btn-outline-primary">Abboneer!</button>

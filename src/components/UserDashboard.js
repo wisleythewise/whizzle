@@ -31,26 +31,26 @@ function UserDashboard() {
   };
 
   // header transparant maken
-  // useEffect(() => {
-  //   const header = document.querySelector("header");
+  useEffect(() => {
+    const header = document.querySelector("header");
 
-  //   if (header) {
-  //     const currentBackgroundColor = header.style.backgroundColor;
-  //     header.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+    if (header) {
+      const currentBackgroundColor = header.style.backgroundColor;
+      header.style.backgroundColor = 'rgba(0, 0, 0, 0)';
     
-  //     return () => {
-  //       header.style.backgroundColor = currentBackgroundColor;
-  //     };
-  //   }
-  // }, []);
+      return () => {
+        header.style.backgroundColor = currentBackgroundColor;
+      };
+    }
+  }, []);
 
   // update the data from the user
   return (
       <div className="dashboard">
         <div className="menu">
-          <NavLink to="/dashboard" activeClassName="active"><i class="bi bi-bag-heart"></i></NavLink>
-          <NavLink to="settings" activeClassName="active"><i class="bi bi-person-gear"></i></NavLink>
-          <NavLink to="/" activeClassName="active"><i onClick = {() => {handleLogOut()}} class="bi bi-door-closed"></i></NavLink>
+          <NavLink to="/dashboard" activeClassName="active">Your Brands<i class="bi bi-bag-heart dashboardicon"></i></NavLink>
+          <NavLink to="settings" activeClassName="active">Settings<i class="bi bi-person-gear dashboardicon"></i></NavLink>
+          <NavLink to="/" activeClassName="active">Log Out<i onClick = {() => {handleLogOut()}} class="bi bi-door-closed dashboardicon"></i></NavLink>
         </div>
         <div className="content">
           <Routes>

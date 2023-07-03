@@ -4,7 +4,11 @@ import FAQCard from "./FAQCard"
 import { collection, addDoc, getDocs } from 'firebase/firestore';
 import { db } from '../firebaseConfig'; 
 
-
+// 
+// 
+// TO DO: Als de user op mobile site bezoekt, dan moeten FAQ's uitklapbaar zijn netzoals how it works
+// Als user op laptop zit dan al uitgeklapt weergeven
+// 
 const FAQ = (props) => {
   const [allCards, setAllCards] = useState([])
 

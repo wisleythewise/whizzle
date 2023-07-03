@@ -78,7 +78,7 @@ const Header = () => {
                     to="howitworks"
                     spy={true}
                     smooth={true}
-                    offset={-70}
+                    offset={-50}
                     duration={200}
                     className="nav-link scrollto"
                     onClick={handleNavbarToggle}
@@ -106,7 +106,7 @@ const Header = () => {
                     to="contact"
                     spy={true}
                     smooth={true}
-                    offset={-70}
+                    offset={-10}
                     duration={200}
                     className="nav-link scrollto"
                     onClick={handleNavbarToggle}
@@ -128,7 +128,7 @@ const Header = () => {
                     to="featuredbrands"
                     spy={true}
                     smooth={true}
-                    offset={-70}
+                    offset={-20}
                     duration={200}
                     className="getstarted scrollto"
                     onClick={handleNavbarToggle}
