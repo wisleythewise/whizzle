@@ -5,11 +5,23 @@ import { collection, addDoc, getDocs,query, where } from 'firebase/firestore';
 import { auth, db } from '../firebaseConfig'; 
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { UserContext } from './CTX/UserContext';
+
+// Pagination 
 import ReactPaginate from 'react-paginate';
 
+// Mobile pagination
+import { useSwipeable } from 'react-swipeable';
+import { useMediaQuery } from 'react-responsive';
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Autoplay, Pagination } from 'swiper/core';
+
+
+// Effects
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+
+SwiperCore.use([Autoplay, Pagination]);
 
 const FeaturedBrands = () => {
   const [brand, setBrands] = useState([]);
@@ -24,10 +36,25 @@ const FeaturedBrands = () => {
   const [filter, SetFilter] = useState("All")
   const [filteredBrands, SetFilteredBrands] = useState([])
 
+  const [swipeEffect, setSwipeEffect] = useState(false);
+
 
   // For pagination
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 6; // Change this to change the number of items per page
+  const isMobile = useMediaQuery({ query: '(max-width: 760px)' });
+
+
+  const handlers = useSwipeable({
+    onSwipedLeft: () => {
+      setCurrentPage(currentPage + 1);
+      setSwipeEffect(true);
+    },
+    onSwipedRight: () => {
+      setCurrentPage(currentPage - 1);
+      setSwipeEffect(true);
+    },
+  });
 
 
   useEffect(() => {
@@ -156,9 +183,6 @@ const FeaturedBrands = () => {
   }
 
   // Send an email to user
-
-
-
   const does_user_exist = async (email) => {
    
     // Query the database where 'email' field equals to the provided email
@@ -218,6 +242,7 @@ const FeaturedBrands = () => {
     
   }
 
+
   const emailForm = () => {
     return (      
 
@@ -237,26 +262,50 @@ const FeaturedBrands = () => {
             </ul>
           </div>
         </div>
-  
 
-        <div class="brand-grid" data-aos="fade-up">
-        {allCards}
-        </div>
         
-        <ReactPaginate
-          previousLabel={'previous'}
-          nextLabel={'next'}
-          breakLabel={'...'}
-          breakClassName={'break-me'}
-          pageCount={Math.ceil(brand.length / itemsPerPage)}
-          marginPagesDisplayed={2}
-          pageRangeDisplayed={5}
-          onPageChange={handlePageClick}
-          containerClassName={'pagination'}
-          subContainerClassName={'pages pagination'}
-          activeClassName={'active'}
-          data-aos="fade-up"
-        />
+        
+        {isMobile ? (
+    <Swiper
+      slidesPerView={3} // number of slides per row
+      slidesPerColumn={1} // number of rows
+      spaceBetween={10}
+      pagination={{ clickable: true }}
+      onSlideChange={() => console.log('slide changed')}
+      onSwiper={(swiper) => console.log(swiper)}
+    >
+      {filteredBrands.map((brand, index) => (
+        <SwiperSlide key={index}>
+          <BrandCard url={brand.url} name={brand.name} callBack={selectedBrand} selected={selectedBrands.includes(brand.name)} />
+        </SwiperSlide>
+      ))}
+    </Swiper>
+  ) : (
+        <div>
+          <div className="brand-grid" data-aos="fade-up">
+            {allCards}
+          </div>
+  
+          <ReactPaginate
+            previousLabel={'previous'}
+            nextLabel={'next'}
+            breakLabel={'...'}
+            breakClassName={'break-me'}
+            pageCount={Math.ceil(brand.length / itemsPerPage)}
+            marginPagesDisplayed={2}
+            pageRangeDisplayed={5}
+            onPageChange={(data) => {
+              handlePageClick(data.selected);
+              setCurrentPage(data.selected);
+            }}
+            forcePage={currentPage}
+            containerClassName={'pagination'}
+            subContainerClassName={'pages pagination'}
+            activeClassName={'active'}
+            data-aos="fade-up"
+          />
+        </div>
+      )}
     
 
       <div className="email-container form-group" data-aos="fade-up">
