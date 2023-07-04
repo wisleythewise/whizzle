@@ -2234,3 +2234,8 @@ featured brands
 .pagination .next a:hover {
   background-color: #0056b3;
 }
+
+.swiper-container {
+  margin: 50px 0; 
+  height: 200px;
+}

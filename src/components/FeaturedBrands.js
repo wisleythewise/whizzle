@@ -242,8 +242,16 @@ const FeaturedBrands = () => {
     
   }
 
+    // Function to chunk an array
+    const chunk = (arr, size) =>
+    Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>
+      arr.slice(i * size, i * size + size)
+    );
+
 
   const emailForm = () => {
+
+    const chunkedBrands = chunk(filteredBrands, 6);
     return (      
 
     <div>
@@ -266,20 +274,32 @@ const FeaturedBrands = () => {
         
         
         {isMobile ? (
-    <Swiper
-      slidesPerView={3} // number of slides per row
-      slidesPerColumn={1} // number of rows
-      spaceBetween={10}
+          <Swiper
+          className='swiper-container'
+      slidesPerView={1}
+      spaceBetween={50}
       pagination={{ clickable: true }}
       onSlideChange={() => console.log('slide changed')}
       onSwiper={(swiper) => console.log(swiper)}
     >
-      {filteredBrands.map((brand, index) => (
+      {chunkedBrands.map((chunk, index) => (
         <SwiperSlide key={index}>
-          <BrandCard url={brand.url} name={brand.name} callBack={selectedBrand} selected={selectedBrands.includes(brand.name)} />
+          <div className="row" style = {{paddingbottom : "50px"}}>
+            {chunk.map((brand, brandIndex) => (
+              <div className="col-4" key={brandIndex}>
+                <BrandCard
+                  url={brand.url}
+                  name={brand.name}
+                  callBack={selectedBrand}
+                  selected={selectedBrands.includes(brand.name)}
+                />
+              </div>
+            ))}
+          </div>
         </SwiperSlide>
       ))}
     </Swiper>
+
   ) : (
         <div>
           <div className="brand-grid" data-aos="fade-up">
