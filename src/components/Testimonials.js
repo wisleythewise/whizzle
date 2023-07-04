@@ -84,26 +84,26 @@ const Testimonials = () => {
     <section id="testimonials" className="testimonials sectionpadding section-bg" >
 
     <div className="container">
-      <Swiper
-        spaceBetween={50}
-        slidesPerView={1}
-        autoplay={{ delay: 3500, disableOnInteraction: true }} 
-        pagination={{ clickable: true }}
-        speed = {1000}
-        loop={true}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log('slide change')}
-      >
-        {testimonials.map((testimonial, index) => (
-          <SwiperSlide key={index}>
-            <TestimonialCards
-              url={testimonial.url}
-              name={testimonial.name}
-              quote={testimonial.quote}
-            />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+        <Swiper
+          spaceBetween={50}
+          slidesPerView={1}
+          autoplay={{ delay: 3500, disableOnInteraction: true }} 
+          pagination={{ clickable: true }}
+          speed = {1000}
+          loop={true}
+          onSwiper={(swiper) => console.log(swiper)}
+          onSlideChange={() => console.log('slide change')}
+        >
+          {testimonials.map((testimonial, index) => (
+            <SwiperSlide key={index}>
+              <TestimonialCards
+                url={testimonial.url}
+                name={testimonial.name}
+                quote={testimonial.quote}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
     </div>
   </section>
   );
