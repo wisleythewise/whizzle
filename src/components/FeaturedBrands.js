@@ -24,26 +24,31 @@ import 'aos/dist/aos.css';
 SwiperCore.use([Autoplay, Pagination]);
 
 const FeaturedBrands = () => {
-  const [brand, setBrands] = useState([]);
   const [allCards, setAllCards] = useState("");
   const [selectedBrands, setSelectedBrands] = useState([])
   const [email, setEmail] = useState('');
   const [submit, setSubmitted] = useState(false);
   const [presentt, setPresent] = useState(false);
   const {currentUser, setCurrentUser} = useContext(UserContext)
-  const [loading, setLoading] = useState(true); // Add this line
+  const [loading, setLoading] = useState(true); 
 
+  // All brands
+  const [brand, setBrands] = useState([]);
+
+  // Search bar filter
+  const [searchKeyword, setSearchKeyword] = useState("");
+  const [seachBrands, setSearchBrands] = useState("");
+  
+  // Label filter
   const [filter, SetFilter] = useState("All")
   const [filteredBrands, SetFilteredBrands] = useState([])
-
-  const [swipeEffect, setSwipeEffect] = useState(false);
-
 
   // For pagination
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 6; // Change this to change the number of items per page
   const isMobile = useMediaQuery({ query: '(max-width: 760px)' });
 
+  const [swipeEffect, setSwipeEffect] = useState(false);
 
   const handlers = useSwipeable({
     onSwipedLeft: () => {
@@ -96,6 +101,43 @@ const FeaturedBrands = () => {
   
     setAllCards(allCards);
   }, [filteredBrands, currentPage,selectedBrands]);
+
+  // Call handle filter after the state has been changed
+      useEffect(() => {
+        let filteredBrandsData = brand;
+  
+        // Filter by category
+        if (filter === "Men") {
+          filteredBrandsData = filteredBrandsData.filter((brand) => brand.label === "Men");
+        } else if (filter === "Woman") {
+          filteredBrandsData = filteredBrandsData.filter((brand) => brand.label === "Woman");
+        } else if (filter === "Kids") {
+          filteredBrandsData = filteredBrandsData.filter((brand) => brand.label === "Kids");
+        }
+      
+        // Filter by search keyword
+        if (searchKeyword) {
+          filteredBrandsData = filteredBrandsData.filter((brand) => {
+              console.log("This is the brands data")          
+              console.log(brand.name);
+              // check if brand.name is not undefined or null
+              if (brand.name) {
+                  return brand.name.toLowerCase().startsWith(searchKeyword.toLowerCase());
+              } else {
+                  console.log('Error: brand.name is undefined or null');
+                  return false;
+              }
+          });
+        }
+      
+        SetFilteredBrands(filteredBrandsData);
+      }, [searchKeyword, filter]);
+        
+  
+    
+  
+
+
 
   // The user has selected these brand and there are set in the state using this funtion
   const selectedBrand = (name, set) => {
@@ -219,28 +261,7 @@ const FeaturedBrands = () => {
 
   };
 
-  const handleFilter = (category) =>  {
-    console.log("We are in handleFIlter")
 
-    if (category == "All"){
-      SetFilter("All")
-      SetFilteredBrands(brand)
-    } else if (category == "Men"){
-      const filteredBrands = brand.filter((brand) => brand.label == "Men" );
-      SetFilter("Men")
-      SetFilteredBrands(filteredBrands)
-    } else if (category == "Woman"){
-      const filteredBrands = brand.filter((brand) => brand.label == "Woman" );
-      SetFilter("Woman")
-      SetFilteredBrands(filteredBrands)
-    } else{
-      const filteredBrands = brand.filter((brand) => brand.label == "Kids" );
-      SetFilter("Kids")
-      SetFilteredBrands(filteredBrands)
-    } 
-
-    
-  }
 
     // Function to chunk an array
     const chunk = (arr, size) =>
@@ -257,16 +278,16 @@ const FeaturedBrands = () => {
     <div>
 
         <div id="brand-search-container" className="brand-search-container form-group" data-aos="fade-up">
-          <input type="text" name="brand-search" className="brand-search form-control" id="brand-search" placeholder="Zoek naar je favoriete merken..." required=""></input>
+          <input type="text" name="brand-search" onChange= {(e) => setSearchKeyword(e.target.value)} className="brand-search form-control" id="brand-search" placeholder="Zoek naar je favoriete merken..." required=""></input>
       </div>
       
       <div className="row" data-aos="fade-up">
           <div className="col-lg-12 d-flex justify-content-center">
             <ul id="featuredbrands-flters">
-              <li data-filter="*" className={filter == "All" ? "filter-active" : ""}  onClick={() => {handleFilter("All")}}>All</li>
-              <li data-filter=".filter-app" className={filter == "Men" ? "filter-active" : ""}  onClick={() => {handleFilter("Men")}}>Men</li>
-              <li data-filter=".filter-app" className={filter == "Woman" ? "filter-active" : ""}  onClick={() => {handleFilter("Woman")}}>Woman</li>
-              <li data-filter=".filter-app" className={filter == "Kids" ? "filter-active" : ""}  onClick={() => {handleFilter("Kids")}}>Kids</li>
+            <li data-filter="*" className={filter === "All" ? "filter-active" : ""}  onClick={() => {SetFilter("All")}}>All</li>
+            <li data-filter=".filter-app" className={filter === "Men" ? "filter-active" : ""}  onClick={() => {SetFilter("Men")}}>Men</li>
+            <li data-filter=".filter-app" className={filter === "Woman" ? "filter-active" : ""}  onClick={() => {SetFilter("Woman")}}>Woman</li>
+            <li data-filter=".filter-app" className={filter == "Kids" ? "filter-active" : ""}  onClick={() => {SetFilter("Kids")}}>Kids</li>
             </ul>
           </div>
         </div>
