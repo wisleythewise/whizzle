@@ -64,12 +64,3 @@ function UserDashboard() {
 
 export default UserDashboard;
 
-
-  {/* <Route path="currently-selected-brands" element={<CurrentlySelectedBrands />} /> */}
-  {/* <Route path="favourite-item-tracker" element={<FavouriteItemTracker userId={userId} userData={userData} />} />
-  <Route path="whizzle-pro-pricing-and-features" element={<WhizzleProPricingAndFeatures userId={userId}  userData={userData} />} />
-  <Route path="unsubscribe" element={<Unsubscribe userId={userId} userData={userData} />} /> */}
-            {/* <NavLink to="currently-selected-brands" activeClassName="active">Selected Brands</NavLink>
-<NavLink to="favourite-item-tracker" activeClassName="active">Favourite Items</NavLink>
-<NavLink to="whizzle-pro-pricing-and-features" activeClassName="active">Whizzle Pro</NavLink> */}
-{/* <NavLink to="unsubscribe" activeClassName="active"><i class="bi bi-door-closed"></i></NavLink> */}
