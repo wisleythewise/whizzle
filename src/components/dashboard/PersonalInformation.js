@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { UserContext } from './CTX/UserContext';
+import { UserContext } from '../CTX/UserContext';
 import { updatePassword } from "firebase/auth";
 
 function PersonalInformation({ userData,  userId }) {
