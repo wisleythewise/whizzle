@@ -37,7 +37,7 @@ const PasswordReset = () => {
 
     console.log("1")
 
-    if (isSignInWithEmailLink(auth, window.location.href))  {
+    if (true)  {
     console.log("2")
 
       let email = window.localStorage.getItem('emailForSignIn');
