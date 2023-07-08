@@ -7,7 +7,7 @@ import Contact from './components/Contact';
 import FeaturedBrands from './components/FeaturedBrands';
 import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
-import Dashboard from './components/UserDashboard';
+import Dashboard from './components/dashboard/UserDashboard';
 import Footer from './components/Footer';
 import CheckOutTheDashboard from "./components/CheckOutTheDashboard"
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';

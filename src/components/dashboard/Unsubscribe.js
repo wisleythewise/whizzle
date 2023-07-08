@@ -1,7 +1,7 @@
 import React, {useContext}from 'react';
 import { getAuth, deleteUser } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from './CTX/UserContext';
+import { UserContext } from '../CTX/UserContext';
 
 function Unsubscribe( {userId}) {
   const {currentUser, setCurrentUser} = useContext(UserContext)

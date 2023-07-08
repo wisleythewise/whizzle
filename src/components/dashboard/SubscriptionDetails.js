@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getUserData } from '../services/api';
+import { getUserData } from '../../services/api';
 
 function SubscriptionDetails({ userData }) {
 

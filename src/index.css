@@ -2110,7 +2110,15 @@ featured brands
   border-radius: 8px;
   overflow: hidden;
 }
-
+.brand-container-miniature {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  border-radius: 8px;
+  overflow: hidden;
+}
 .brand-logo {
   max-width: 100%;
   height: auto;
