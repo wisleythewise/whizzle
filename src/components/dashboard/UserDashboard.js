@@ -3,7 +3,7 @@ import { UserContext } from "../CTX/UserContext"
 import { BrowserRouter as Router, Routes, Route, NavLink, useNavigate } from "react-router-dom";
 
 import PersonalInformation from './PersonalInformation';
-import SubscriptionDetails from './SubscriptionDetails';
+import DashboardSettings from './DashboardSettings';
 import CurrentlySelectedBrands from './CurrentlySelectedBrands';
 import FavouriteItemTracker from './FavouriteItemTracker';
 import WhizzleProPricingAndFeatures from './WhizzleProPricingAndFeatures';
@@ -59,7 +59,7 @@ function UserDashboard() {
         <div className="content">
           <Routes>
             <Route path="/" element={<CurrentlySelectedBrands/>} />
-            <Route path="settings" element={<SubscriptionDetails userId={userId}  userData={userData} />} />
+            <Route path="settings" element={<DashboardSettings userId={userId}  />} />
           </Routes>
         </div>
       </div>
