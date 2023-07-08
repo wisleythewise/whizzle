@@ -3,13 +3,14 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-scroll';
 import { useLocation } from 'react-router-dom'; // Import useLocation hook
 
-const Header = () => {
+const Header = (props) => {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [dropdownActive, setDropdownActive] = useState(false);
   const [headerScrolled, setHeaderScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  
   const location = useLocation(); // Use the useLocation hook
+
+  const user = props.user
   
   const handleNavbarToggle = (event) => {
     if (event) {

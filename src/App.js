@@ -44,7 +44,7 @@ function App() {
     <UserContext.Provider value={value}>
     <div className="App">
       <Router>
-        <Header />
+        <Header user = {currentUser} />
         <Routes>
           <Route path="/" element={<>
           <Hero />
