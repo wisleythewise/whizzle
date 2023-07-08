@@ -1,5 +1,5 @@
 import React, {useState, useContext, useEffect} from 'react';
-import { UserContext } from "../CTX/UserContext"
+import { UserContext } from "../CTX/UserContext"  
 import { BrowserRouter as Router, Routes, Route, NavLink, useNavigate } from "react-router-dom";
 
 import PersonalInformation from '../PersonalInformation';

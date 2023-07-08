@@ -1,17 +1,27 @@
 import whistleLogo from "../designs/logo.png";
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-scroll';
-import { useLocation } from 'react-router-dom'; // Import useLocation hook
+import React, { useState, useEffect, useContext } from 'react';
+import { Link as ScrollLink } from 'react-scroll'; // Renamed to avoid naming conflict
+import { Link, useLocation } from 'react-router-dom'; // Import Link for page navigation
 
-const Header = (props) => {
+// Importing the user
+import { UserContext } from "./CTX/UserContext"  
+
+
+const Header = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [dropdownActive, setDropdownActive] = useState(false);
   const [headerScrolled, setHeaderScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const location = useLocation(); // Use the useLocation hook
 
-  const user = props.user
-  
+  const { currentUser, setCurrentUser } = useContext(UserContext);
+
+  useEffect(() => {
+
+  }, [currentUser])
+
+
+
   const handleNavbarToggle = (event) => {
     if (event) {
       event.preventDefault();
@@ -49,32 +59,20 @@ const Header = (props) => {
 
         <nav id="navbar" className={navbarOpen && isMobile ? "navbar navbar-mobile" : "navbar"}>
           <ul>
-          {location.pathname == '/login' && (
-              <>
-          <li>
-            <a
-              href="/"
-              className="nav-link scrollto"
-              >
-              Terug
-            </a>
-          </li>   
-              </>
+          {location.pathname === '/login' && (
+              <li>
+                <a href="/" className="nav-link scrollto">Terug</a>
+              </li>   
             )}
 
             {/* Conditionally render the rest of the links only when not on /login page */}
             {location.pathname !== '/login' && (
               <>
                 <li>
-                  <a
-                    href="/"
-                    className="nav-link scrollto"
-                  >
-                    Home
-                  </a>
+                  <a href="/" className="nav-link scrollto">Home</a>
                 </li>
                 <li>
-                  <Link
+                  <ScrollLink
                     activeClass="active"
                     to="howitworks"
                     spy={true}
@@ -85,10 +83,10 @@ const Header = (props) => {
                     onClick={handleNavbarToggle}
                   >
                     Hoe het werkt
-                  </Link>
+                  </ScrollLink>
                 </li>
                 <li>
-                  <Link
+                  <ScrollLink
                     activeClass="active"
                     to="faq"
                     spy={true}
@@ -99,10 +97,10 @@ const Header = (props) => {
                     onClick={handleNavbarToggle}
                   >
                     Veelgestelde vragen
-                  </Link>
+                  </ScrollLink>
                 </li>
                 <li>
-                  <Link
+                  <ScrollLink
                     activeClass="active"
                     to="contact"
                     spy={true}
@@ -113,18 +111,27 @@ const Header = (props) => {
                     onClick={handleNavbarToggle}
                   >
                     Contact
-                  </Link>
+                  </ScrollLink>
                 </li>
                 <li>
-                  <a
-                    href="/login"
+                {currentUser ? 
+                  (<Link
+                    to="/dashboard"
+                    className="nav-link scrollto"
+                  >
+                    Dashboard
+                  </Link>) 
+                  : (<Link
+                    to="/login"
                     className="nav-link scrollto"
                   >
                     Inloggen
-                  </a>
+                  </Link>) 
+}
+
                 </li>
                 <li>
-                  <Link
+                  <ScrollLink
                     activeClass="active"
                     to="featuredbrands"
                     spy={true}
@@ -135,7 +142,7 @@ const Header = (props) => {
                     onClick={handleNavbarToggle}
                   >
                     Aan de slag!
-                  </Link>
+                  </ScrollLink>
                 </li>
               </>
             )}
