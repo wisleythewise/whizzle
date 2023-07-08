@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
-import { auth } from "../firebaseConfig";
+import { auth } from "../../firebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth"; // Import the function
-import { UserContext } from "./CTX/UserContext"
+import { UserContext } from "../CTX/UserContext"
 import { useNavigate } from 'react-router-dom';
 
 const PasswordAuth = () => {
@@ -88,7 +88,7 @@ const PasswordAuth = () => {
             </form>
             {error && <p>Dit is het verkeerde wachtwoord</p>}
             <div className="link-container">
-              <a href="/reset-password" className="forgot-password-link">
+              <a href="/passwordforgotten" className="forgot-password-link">
                 Wachtwoord vergeten
               </a>
               <a href="/#featuredbrands" className="register-link">
@@ -97,7 +97,6 @@ const PasswordAuth = () => {
             </div>
           </div>
         </section>
-        {/* Remove the style tag */}
         
       </div>
   );

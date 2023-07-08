@@ -50,6 +50,24 @@ const Header = () => {
     };
   }, [headerScrolled]);
 
+
+  const conditionalRenderHeader = () => {
+
+    	if (location.pathname === '/login'){
+        return true
+      } else if (location.pathname === '/passwordforgotten'){
+        return true
+      } else if (location.pathname === '/passwordreset'){
+        return true
+      } else{
+        return false
+      }
+
+      
+
+  }
+
+
   return (
     <header id="header" className={`fixed-top d-flex align-items-center ${headerScrolled ? 'header-scrolled' : ''}`}>
       <div className="container d-flex align-items-center justify-content-between">
@@ -59,14 +77,14 @@ const Header = () => {
 
         <nav id="navbar" className={navbarOpen && isMobile ? "navbar navbar-mobile" : "navbar"}>
           <ul>
-          {location.pathname === '/login' && (
+          { conditionalRenderHeader() && (
               <li>
                 <a href="/" className="nav-link scrollto">Terug</a>
               </li>   
             )}
 
             {/* Conditionally render the rest of the links only when not on /login page */}
-            {location.pathname !== '/login' && (
+            { !conditionalRenderHeader() && (
               <>
                 <li>
                   <a href="/" className="nav-link scrollto">Home</a>

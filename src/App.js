@@ -11,7 +11,11 @@ import Dashboard from './components/dashboard/UserDashboard';
 import Footer from './components/Footer';
 import CheckOutTheDashboard from "./components/CheckOutTheDashboard"
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import PasswordAuth from './components/PasswordAuth'; 
+import PasswordAuth from './components/dashboard/PasswordAuth'; 
+import PasswordForgotten from './components/dashboard/PasswordForgotten'; 
+import PasswordReset from './components/dashboard/PasswordReset'; 
+
+
 import { auth } from './firebaseConfig';
 import { UserContext } from './components/CTX/UserContext';
 import {onAuthStateChanged} from "firebase/auth"
@@ -56,6 +60,12 @@ function App() {
           </>} />
           <Route path="/login" element={<>
           <PasswordAuth />
+          </>} />
+          <Route path="/passwordforgotten" element={<>
+          <PasswordForgotten />
+          </>} />
+          <Route path="/passwordreset" element={<>
+          <PasswordReset />
           </>} />
           <Route path="/login2" element={<>
           </>} />
