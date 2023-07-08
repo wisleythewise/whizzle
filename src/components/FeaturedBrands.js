@@ -302,6 +302,7 @@ const FeaturedBrands = () => {
       pagination={{ clickable: true }}
       onSlideChange={() => console.log('slide changed')}
       onSwiper={(swiper) => console.log(swiper)}
+      data-aos="fade-up"
     >
       {chunkedBrands.map((chunk, index) => (
         <SwiperSlide key={index}>

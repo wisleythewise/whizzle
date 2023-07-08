@@ -16,7 +16,7 @@ const HowItWorks = () => {
           <h2><span>Hoe het werkt</span></h2>
           <p><strong>Betaal nooit meer de volle prijs</strong> </p>
           {/* hier jsx toevoegen om de margin-top=0px te maken */}
-          <p>bespaar moeiteloos geld met de aanpasbare sale alerts van Whizzle.  </p>
+          <p style={{marginTop: '10px'}}>Bespaar in 3 stappen moeiteloos geld met de aanpasbare sale alerts van Whizzle.  </p>
         </div>
 
         <div className="howitworks-container">

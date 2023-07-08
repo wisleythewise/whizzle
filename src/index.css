@@ -122,13 +122,16 @@ h6 {
   max-height: 40px;
 }
 
-/* @media (max-width: 768px) {
-  #header.header-scrolled {
-    box-shadow: none;
-    padding: 12px 0;
+@media (max-width: 768px) {
+
+  #header {
     background-color: #ffffff00;
   }
-} */
+  #header.header-scrolled {
+    padding: 8px 0;
+    background-color: #ffffff;
+  }
+}
 
 /*--------------------------------------------------------------
 # Navigation Menu
@@ -424,7 +427,7 @@ h6 {
 
 @media (max-width: 991px) {
   #hero {
-    height: 65vh;
+    height: 75vh;
   }
 
   #hero .animated {
@@ -443,7 +446,9 @@ h6 {
 
 @media (max-width: 768px) {
   #hero {
-    margin-top: 20px;
+    margin-top: 0px;
+    height: 77vh;
+    padding-bottom:0px;
   }
 
   #hero h1 {
@@ -1146,6 +1151,10 @@ section {
 }
 
 @media (max-width: 767px) {
+  .testimonials{
+    height:23vh;
+  }
+
   .testimonials .testimonial-wrap {
     padding-left: 0;
   }
@@ -1194,6 +1203,7 @@ section {
 /*--------------------------------------------------------------
 # featuredbrands
 --------------------------------------------------------------*/
+
 .brand-search-container {
   display: flex;
   align-items: center;
@@ -1240,7 +1250,7 @@ section {
 
 .email-form .form-control {
   width: 250px;
-  max-width: 80vw;
+  max-width: 55vw;
   height: 40px;
   padding: 0 10px;
   border: 1px solid #ddd;
@@ -1390,6 +1400,17 @@ section {
 .featuredbrands .featuredbrands-wrap:hover .featuredbrands-info {
   opacity: 1;
 }
+
+.featuredbrands .section-title p {
+  display: none;  /* hide on mobile by default */
+}
+
+@media screen and (min-width: 768px) {
+  .featuredbrands .section-title p {
+    display: block;  /* display on desktop */
+  }
+}
+
 
 /*--------------------------------------------------------------
 # featuredbrands Details
