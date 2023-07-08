@@ -51,6 +51,7 @@ const PasswordAuth = () => {
       // ...
     } catch (error) {
       // Handle errors here.
+      setLoading(false);
       var errorCode = error.code;
       var errorMessage = error.message;
       setError(errorMessage);
@@ -80,12 +81,12 @@ const PasswordAuth = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
             />
-            {error !== "auth/wrong-password"? "": <div>Dit is het verkeerde wachtwoord</div>}
               <button type="submit" disabled={loading}>
-                {loading ? "Loading..." : "Inloggen"}
+                {loading ? "Loaing..." : "Inloggen"}
               </button>
+
             </form>
-            {error && <p>{error}</p>}
+            {error && <p>Dit is het verkeerde wachtwoord</p>}
             <div className="link-container">
               <a href="/reset-password" className="forgot-password-link">
                 Wachtwoord vergeten
