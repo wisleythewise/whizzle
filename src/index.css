@@ -2399,3 +2399,18 @@ input[type=checkbox]:disabled {
   padding: 5px;
   border-radius: 5px;
 }
+
+.side-by-side-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.delete-button {
+  background-color: red;
+  color: white;
+}
+
+.feature-button {
+  background-color: green;
+  color: white;
+}
