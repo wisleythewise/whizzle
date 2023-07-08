@@ -36,16 +36,6 @@ const PasswordReset = () => {
 
 
     console.log("1")
-
-    if (true)  {
-    console.log("2")
-
-      let email = window.localStorage.getItem('emailForSignIn');
-      if (!email) {
-        email = window.prompt('Please provide your email for confirmation');
-      }
-      console.log("3")
-
         // Get the URL parameters
         const params = new URLSearchParams(window.location.search);
         // Get the oobCode
@@ -68,7 +58,7 @@ const PasswordReset = () => {
           setMessage('Error resetting password: ' + error.message);
           setChangePassword(false); // Reset the flag
         });
-    }
+    
   }, [navigate, changePassword]);
 
   const handleSubmit = async (e) => {

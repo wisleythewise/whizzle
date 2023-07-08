@@ -44,11 +44,11 @@ const Testimonials = () => {
       const testimonialsData = [
         { 
           name : "Mark, V.", 
-          quote : "Ik heb sinds ik Whizzle gebruik nooit meer de volle prijs betaald. Echt ideaal. Wie houdt er nu niet van korting?" ,
+          quote : "Ik heb sinds ik Whizzle gebruik nooit meer de volle prijs betaald. Echt ideaal." ,
         },
         { 
           name : "Pieter, H.", 
-          quote : "Whizzle is een gamechanger. Ik wil alleen weten wanneer bepaalde merken in de sale zijn, en Whizzle biedt precies dat." ,
+          quote : "Ik wil alleen weten wanneer bepaalde merken in de sale zijn, en Whizzle biedt precies dat." ,
         },
         { 
           name : "Vera, S.", 
