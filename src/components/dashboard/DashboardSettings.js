@@ -4,8 +4,8 @@ import PremiumModal from "./PremiumModal";
 // import { Tooltip as ReactTooltip } from "react-tooltip";
 
 // eslint-disable-next-line require-jsdoc
-function DashboardSettings({ }) {
-  const {currentUser, setCurrentUser} = useContext(UserContext);
+function DashboardSettings({}) {
+  const { currentUser, setCurrentUser } = useContext(UserContext);
   const [isPremiunmModalOpen, setIsPremiunmModalOpen] = useState(false);
 
   const handlePremiumClick = () => {
@@ -29,23 +29,22 @@ function DashboardSettings({ }) {
         <div>
           <p>Current Password</p>
           <div>
-            <div className="mock-password">
-              {Array(8).fill('•').join('')}
-            </div>
+            <div className="mock-password">{Array(8).fill("•").join("")}</div>
             <button className="change-password">Change password</button>
           </div>
         </div>
 
         <div>
           <h1 className="select-preferences">Select mailing preferences</h1>
-          <div className= "mailing-preferences">
+          <div className="mailing-preferences">
             <div className="row">
               <div className="col-6">
                 <p>When to mail</p>
                 <label>
                   <input type="checkbox" /> Start of sale
                 </label>
-                <div className="premium-feature"
+                <div
+                  className="premium-feature"
                   data-tip="This is a premium feature"
                   onClick={handlePremiumClick}
                 >
@@ -54,8 +53,6 @@ function DashboardSettings({ }) {
                   </label>
                   {/* <ReactTooltip place="top" type="dark" effect="float" /> */}
                 </div>
-
-                <ReactTooltip place="top" type="dark" effect="float"/>
               </div>
               <div className="col-6">
                 <div>
@@ -74,14 +71,18 @@ function DashboardSettings({ }) {
           </div>
         </div>
         {isPremiunmModalOpen && <PremiumModal closeModal={closePremiumModal} />}
+
+        <div className="side-by-side-buttons">
+          <button className="delete-button">
+            Delete my account permanently
+          </button>
+          <button className="feature-button">Request a feature</button>
+        </div>
       </div>
     );
   };
 
-
-  return currentUser ? (
-settings()
-  ) : loading();
+  return currentUser ? settings() : loading();
 }
 
 export default DashboardSettings;
