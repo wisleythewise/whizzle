@@ -13,7 +13,7 @@ import { getAuth, signOut , isSignInWithEmailLink ,signInWithEmailLink  } from "
 function UserDashboard() {
   const [userData, setUserData] = useState({})
   const [userId, setUserId] = useState({})
-  const { currentUser, setCurrentUser } =  useContext(UserContext);
+  const { currentUser, setCurrentUser } = useContext(UserContext);
   const navigate = useNavigate();
 
 
