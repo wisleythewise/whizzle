@@ -2344,6 +2344,7 @@ settings page */
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
+
 }
 
 .change-password:hover {
@@ -2404,3 +2405,83 @@ input[type=checkbox]:disabled {
   padding: 5px;
   border-radius: 5px;
 }
+
+.update-preferences {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.mailing-preferences-container{
+  width: 100%;
+}
+
+.lower-update-button{
+  display: flex;
+  height: 100%;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.request-account-perm{
+  width: 100%;
+  display: inline-block;
+  height: 30px;
+  margin-top: 10px;
+  padding: 0px 12px;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  background-color: #4CAF50; /* for example */
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-account-perm{
+  width: 100%;
+  display: inline-block;
+  height: 30px;
+  margin-top: 10px;
+  padding: 0px 12px;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  background-color: red;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+.delete-account-perm-container{
+  width: 100%;
+}
+
+.crown {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  transform: rotate(40deg);
+  color: yellow;
+  border-width: 1px;
+  border-color: black;
+}
+
+.input-dashboard{
+  border-radius: 8px;
+  border: 1px solid #000;
+  background: #FFF;
+  margin-top: 10px;
+  height: 30px;
+  margin-bottom: 10px;
+  font-size: 10px;
+}
+
+
+
