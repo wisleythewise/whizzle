@@ -32,7 +32,6 @@ function UserDashboard() {
     }
   };
 
-  
   // header transparant maken
   useEffect(() => {
     const header = document.querySelector("header");
