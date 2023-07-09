@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { UserContext } from "../CTX/UserContext";
 import PremiumModal from "./PremiumModal";
-// import { Tooltip as ReactTooltip } from "react-tooltip";
+import { Tooltip as ReactTooltip } from "react-tooltip";
 
 // eslint-disable-next-line require-jsdoc
 function DashboardSettings({}) {
@@ -51,7 +51,7 @@ function DashboardSettings({}) {
                   <label>
                     <input type="checkbox" disabled /> One day before sale
                   </label>
-                  {/* <ReactTooltip place="top" type="dark" effect="float" /> */}
+                  <ReactTooltip place="top" type="dark" effect="float" />
                 </div>
               </div>
               <div className="col-6">
