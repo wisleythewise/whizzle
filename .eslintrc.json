@@ -6,7 +6,6 @@
       "node": true
     },
     "extends": [
-      "google",
       "plugin:react/recommended",
       "plugin:prettier/recommended"
     ],
