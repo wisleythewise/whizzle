@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import PureCounter from '../assets/vendor/purecounter/purecounter_vanilla.js';
 import CountImg from '../assets/img/counts-img.svg';
 
 const Counts = () => {
 
     useEffect(() => {
+        const PureCounter = require('../assets/vendor/purecounter/purecounter_vanilla.js');
         new PureCounter();
     }, []);
     return (
