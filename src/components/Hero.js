@@ -4,7 +4,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Testimonials from './Testimonials';
 
-import headerImage from "../assets/img/hero-img.png" 
+import headerImage from "../designs/heroimgV5.jpg"
 const Hero = () => {
 
   useEffect(() => {

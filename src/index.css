@@ -446,9 +446,10 @@ h6 {
 
 @media (max-width: 768px) {
   #hero {
-    margin-top: 0px;
-    height: 77vh;
-    padding-bottom:0px;
+    height: 70vh;
+    padding-bottom: 30px;
+    padding-top: 0px;
+    overflow: visible;
   }
 
   #hero h1 {
@@ -1062,8 +1063,7 @@ section {
 # Testimonials
 --------------------------------------------------------------*/
 .testimonials{
-  max-height: 30vh;
-  height: auto;
+  height: 35vh;
 }
 .testimonials .testimonial-wrap {
   padding-left: 50px;
@@ -1152,7 +1152,7 @@ section {
 
 @media (max-width: 767px) {
   .testimonials{
-    height:23vh;
+    height: calc(30vh - 55px);  
   }
 
   .testimonials .testimonial-wrap {
