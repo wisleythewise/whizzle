@@ -14,6 +14,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PasswordAuth from './components/dashboard/PasswordAuth'; 
 import PasswordForgotten from './components/dashboard/PasswordForgotten'; 
 import PasswordReset from './components/dashboard/PasswordReset'; 
+import AboutUs from './components/AboutUs';
+import Counts from './components/Counts';
 
 
 import { auth } from './firebaseConfig';
@@ -53,6 +55,8 @@ function App() {
           <Route path="/" element={<>
           <Hero />
           <Testimonials />
+          <AboutUs />
+          <Counts />
           <HowItWorks />
           {currentUser ? <CheckOutTheDashboard/>: <FeaturedBrands /> }
           <FAQ />

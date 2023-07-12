@@ -423,6 +423,10 @@ h6 {
   #hero {
     background-attachment: fixed;
   }
+  #hero .img-fluid {
+    max-width: 70%;
+    height: auto;
+  }
 }
 
 @media (max-width: 991px) {
@@ -455,12 +459,13 @@ h6 {
   #hero h1 {
     font-size: 25px;
     line-height: 30px;
+    margin:0px 20px 10px 20px;
   }
 
   #hero h2 {
     font-size: 14px;
     line-height: 22px;
-    margin: 0px 20px 20px 20px;
+    margin: 0px 30px 20px 30px;
   }
 
   #hero .hero-img img {
@@ -474,6 +479,7 @@ h6 {
 @media (max-width: 575px) {
   #hero .hero-img img {
     width: 60%;
+    margin-left:75px;
   }
 
   #hero .btn-get-started {
@@ -507,7 +513,7 @@ h6 {
 section {
   padding: 60px 0;
   overflow: hidden;
-  height:110vh;
+  /* height:110vh; */
 }
 
 .section-bg {
@@ -622,6 +628,9 @@ section {
 /*--------------------------------------------------------------
 # About Us
 --------------------------------------------------------------*/
+.about {
+  height:auto;
+}
 .about .content h3 {
   font-weight: 600;
   font-size: 26px;
@@ -682,6 +691,7 @@ section {
 --------------------------------------------------------------*/
 .counts {
   padding-top: 0;
+  height:auto;
 }
 
 .counts .content {
@@ -2080,7 +2090,7 @@ section {
 .content {
   flex: 4;
   padding: 20px;
-  overflow-y: auto;
+  /* overflow-y: auto; */
 }
 .radioButton {
   display: block;

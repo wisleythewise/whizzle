@@ -323,8 +323,8 @@ const FeaturedBrands = () => {
     </Swiper>
 
   ) : (
-        <div>
-          <div className="brand-grid" data-aos="fade-up">
+        <div  data-aos="fade-up">
+          <div className="brand-grid">
             {allCards}
           </div>
   
@@ -344,7 +344,6 @@ const FeaturedBrands = () => {
             containerClassName={'pagination'}
             subContainerClassName={'pages pagination'}
             activeClassName={'active'}
-            data-aos="fade-up"
           />
         </div>
       )}

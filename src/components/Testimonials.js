@@ -81,9 +81,9 @@ const Testimonials = () => {
 
 
   return (
-    <section id="testimonials" className="testimonials sectionpadding section-bg" >
+    <section id="testimonials" className="testimonials sectionpadding section-bg">
 
-    <div className="container">
+    <div className="container" data-aos="fade-up">
         <Swiper
           spaceBetween={50}
           slidesPerView={1}
