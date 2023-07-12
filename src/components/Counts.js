@@ -1,12 +1,29 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import CountImg from '../assets/img/counts-img.svg';
 
-const Counts = () => {
+// Counter Component
+const Counter = ({ start, end, duration }) => {
+    const [count, setCount] = useState(start);
 
     useEffect(() => {
-        const PureCounter = require('../assets/vendor/purecounter/purecounter_vanilla.js');
-        new PureCounter();
-    }, []);
+        const stepTime = Math.abs(Math.floor(duration * 1000 / (end - start)));
+        let current = start;
+
+        const timer = setInterval(() => {
+            current++;
+            setCount(current);
+            if (current >= end) {
+                clearInterval(timer);
+            }
+        }, stepTime);
+
+        return () => clearInterval(timer); // This will clear Interval while un-mounting the component
+    }, [start, end, duration]);
+
+    return <span className="purecounter">{count}</span>;
+};
+
+const Counts = () => {
     return (
         <section id="counts" className="counts">
             <div className="container">
@@ -22,7 +39,7 @@ const Counts = () => {
                                 <div className="col-md-6 d-md-flex align-items-md-stretch">
                                     <div className="count-box">
                                         <i className="bi bi-emoji-smile"></i>
-                                        <span data-purecounter-start="0" data-purecounter-end="128" data-purecounter-duration="1" className="purecounter"></span>
+                                        <Counter start={0} end={128} duration={1} />
                                         <p><strong>Slimme Shoppers</strong>    gingen jou al voor</p>
                                     </div>
                                 </div>
@@ -30,7 +47,7 @@ const Counts = () => {
                                 <div className="col-md-6 d-md-flex align-items-md-stretch">
                                     <div className="count-box">
                                         <i className="bi bi-bag-heart"></i>
-                                        <span data-purecounter-start="0" data-purecounter-end="85" data-purecounter-duration="1" className="purecounter"></span>
+                                        <Counter start={0} end={85} duration={1} />
                                         <p><strong>Het aantal kledingmerken</strong> dat wij 24/7 voor jou in de gaten houden</p>
                                     </div>
                                 </div>
@@ -38,7 +55,7 @@ const Counts = () => {
                                 <div className="col-md-6 d-md-flex align-items-md-stretch">
                                     <div className="count-box">
                                         <i className="bi bi-percent"></i>
-                                        <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="1" className="purecounter"></span>
+                                        <Counter start={0} end={20} duration={1} />
                                         <p><strong>Korting</strong> dat wij gemiddeld aan onze klanten aankaarten</p>
                                     </div>
                                 </div>
@@ -46,7 +63,7 @@ const Counts = () => {
                                 <div className="col-md-6 d-md-flex align-items-md-stretch">
                                     <div className="count-box">
                                         <i className="bi bi-award"></i>
-                                        <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" className="purecounter"></span>
+                                        <Counter start={0} end={15} duration={1} />
                                         <p><strong>100</strong> rerum asperiores dolor alias quo reprehenderit eum et nemo pad der</p>
                                     </div>
                                 </div>
