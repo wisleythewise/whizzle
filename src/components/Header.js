@@ -28,6 +28,7 @@ const Header = () => {
     }
     setNavbarOpen(!navbarOpen);
   };
+  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -87,7 +88,18 @@ const Header = () => {
             { !conditionalRenderHeader() && (
               <>
                 <li>
-                  <a href="/" className="nav-link scrollto">Home</a>
+                  <ScrollLink
+                    activeClass="active"
+                    to="about"
+                    spy={true}
+                    smooth={true}
+                    offset={-50}
+                    duration={200}
+                    className="nav-link scrollto"
+                    onClick={handleNavbarToggle}
+                  >
+                    Wat is Whizzle
+                  </ScrollLink>
                 </li>
                 <li>
                   <ScrollLink
@@ -135,19 +147,21 @@ const Header = () => {
                 {currentUser ? 
                   (<Link
                     to="/dashboard"
-                    className="nav-link scrollto"
+                    className="getstarted scrollto"
                   >
                     Dashboard
                   </Link>) 
                   : (<Link
                     to="/login"
                     className="nav-link scrollto"
+                    onClick={() => setNavbarOpen(!navbarOpen)}
                   >
                     Inloggen
                   </Link>) 
 }
 
                 </li>
+                {!currentUser && 
                 <li>
                   <ScrollLink
                     activeClass="active"
@@ -162,6 +176,7 @@ const Header = () => {
                     Aan de slag!
                   </ScrollLink>
                 </li>
+}
               </>
             )}
           </ul>

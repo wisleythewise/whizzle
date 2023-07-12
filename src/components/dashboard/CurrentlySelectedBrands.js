@@ -141,43 +141,45 @@ fetchData()
 
 
 
-  const containerWithSelectedBrands = () => {
-    return (
-      <>
-        <div style={{ boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)', padding: '20px', borderRadius: "8px" }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <h1 style={{ textAlign: "left", fontSize: "15px", margin: '0' }}>Currently Selected Brands</h1>
-            <button onClick={handleModal} style={{ backgroundColor: 'green', color: 'white', borderRadius: '3px', border: 'none', padding: '10px 20px', fontSize: '15px' }}>Edit</button>
+ 
+    const containerWithSelectedBrands = () => {
+      return (
+        <>
+          <div className="container-dashboard">
+            <div className="header-dashboard">
+              <h1 className="header-title-dashboard">Currently Selected Brands</h1>
+              <button onClick={handleModal} className="button-edit-dashboard">Edit</button>
+            </div>
+            <div className="divider-dashboard"></div>
+            <div className="brand-grid-container">
+              {selectedBrandsDisplay}
+            </div>
           </div>
-          <div style={{ borderBottom: '1px solid #000', margin: '10px 0' }}></div>
-          <div className="row" style={{ paddingBottom: '30px' }}>
-            {selectedBrandsDisplay}
-          </div>
-        </div>
-        <Modal show={showModal} onHide={handleModal}>
-          <Modal.Header closeButton>
-            <Modal.Title>Edit Brands</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <div style={{ display: 'flex', flexWrap: 'wrap', overflowY: 'auto', maxHeight: '400px', scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-              <div className="row" style={{ paddingBottom: '30px' }}>
-                {brands.map((brand, index) => {
-                  return (
-                    <div className="col-2" key={index}>
+          <Modal show={showModal} onHide={handleModal}>
+            <Modal.Header closeButton>
+              <Modal.Title>Edit Brands</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <div className="modal-body-custom-dashboard">
+                <div className="brand-grid-dashboard">
+                  {brands.map((brand, index) => {
+                    return (
+                    <div className="brand-card-dashboard" key={index}>
                       <BrandCard key={index} url={brand.url} name={brand.name} callBack={selectedBrand} selected={selectedBrands.includes(brand.name)} />
                     </div>
-                  )
-                })}
+                    )
+                  })}
+                </div>
               </div>
-            </div>
-          </Modal.Body>
-          <Modal.Footer>
-            <button onClick={() => update()} style={{ backgroundColor: 'green', color: 'white', borderRadius: '3px', border: 'none', padding: '10px 20px', fontSize: '15px' }}>update</button>
-          </Modal.Footer>
-        </Modal>
-      </>
-    )
-  }
+            </Modal.Body>
+            <Modal.Footer>
+              <button onClick={() => update()} className="button-update-dashboard">update</button>
+            </Modal.Footer>
+          </Modal>
+        </>
+      )
+    }
+    
     
 
   const loadingContainer = () => {

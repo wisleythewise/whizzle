@@ -2248,20 +2248,30 @@ featured brands
 }
 
 .dashboard-button {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 400;
   color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: #3498db;
   padding: 10px 20px;
-  font-size: 1.1em;
-  border-radius: 4px;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+  margin: 20px;;
+  border: none;
+  border-radius: 22px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .dashboard-button:hover {
-  background-color: #0056b3;
-  border-color: #004085;
+  background-color: #2980b9; 
+  color:white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
+.dashboard-button:active {
+  transform: scale(0.96); 
+}
 
 /* Pagination */
 
@@ -2525,4 +2535,99 @@ input[type=checkbox]:disabled {
 .checkout-button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
+}
+
+
+/* currently selected brands dashboard */
+/* CurrentlySelectedBrands.css */
+/* Existing CSS */
+
+.container-dashboard {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  border-radius: 8px;
+}
+.brand-card-dashboard {
+  flex: 1 0 auto; 
+  min-width: 50px; 
+  max-width: 80px; 
+  margin: 10px; 
+ 
+}
+
+.header-dashboard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-title-dashboard {
+  text-align: left;
+  font-size: 15px;
+  margin: 0;
+}
+
+.button-edit-dashboard {
+  background-color: green;
+  color: white;
+  border-radius: 3px;
+  border: none;
+  padding: 10px 20px;
+  font-size: 15px;
+}
+
+.divider-dashboard {
+  border-bottom: 1px solid #000;
+  margin: 10px 0;
+}
+
+.row-bottom-padding-dashboard {
+  padding-bottom: 30px;
+}
+
+.modal-body-custom-dashboard {
+  display: flex; 
+  flex-wrap: wrap; /* enables the cards to wrap to new line if necessary */
+  justify-content: space-between; /* for even spacing */
+  overflow-y: auto;
+  max-height: 400px;
+  scrollbar-width: none;
+  ms-overflow-style: none;
+  width: 100%; /* ensures the modal body takes up full width */
+}
+
+
+
+.button-update-dashboard {
+  background-color: green;
+  color: white;
+  border-radius: 3px;
+  border: none;
+  padding: 10px 20px;
+  font-size: 15px;
+}
+
+.brand-grid-dashboard {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  max-width: 100%; /* ensure it doesn't exceed the parent container's width */
+}
+/* Responsive Design */
+@media screen and (max-width: 600px) {
+  .brand-grid-dashboard {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  .brand-grid-dashboard {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .brand-grid-dashboard {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
 }

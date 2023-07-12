@@ -11,9 +11,9 @@ const CheckOutTheDashboard = () => {
     <div className="container">
 
       <div className="section-title" data-aos="fade-up">
-        <h2><span>Change your favourite brands!</span></h2>
-        <p>Go to the dashboard to change all your preferences!</p>
-
+        <h2><span>Verander jouw gekozen merken</span></h2>
+        <p>Ga naar jouw persoonlijke dashboard om je geselecteerde merken te wijzigen</p>
+        <a className='dashboard-button' href='/dashboard'>Dashboard</a>
       </div>
 
       </div>

@@ -3,7 +3,7 @@ import React , { useState, useEffect, useContext }  from 'react';
 import BrandCard from './BrandsCard';
 import { collection, addDoc, getDocs,query, where } from 'firebase/firestore';
 import { auth, db } from '../firebaseConfig'; 
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { UserContext } from './CTX/UserContext';
 
 // Pagination 
@@ -37,7 +37,6 @@ const FeaturedBrands = () => {
 
   // Search bar filter
   const [searchKeyword, setSearchKeyword] = useState("");
-  const [seachBrands, setSearchBrands] = useState("");
   
   // Label filter
   const [filter, SetFilter] = useState("All")
@@ -131,7 +130,7 @@ const FeaturedBrands = () => {
         }
       
         SetFilteredBrands(filteredBrandsData);
-      }, [searchKeyword, filter]);
+      }, [searchKeyword, filter, brand]);
         
   
     
@@ -287,7 +286,7 @@ const FeaturedBrands = () => {
             <li data-filter="*" className={filter === "All" ? "filter-active" : ""}  onClick={() => {SetFilter("All")}}>All</li>
             <li data-filter=".filter-app" className={filter === "Men" ? "filter-active" : ""}  onClick={() => {SetFilter("Men")}}>Men</li>
             <li data-filter=".filter-app" className={filter === "Woman" ? "filter-active" : ""}  onClick={() => {SetFilter("Woman")}}>Woman</li>
-            <li data-filter=".filter-app" className={filter == "Kids" ? "filter-active" : ""}  onClick={() => {SetFilter("Kids")}}>Kids</li>
+            <li data-filter=".filter-app" className={filter === "Kids" ? "filter-active" : ""}  onClick={() => {SetFilter("Kids")}}>Kids</li>
             </ul>
           </div>
         </div>
@@ -359,7 +358,7 @@ const FeaturedBrands = () => {
     )
   }
 
-  const sumbitted = ( ) => {
+  const submitted = ( ) => {
     const not_a_user = (     
       <div className="submitted-container">
       <div className="welcome-icon">
@@ -400,7 +399,7 @@ const FeaturedBrands = () => {
 
 
 
-      {submit ? sumbitted(): emailForm() }
+      {submit ? submitted(): emailForm() }
       </div>
   </section>
 

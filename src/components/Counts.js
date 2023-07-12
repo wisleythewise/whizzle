@@ -1,27 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import CountImg from '../assets/img/counts-img.svg';
 
-// Counter Component
 const Counter = ({ start, end, duration }) => {
     const [count, setCount] = useState(start);
 
     useEffect(() => {
         const stepTime = Math.abs(Math.floor(duration * 1000 / (end - start)));
         let current = start;
+        let timer;
 
-        const timer = setInterval(() => {
-            current++;
-            setCount(current);
-            if (current >= end) {
-                clearInterval(timer);
-            }
-        }, stepTime);
+        const delayedStart = setTimeout(() => {
+            timer = setInterval(() => {
+                current++;
+                setCount(current);
+                if (current >= end) {
+                    clearInterval(timer);
+                }
+            }, stepTime);
+        }, 1000); // delay start by 1 second
 
-        return () => clearInterval(timer); // This will clear Interval while un-mounting the component
+        return () => {
+            clearTimeout(delayedStart); // Clear timeout if component unmounts before delay finishes
+            clearInterval(timer); // This will clear Interval while un-mounting the component
+        };
     }, [start, end, duration]);
 
     return <span className="purecounter">{count}</span>;
 };
+
 
 const Counts = () => {
     return (
