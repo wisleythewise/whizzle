@@ -52,7 +52,7 @@ const Testimonials = () => {
         },
         { 
           name : "Vera, S.", 
-          quote : "Ik vind Whizzle echt geweldig. Nooit meer zelf op zoek naar sales"
+          quote : "Ik vind Whizzle echt geweldig. Nooit meer zelf op zoek naar sales!"
            ,
         }
       ]

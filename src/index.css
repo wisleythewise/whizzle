@@ -644,6 +644,7 @@ section {
 .about .content ul li {
   padding-left: 28px;
   position: relative;
+  text-align: left;
 }
 
 .about .content ul li+li {
@@ -663,7 +664,7 @@ section {
   margin-bottom: 0;
 }
 
-.about .content .btn-learn-more {
+.about .btn-learn-more {
   font-family: "Raleway", sans-serif;
   font-weight: 600;
   font-size: 14px;
@@ -680,11 +681,12 @@ section {
   border: 2px solid #3498db;
 }
 
-.about .content .btn-learn-more:hover {
+.about .btn-learn-more:hover {
   background: #3498db;
   color: #fff;
   text-decoration: none;
 }
+
 
 /*--------------------------------------------------------------
 # Counts
@@ -767,7 +769,6 @@ section {
     max-width: 100%;
   }
 }
-
 /*--------------------------------------------------------------
 # How it works
 --------------------------------------------------------------*/

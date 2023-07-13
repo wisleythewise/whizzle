@@ -17,7 +17,7 @@ const Counter = ({ start, end, duration }) => {
                     clearInterval(timer);
                 }
             }, stepTime);
-        }, 1000); // delay start by 1 second
+        }, 2000); // delay start by 1 second
 
         return () => {
             clearTimeout(delayedStart); // Clear timeout if component unmounts before delay finishes
@@ -35,7 +35,7 @@ const Counts = () => {
             <div className="container">
 
                 <div className="row">
-                    <div className="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-xl-start" data-aos="fade-right" data-aos-delay="150">
+                    <div className="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-xl-start" data-aos="fade-right" data-aos-delay="150" data-aos-offset="30">
                         <img src={CountImg} alt="" className="img-fluid" />
                     </div>
 
