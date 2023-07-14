@@ -1163,7 +1163,8 @@ section {
 
 @media (max-width: 767px) {
   .testimonials{
-    height: calc(30vh - 55px);  
+    height: calc(30vh - 55px);
+    min-height: 150px;  
   }
 
   .testimonials .testimonial-wrap {
@@ -1192,7 +1193,7 @@ section {
 
 @media (max-width: 575px) {
   .testimonials .testimonial-item {
-    padding: 5px 5px 10px 20px;  
+    padding: 15px 10px 5px 10px; 
     height: auto;
   }
 

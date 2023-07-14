@@ -373,9 +373,9 @@ const FeaturedBrands = () => {
 
      const a_user = (
       <div>
-      <p>You already have an account with us. Please check out your preferences</p>
-      <a className="dashboard-button" href="/dashboard">
-                Go to Dashboard
+      <p>Het lijkt erop dat je al een account hebt! Ga naar jouw persoonlijke dashboard om jouw favoriete merken aan te passen.</p>
+      <a className="dashboard-button" href="/login">
+                Ga naar Dashboard
       </a>
     </div>
      

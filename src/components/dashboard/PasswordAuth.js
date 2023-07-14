@@ -82,7 +82,7 @@ const PasswordAuth = () => {
                 required
             />
               <button type="submit" disabled={loading}>
-                {loading ? "Loaing..." : "Inloggen"}
+                {loading ? "Loading..." : "Inloggen"}
               </button>
 
             </form>

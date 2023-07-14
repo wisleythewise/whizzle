@@ -54,7 +54,7 @@ const Counts = () => {
                                     <div className="count-box">
                                         <i className="bi bi-bag-heart"></i>
                                         <Counter start={0} end={85} duration={1} />
-                                        <p><strong>Het aantal kledingmerken</strong> dat wij 24/7 voor jou in de gaten houden</p>
+                                        <p><strong>Kledingmerken</strong> houden wij 24/7 voor jou in de gaten</p>
                                     </div>
                                 </div>
 
@@ -62,7 +62,7 @@ const Counts = () => {
                                     <div className="count-box">
                                         <i className="bi bi-percent"></i>
                                         <Counter start={0} end={20} duration={1} />
-                                        <p><strong>Korting</strong> dat wij gemiddeld aan onze klanten aankaarten</p>
+                                        <p><strong> % Korting</strong> bezorgen wij gemiddeld bij onze klanten.</p>
                                     </div>
                                 </div>
 
