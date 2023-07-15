@@ -17,7 +17,9 @@ const BrandsCard = (props) => {
       <div onClick={() => {
         handleClick(name);
       }} className={`brand-container ${selected ? 'selected' : '' }` }>
-              <img src={url} className="brand-logo" alt={url}></img>
+              <div className='img-div'>
+                <img src={url} className="brand-logo" alt={url}></img>
+              </div>
               <div className="brand-overlay"></div>  
             
       </div>

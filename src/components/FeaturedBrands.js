@@ -305,9 +305,9 @@ const FeaturedBrands = () => {
     >
       {chunkedBrands.map((chunk, index) => (
         <SwiperSlide key={index}>
-          <div className="row" style = {{paddingbottom : "50px"}}>
+          <div className="brand-grid" style = {{paddingbottom : "50px"}}>
             {chunk.map((brand, brandIndex) => (
-              <div className="col-4" key={brandIndex}>
+              <div className="brand-container" key={brandIndex}>
                 <BrandCard
                   url={brand.url}
                   name={brand.name}

@@ -83,7 +83,7 @@ h6 {
 /* set default aos offset for mobile  */
 @media (max-width: 768px) {
   [data-aos] {
-    --aos-offset: 30px;
+    --aos-offset: 20px;
   }
 }
 /*--------------------------------------------------------------
@@ -1452,6 +1452,7 @@ section {
   background-color: #3498db;
 }
 
+
 .featuredbrands-details .featuredbrands-info {
   padding: 30px;
   box-shadow: 0px 0 30px rgba(34, 34, 34, 0.08);
@@ -2128,11 +2129,12 @@ featured brands
 .brand-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
-  grid-auto-rows: auto;
+  grid-auto-rows: 1fr;  /* This makes each row the same height */
   gap: 2.5rem;
   align-items: stretch;
   justify-items: center;
 }
+
 
 .brand-container {
   position: relative;
@@ -2140,6 +2142,7 @@ featured brands
   align-items: center;
   justify-content: center;
   width: 100%;
+  height: 100%; 
   border-radius: 8px;
   overflow: hidden;
 }
@@ -2153,11 +2156,13 @@ featured brands
   overflow: hidden;
 }
 .brand-logo {
-  max-width: 100%;
+  max-width: 90%;
   height: auto;
   filter: grayscale(20%);
   transition: filter 0.3s ease, transform 0.3s ease;
 }
+
+
 
 .brand-overlay {
   position: absolute;
@@ -2198,7 +2203,7 @@ featured brands
 
 @media (min-width: 1024px) {
   .brand-grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));    
   }
 }
 
@@ -2319,8 +2324,8 @@ featured brands
 }
 
 .swiper-container {
-  margin: 50px 0; 
-  height: 200px;
+  margin: 15px 0; 
+  height: 210px;
 }
 
 
