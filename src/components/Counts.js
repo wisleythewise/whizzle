@@ -1,31 +1,38 @@
-import React, { useEffect, useState } from 'react';
+
 import CountImg from '../assets/img/counts-img.svg';
+import React, { useEffect, useState } from 'react';
+import { useInView } from 'react-intersection-observer';
 
 const Counter = ({ start, end, duration }) => {
     const [count, setCount] = useState(start);
+    const [ref, inView] = useInView({
+      triggerOnce: true, // Change this to false if you want the animation to restart whenever it comes in view
+    });
 
     useEffect(() => {
-        const stepTime = Math.abs(Math.floor(duration * 1000 / (end - start)));
-        let current = start;
-        let timer;
+        if (inView) { // Only start counting when the component is in view
+            const stepTime = Math.abs(Math.floor(duration * 1000 / (end - start)));
+            let current = start;
+            let timer;
 
-        const delayedStart = setTimeout(() => {
-            timer = setInterval(() => {
-                current++;
-                setCount(current);
-                if (current >= end) {
-                    clearInterval(timer);
-                }
-            }, stepTime);
-        }, 2000); // delay start by 1 second
+            const delayedStart = setTimeout(() => {
+                timer = setInterval(() => {
+                    current++;
+                    setCount(current);
+                    if (current >= end) {
+                        clearInterval(timer);
+                    }
+                }, stepTime);
+            }, 1000); // delay start by 1 second
 
-        return () => {
-            clearTimeout(delayedStart); // Clear timeout if component unmounts before delay finishes
-            clearInterval(timer); // This will clear Interval while un-mounting the component
-        };
-    }, [start, end, duration]);
+            return () => {
+                clearTimeout(delayedStart); // Clear timeout if component unmounts before delay finishes
+                clearInterval(timer); // This will clear Interval while un-mounting the component
+            };
+        }
+    }, [start, end, duration, inView]); // Depend on inView
 
-    return <span className="purecounter">{count}</span>;
+    return <span ref={ref} className="purecounter">{count}</span>; // Add ref here
 };
 
 

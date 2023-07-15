@@ -15,7 +15,7 @@ const HowItWorks = () => {
         <div className="section-title" data-aos="fade-up" data-aos-offset="60">
           <h2><span>Hoe het werkt</span></h2>
           <p><strong>Betaal nooit meer de volle prijs</strong> </p>
-          <p style={{marginTop: '10px'}}>Bespaar in 3 stappen moeiteloos geld met de gepersonaliseerde sale-alerts van Whizzle.  </p>
+          <p style={{marginTop: '10px'}}>Bespaar in 3 simpele stappen moeiteloos geld met de gepersonaliseerde sale-alerts van Whizzle.  </p>
         </div>
 
         <div className="howitworks-container">

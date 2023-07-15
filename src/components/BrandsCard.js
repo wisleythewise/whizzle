@@ -20,7 +20,7 @@ const BrandsCard = (props) => {
               <div className='img-div'>
                 <img src={url} className="brand-logo" alt={url}></img>
               </div>
-              <div className="brand-overlay"></div>  
+              <div className="brand-overlay"><div className='brand-overlay-icon'><i class="bi bi-check-all"></i></div></div>  
             
       </div>
 
