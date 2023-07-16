@@ -21,6 +21,8 @@ function CurrentlySelectedBrands() {
 
   const [selectedBrandsDisplay, setSelectedBrandsDisplay ]= useState("")
 
+  const [isEditing, setIsEditing] = useState(false);
+
   useEffect(() => {
     loadData()
   }, [currentUser])
@@ -102,9 +104,6 @@ fetchData()
 
 }
 
-  const handleModal = () => {
-    setShowModal(!showModal);
-  };
 
 
   const update = async () => {
@@ -116,8 +115,6 @@ fetchData()
     await updateDoc(userDoc, {
       brands: selectedBrands, 
     });
-
-    handleModal(); 
   
   }
 
@@ -139,46 +136,73 @@ fetchData()
 
 
 
+    const handleEditToggle = () => {
+      if (isEditing) {
+        update();
+      }
+      setIsEditing(!isEditing);
+    };
 
 
  
     const containerWithSelectedBrands = () => {
       return (
         <>
-          <div className="container-dashboard">
-            <div className="header-dashboard">
-              <h1 className="header-title-dashboard">Currently Selected Brands</h1>
-              <button onClick={handleModal} className="button-edit-dashboard">Edit</button>
+          <div className="container">
+            <div className="d-flex justify-content-between align-items-center">
+              <h1>Currently Selected Brands</h1>
+              <button onClick={handleEditToggle} className={`btn ${isEditing ? 'btn-success' : 'btn-primary'}`}>
+                {isEditing ? 'Save' : 'Edit'}
+              </button>
             </div>
-            <div className="divider-dashboard"></div>
-            <div className="brand-grid-container">
-              {selectedBrandsDisplay}
-            </div>
-          </div>
-          <Modal show={showModal} onHide={handleModal}>
-            <Modal.Header closeButton>
-              <Modal.Title>Edit Brands</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <div className="modal-body-custom-dashboard">
+            <hr />
+    
+            {/* Conditionally render the brand logos when not in edit mode */}
+            {!isEditing && <div className="row">{selectedBrandsDisplay}</div>}
+    
+            {/* Conditionally render the brand selection when in edit mode */}
+            {isEditing && (
+              <>
                 <div className="brand-grid-dashboard">
-                  {brands.map((brand, index) => {
-                    return (
-                    <div className="brand-card-dashboard" key={index}>
-                      <BrandCard key={index} url={brand.url} name={brand.name} callBack={selectedBrand} selected={selectedBrands.includes(brand.name)} />
-                    </div>
-                    )
-                  })}
+                  {brands
+                    .sort((a, b) => {
+                      // Sort by whether the brand is selected
+                      const aSelected = selectedBrands.includes(a.name);
+                      const bSelected = selectedBrands.includes(b.name);
+    
+                      // If a is selected and b is not, put a first
+                      if (aSelected && !bSelected) {
+                        return -1;
+                      }
+                      // If b is selected and a is not, put b first
+                      else if (!aSelected && bSelected) {
+                        return 1;
+                      }
+                      // If both are selected or both are not selected, don't change their order
+                      else {
+                        return 0;
+                      }
+                    })
+                    .map((brand, index) => {
+                      return (
+                        <div className="brand-card-dashboard" key={index}>
+                          <BrandCard
+                            key={index}
+                            url={brand.url}
+                            name={brand.name}
+                            callBack={selectedBrand}
+                            selected={selectedBrands.includes(brand.name)}
+                          />
+                        </div>
+                      );
+                    })}
                 </div>
-              </div>
-            </Modal.Body>
-            <Modal.Footer>
-              <button onClick={() => update()} className="button-update-dashboard">update</button>
-            </Modal.Footer>
-          </Modal>
+              </>
+            )}
+          </div>
         </>
-      )
-    }
+      );
+    };
     
     
 

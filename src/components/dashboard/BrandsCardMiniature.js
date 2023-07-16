@@ -8,7 +8,7 @@ const BrandsCard = (props) => {
 
   return (
 
-      <div  className="brand-container-miniature" >
+      <div  className="brand-container" >
               <img src={url} className="brand-logo" alt={url}></img>
               <div className="brand-overlay"></div>   
       </div>

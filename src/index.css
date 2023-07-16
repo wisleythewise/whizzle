@@ -8,6 +8,7 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
@@ -30,6 +31,29 @@ h4,
 h5,
 h6 {
   font-family: "Raleway", sans-serif;
+}
+
+/* SCROLLBAR */
+body {
+  scrollbar-width: thin; /* Width of the scrollbar */
+  scrollbar-color: #c0c0c0 #f7f7f7; /* Color of the scrollbar thumb and track */
+}
+
+body::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+
+body::-webkit-scrollbar-thumb {
+  background-color: #c0c0c0; /* Color of the scrollbar thumb */
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #a0a0a0; /* Color of the scrollbar thumb on hover */
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #f7f7f7; /* Background color of the scrollbar track */
 }
 
 /*--------------------------------------------------------------
@@ -2083,11 +2107,21 @@ section {
   background-color: #f7fbfe;
 }
 
+.dashboard-container {
+  margin-top: 20px;
+  background-color: #ffffff;
+  display: flex;
+  height: 80vh;
+  width:90vw;
+  border-radius: 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  overflow-y: auto;
+}
+
 .menu {
   flex: 1;
-  background-color: #f7f7f7; /* light gray */
   padding: 20px;
-  box-shadow: 2px 0 5px 0 rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
 }
@@ -2126,7 +2160,23 @@ section {
 .dashboardicon {
   margin-left:10px;
 }
+.dashboard-container::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
 
+.dashboard-container::-webkit-scrollbar-track {
+  background: #f7f7f7; /* Background color of the scrollbar track */
+  border-radius: 4px; /* Rounded corners for the scrollbar track */
+}
+
+.dashboard-container::-webkit-scrollbar-thumb {
+  background-color: #c0c0c0; /* Color of the scrollbar thumb */
+  border-radius: 4px; /* Rounded corners for the scrollbar thumb */
+}
+
+.dashboard-container::-webkit-scrollbar-thumb:hover {
+  background-color: #a0a0a0; /* Color of the scrollbar thumb on hover */
+}
 /* _________________________________________________________
 
 featured brands
@@ -2596,8 +2646,6 @@ input[type=checkbox]:disabled {
 
 
 /* currently selected brands dashboard */
-/* CurrentlySelectedBrands.css */
-/* Existing CSS */
 
 .container-dashboard {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
@@ -2652,7 +2700,6 @@ input[type=checkbox]:disabled {
   ms-overflow-style: none;
   width: 100%; /* ensures the modal body takes up full width */
 }
-
 
 
 .button-update-dashboard {

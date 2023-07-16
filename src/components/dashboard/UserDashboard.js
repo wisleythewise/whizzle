@@ -49,19 +49,21 @@ function UserDashboard() {
   // update the data from the user
   return (
       <div className="dashboard">
-        <div className="menu">
-          <NavLink to="/dashboard" activeClassName="active">Your Brands<i class="bi bi-bag-heart dashboardicon"></i></NavLink>
-          <NavLink to="settings" activeClassName="active">Settings<i class="bi bi-person-gear dashboardicon"></i></NavLink>
-          <NavLink to="/" activeClassName="active" onClick={(event) => handleLogOut(event)}>
-            Log Out<i className="bi bi-door-closed dashboardicon"></i>
-        </NavLink>
-        </div>
-        <div className="content">
-          <Routes>
-            <Route path="/" element={<CurrentlySelectedBrands/>} />
-            <Route path="settings" element={<DashboardSettings userId={userId}  userData={userData} />} />
-          </Routes>
-        </div>
+        <div className='dashboard-container mx-auto'>
+          <div className="menu">
+            <NavLink to="/dashboard" activeClassName="active">Your Brands<i class="bi bi-bag-heart dashboardicon"></i></NavLink>
+            <NavLink to="settings" activeClassName="active">Settings<i class="bi bi-person-gear dashboardicon"></i></NavLink>
+            <NavLink to="/" activeClassName="active" onClick={(event) => handleLogOut(event)}>
+              Log Out<i className="bi bi-door-closed dashboardicon"></i>
+          </NavLink>
+          </div>
+          <div className="content">
+            <Routes>
+              <Route path="/" element={<CurrentlySelectedBrands/>} />
+              <Route path="settings" element={<DashboardSettings userId={userId}  userData={userData} />} />
+            </Routes>
+          </div>
+          </div>
       </div>
   );
 }
