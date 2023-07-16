@@ -2341,7 +2341,7 @@ featured brands
 
 .pagination a {
   margin: 0 10px;
-  padding: 10px 15px;
+  padding: 7px 10px;
   /* border: 1px solid #ddd; */
   color: #666;
   text-decoration: none;
@@ -2369,12 +2369,13 @@ featured brands
 
 .pagination .previous a:hover,
 .pagination .next a:hover {
-  background-color: #0056b3;
+  background-color: #257ddd;
 }
 
 .swiper-container {
   margin: 15px 0; 
   height: 210px;
+  height: auto;
 }
 
 

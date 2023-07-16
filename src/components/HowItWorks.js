@@ -25,7 +25,7 @@ const HowItWorks = () => {
               <div className="icon"><i className="bi bi-check2-square"></i></div>
               <div className='numbercontainer'><p className="howitworksnumber">1</p></div>               
               <div className='howitworks-text'>
-              <h4 className="title">Selecteer je merken</h4> 
+              <h4 className="title">Selecteer merken</h4> 
               <p className={`description ${showDescriptionIndex === 0 ? 'show' : ''}`}>Kies nu tot en met 10 merken die Whizzle voor jou in de gaten houdt!</p>              </div>
             </div>
           </div>
@@ -35,8 +35,8 @@ const HowItWorks = () => {
               <div className="icon"><i className="bi bi-envelope-at"></i></div>
               <div className='numbercontainer'><p className="howitworksnumber">2</p></div>               
               <div className='howitworks-text'>
-                <h4 className="title">Vul je email in</h4>
-                <p className={`description ${showDescriptionIndex === 1 ? 'show' : ''}`}>Ja dat is echt alles (wel nog even bevestigen in je mailbox).</p>
+                <h4 className="title">Geef je email op</h4>
+                <p className={`description ${showDescriptionIndex === 1 ? 'show' : ''}`}>Ja dat is echt alles! Wel nog even bevestigen in je mailbox.</p>
               </div>
             </div>
           </div>
@@ -46,7 +46,7 @@ const HowItWorks = () => {
               <div className="icon"><i className="bi bi-search-heart"></i></div>
               <div className='numbercontainer'><p className="howitworksnumber">3</p></div>               
               <div className='howitworks-text'>
-                <h4 className="title">Geniet van de kracht van Whizzle</h4>
+                <h4 className="title">Geniet van Whizzle</h4>
                 <p className={`description ${showDescriptionIndex === 2 ? 'show' : ''}`}>Vanaf nu ben je moeiteloos op de hoogte van relevante sales! </p>
               </div>
             </div>

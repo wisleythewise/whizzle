@@ -44,8 +44,18 @@ const FeaturedBrands = () => {
 
   // For pagination
   const [currentPage, setCurrentPage] = useState(0);
-  const itemsPerPage = 6; // Change this to change the number of items per page
   const isMobile = useMediaQuery({ query: '(max-width: 760px)' });
+  const isTablet = useMediaQuery({ query: '(min-width: 761px) and (max-width: 1024px)' });
+  const isDesktop = useMediaQuery({ query: '(min-width: 1025px)' });
+  
+  let itemsPerPage = 3; // Default value
+  if (isMobile) {
+    itemsPerPage = 9; // 9 items on mobile
+  } else if (isTablet) {
+    itemsPerPage = 12; // 12 items on tablet
+  } else if (isDesktop) {
+    itemsPerPage = 15; // 15 items on desktop
+  }
 
   const [swipeEffect, setSwipeEffect] = useState(false);
 
@@ -99,7 +109,7 @@ const FeaturedBrands = () => {
     });
   
     setAllCards(allCards);
-  }, [filteredBrands, currentPage,selectedBrands]);
+  }, [filteredBrands, currentPage,selectedBrands, itemsPerPage]);
 
   // Call handle filter after the state has been changed
       useEffect(() => {
@@ -271,7 +281,7 @@ const FeaturedBrands = () => {
 
   const emailForm = () => {
 
-    const chunkedBrands = chunk(filteredBrands, 6);
+    const chunkedBrands = chunk(filteredBrands, 9);
     return (      
 
     <div>
@@ -328,7 +338,7 @@ const FeaturedBrands = () => {
           </div>
   
           <ReactPaginate
-            previousLabel={<i class="bi bi-caret-left"></i>}
+            previousLabel={<i class="bi bi-caret-left-fill"></i>}
             nextLabel={<i class="bi bi-caret-right"></i>}
             breakLabel={'...'}
             breakClassName={'break-me'}
