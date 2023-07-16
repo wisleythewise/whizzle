@@ -323,13 +323,13 @@ const FeaturedBrands = () => {
 
   ) : (
         <div  data-aos="fade-up">
-          <div className="brand-grid">
+          <div className="brand-grid mx-auto">
             {allCards}
           </div>
   
           <ReactPaginate
-            previousLabel={'previous'}
-            nextLabel={'next'}
+            previousLabel={<i class="bi bi-caret-left"></i>}
+            nextLabel={<i class="bi bi-caret-right"></i>}
             breakLabel={'...'}
             breakClassName={'break-me'}
             pageCount={Math.ceil(brand.length / itemsPerPage)}

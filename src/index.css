@@ -631,6 +631,10 @@ section {
 .about {
   height:auto;
 }
+.about .section-title {
+  padding-bottom: 0px;
+
+}
 
 .about .content {
   padding:0px 15px 0px 15px;
@@ -694,9 +698,15 @@ section {
 
 @media (min-width:780px) {
   .about .section-title {
-    padding-bottom: 0px;
+    padding-bottom: 30px;
 
   }
+  .about .content ul {
+    list-style: none;
+    padding: 0;
+    margin-top:0px;
+  }
+  
 }
 
 /*--------------------------------------------------------------
@@ -2194,6 +2204,7 @@ featured brands
   right: 5px; 
   color: green;
   font-size: 18px; 
+  display: none;
 }
 
 
@@ -2209,6 +2220,9 @@ featured brands
 .brand-container.selected .brand-overlay {
   background-color: rgb(108 108 108 / 40%);
   opacity: 1;
+}
+.brand-container.selected .brand-overlay-icon{
+  display: block;
 }
 
 @media (min-width: 480px) {
@@ -2233,10 +2247,13 @@ featured brands
 @media (min-width: 1024px) {
   .brand-grid {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));    
+    width:80%;
   }
   .brand-container {
     min-height: 100px;
   }
+
+
 }
 
 /*  */
@@ -2325,7 +2342,7 @@ featured brands
 .pagination a {
   margin: 0 10px;
   padding: 10px 15px;
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
   color: #666;
   text-decoration: none;
   transition: all 0.3s;

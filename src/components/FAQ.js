@@ -38,7 +38,7 @@ const FAQ = (props) => {
         },
         {
           title : "Kan ik aanpassen wanneer ik een melding van een sale ontvang?", 
-          text : "Ja, je kunt kiezen hoe ver van te voren je een alert wil krijgen over een sale. Dat kan 1 minuut van te voren, een uur van te voren, 24 uur van te voren of een combinatie hiervan. Jij bent de baas.",
+          text : "Ja, je kunt kiezen hoe ver van te voren je een alert wilt krijgen over een sale. Dat kan 1 minuut van te voren, een uur van te voren, 24 uur van te voren of een combinatie hiervan. Jij bent de baas.",
         },                
         {
           title : "Hoe kan ik me afmelden voor de mailing?", 
