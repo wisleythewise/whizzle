@@ -7,6 +7,9 @@ import PremiumModal from './Modals/PremiumModal';
 import ChangePasswordModal from './Modals/ChangePasswordModal';
 import DeleteAccountModal from './Modals/DeleteAccountModal';
 
+// Firebase data
+import { doc, updateDoc , collection, getDocs} from "firebase/firestore";
+import { db } from '../../firebaseConfig'; 
 
 
 // Importing the crown 
@@ -19,6 +22,46 @@ function DashboardSettings({ }) {
   const [isPremiunmModalOpen, setIsPremiunmModalOpen] = useState(false);
   const [isChangePasswordModalOpen, setIsChangePasswordModalOpen] = useState(false);
   const [isDeleteAccountModal, setIsDeleteAccountModal] = useState(false);
+  const [docid, setDocId] = useState('')
+  const [reminderPreferences, setReminderPreferences] = useState([])
+  const [whenToMail, setWhenToMail] = useState([])
+
+  useEffect( () => {
+    update()
+    console.log(whenToMail)
+  }, [reminderPreferences, whenToMail])
+
+
+  useEffect(() => {
+    retrieveDocid()
+  }, [currentUser]);
+
+  const retrieveDocid = async () => {
+
+
+    helperFunction()
+}
+
+
+const helperFunction = async () =>{
+  const userCollection = collection(db, "Users")
+  const userSnapshot = await  getDocs(userCollection)
+  
+  console.log(userSnapshot)
+
+  const user = userSnapshot.docs.find((doc) => {
+    const data = doc.data();
+
+    return data.id == currentUser.uid
+    })
+
+  if (user){
+    setDocId(user.id)
+  } else {
+    console.error('No user found with id:', currentUser.uid);
+  }
+} 
+
 
   // Modal handlers
   const handlePremiumClick = () => {
@@ -50,6 +93,35 @@ function DashboardSettings({ }) {
     return <p>Loading...</p>;
   };
 
+  const handleWhenToMailChange = (event) => {
+    if (event.target.checked) {
+      setWhenToMail([...whenToMail, event.target.value]);
+    } else {
+      setWhenToMail(whenToMail.filter(item => item !== event.target.value));
+    }
+  };
+  
+  const handleReminderChange = (event) => {
+    if (event.target.checked) {
+      setReminderPreferences([...reminderPreferences, event.target.value]);
+    } else {
+      setReminderPreferences(reminderPreferences.filter(item => item !== event.target.value));
+    }
+  };
+
+  const update = async () => {
+
+    console.log("this is the docid", docid)
+    const userDoc = doc(db, 'Users', docid); 
+    
+
+    await updateDoc(userDoc, {
+      when_to_mail : whenToMail,
+      reminder_preferences: reminderPreferences, 
+    });
+  
+  }
+
   const settings = () => {
     return (
       <div className="settings-container">
@@ -72,7 +144,7 @@ function DashboardSettings({ }) {
               <div className="col-4">
                 <p>When to mail</p>
                 <label>
-                  <input type="checkbox" /> Start of sale
+                  <input type="checkbox"  value="startOfSale" onChange={handleWhenToMailChange} /> Start of sale
                 </label>
                 <div className="premium-feature"
                 data-tip="This is a premium feature"
@@ -84,7 +156,7 @@ function DashboardSettings({ }) {
                   className='crown'
                 />
                 <label>
-                  <input type="checkbox" disabled /> One day before sale
+                  <input type="checkbox" value="oneDayBeforeSale" onChange={handleWhenToMailChange} disabled /> One day before sale
                 </label>
               </div>
               </div>
@@ -92,12 +164,12 @@ function DashboardSettings({ }) {
                 <div>
                   <p>Reminder</p>
                   <label>
-                    <input type="checkbox" /> Once
+                    <input type="checkbox"  value="once" onChange={handleReminderChange}  /> Once
                   </label>
                 </div>
                 <div>
                   <label>
-                    <input type="checkbox" /> Every day of the sale
+                    <input type="checkbox" value="everyDayOfSale" onChange={handleReminderChange}/> Every day of the sale
                   </label>
                 </div>
               </div>
