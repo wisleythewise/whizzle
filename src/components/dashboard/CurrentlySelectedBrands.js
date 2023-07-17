@@ -23,7 +23,32 @@ function CurrentlySelectedBrands() {
   const [docid, setDocId] = useState('')
   const [selectedBrandsDisplay, setSelectedBrandsDisplay ]= useState("")
   const [isEditing, setIsEditing] = useState(false);
+  const [searchKeyword, setSearchKeyword] = useState("");
+  const [filteredBrands, setFilteredBrands] = useState([])
   const navigate = useNavigate()
+
+  useEffect(() => {
+        // Filter by search keyword
+        if (searchKeyword) {
+          const filteredBrandsData = brands.filter((brand) => {
+              console.log("This is the brands data")          
+              console.log(brand.name);
+              // check if brand.name is not undefined or null
+              if (brand.name) {
+                  return brand.name.toLowerCase().startsWith(searchKeyword.toLowerCase());
+              } else {
+                  console.log('Error: brand.name is undefined or null');
+                  return false;
+              }
+          });
+
+        setFilteredBrands(filteredBrandsData);
+        }else {
+          setFilteredBrands(brands);
+        }
+
+
+  }, [searchKeyword, brands])
 
   useEffect(() => {
     loadData()
@@ -107,6 +132,7 @@ const loadData = async () => {
 
       setSelectedBrands(userBrands)
       setBrands(brandsData);
+      setFilteredBrands(brandsData);
       setLoading(false); // This will only be called if no errors occurred
     } catch (error) {
       console.error('An error occurred:', error);
@@ -172,6 +198,7 @@ const loadData = async () => {
               <button onClick={handleEditToggle} className={`btn ${isEditing ? 'btn-success' : 'btn-primary'}`}>
                 {isEditing ? 'Save' : 'Edit'}
               </button>
+
             </div>
             <hr />
     
@@ -181,8 +208,11 @@ const loadData = async () => {
             {/* Conditionally render the brand selection when in edit mode */}
             {isEditing && (
               <>
+              <input type="text" name="brand-search" onChange= {(e) => setSearchKeyword(e.target.value)} className="brand-search form-control" id="brand-search" placeholder="Zoek naar je favoriete merken..." required=""></input>
+
                 <div className="brand-grid-dashboard">
-                  {brands
+
+                  {filteredBrands
                     .sort((a, b) => {
                       // Sort by whether the brand is selected
                       const aSelected = selectedBrands.includes(a.name);
