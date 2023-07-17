@@ -20,7 +20,7 @@ import Counts from './components/Counts';
 import { auth } from './firebaseConfig';
 import { UserContext } from './components/CTX/UserContext';
 import {onAuthStateChanged} from "firebase/auth"
-import TapAnimation from './components/Lotties';
+import TapAnimation from './components/lotties/TapAnimation';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);

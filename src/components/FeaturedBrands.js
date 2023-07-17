@@ -5,7 +5,7 @@ import { collection, addDoc, getDocs,query, where } from 'firebase/firestore';
 import { auth, db } from '../firebaseConfig'; 
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { UserContext } from './CTX/UserContext';
-import TapAnimation from './Lotties';
+import TapAnimation from './lotties/TapAnimation';
 
 // Pagination 
 import ReactPaginate from 'react-paginate';
@@ -105,13 +105,26 @@ const FeaturedBrands = () => {
   useEffect(() => {
     const offset = currentPage * itemsPerPage;
     const pageBrands = filteredBrands.slice(offset, offset + itemsPerPage);
-  
-    const allCards = pageBrands.map((brand, index) => {
-      return <BrandCard key={index}  url={brand.url} name = {brand.name} callBack = {selectedBrand} selected={selectedBrands.includes(brand.name)} />
-    });
-  
+
+    const allCards = pageBrands.map((brand, index) =>
+        <div key={index}>
+        <BrandCard 
+            key={index} 
+            url={brand.url} 
+            name={brand.name} 
+            callBack={selectedBrand} 
+            selected={selectedBrands.includes(brand.name)} 
+            onClick={handleBrandClick}
+        />
+        {(index === 0 && !isBrandClicked) && <TapAnimation />}
+{/* Dit werkt nog niet helemaal goed, deze animatie zit buiten de div van de brand card, moet een oplossing vinden 
+om de lottie container in de brand-container te krijgen */}
+      </div>
+    );
+
     setAllCards(allCards);
-  }, [filteredBrands, currentPage,selectedBrands, itemsPerPage]);
+}, [filteredBrands, currentPage, selectedBrands, itemsPerPage]);
+
 
   // Call handle filter after the state has been changed
       useEffect(() => {

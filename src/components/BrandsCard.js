@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import TapAnimation from './Lotties';
+import TapAnimation from './lotties/TapAnimation';
 
 const BrandsCard = (props) => {
   const url = props.url;

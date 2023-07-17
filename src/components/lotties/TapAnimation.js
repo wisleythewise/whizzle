@@ -1,7 +1,7 @@
 import React from 'react';
-import '../index.css';
+import '../../index.css';
 import Lottie from 'lottie-react';
-import tapAnimationData from '../designs/lotties/tap-animation.json';
+import tapAnimationData from '../../designs/lotties/tap-animation.json';
 
 const TapAnimation = () => {
     return (

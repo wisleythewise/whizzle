@@ -2742,6 +2742,7 @@ input[type=checkbox]:disabled {
   width: 50px;
   height: 50px;
   display: inline-block;
-  position: absolute; 
+  position: absolute;
   pointer-events: none;
+
 }
