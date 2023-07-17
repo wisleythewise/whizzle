@@ -13,6 +13,7 @@ import { getAuth, signOut , isSignInWithEmailLink ,signInWithEmailLink  } from "
 function UserDashboard() {
   const [userData, setUserData] = useState({})
   const [userId, setUserId] = useState({})
+  const [selectedTab, setSelectedTab] = useState("")
   const { currentUser, setCurrentUser } = useContext(UserContext);
   const navigate = useNavigate();
 
@@ -44,10 +45,15 @@ function UserDashboard() {
         header.style.backgroundColor = currentBackgroundColor;
       };
     }
+
+    setSelectedTab("dashboard")
   }, []);
 
+  const handleNavigation = () => {}
   // update the data from the user
   return (
+
+
       <div className="dashboard">
         <div className='dashboard-container mx-auto'>
           <div className="menu">

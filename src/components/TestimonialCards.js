@@ -14,7 +14,7 @@ const TestimonialCards = (props) => {
     <div className="swiper-slide">
     <div className="testimonial-wrap">
       <div className="testimonial-item">
-      {isMobile ?<></> : <img src={url} className="testimonial-img" alt=""></img>}
+      {isMobile ? <></> : <img src={url} className="testimonial-img" alt=""></img>}
         <p>
           <i className="bx bxs-quote-alt-left quote-icon-left"></i>
           {quote}

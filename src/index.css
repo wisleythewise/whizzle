@@ -191,6 +191,12 @@ body::-webkit-scrollbar-track {
   white-space: nowrap;
   transition: 0.3s;
 }
+.inactive-link {
+  color: green;
+  /* Add any other styles to make the link appear inactive */
+}
+
+
 
 .navbar a i,
 .navbar a:focus i {
@@ -2153,6 +2159,8 @@ section {
   background-color: #007bff; /* blue */
   color: #fff; /* white */
 }
+
+
 
 .content {
   flex: 4;
