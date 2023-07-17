@@ -1,7 +1,10 @@
 import whistleLogo from "../designs/logo.png";
 import React, { useState, useEffect, useContext } from 'react';
 import { Link as ScrollLink } from 'react-scroll'; // Renamed to avoid naming conflict
-import { Link, useLocation } from 'react-router-dom'; // Import Link for page navigation
+import { Link, useLocation , NavLink, useNavigate, BrowserRouter as Router, Routes, Route} from 'react-router-dom'; // Import Link for page navigation
+import { getAuth, signOut , isSignInWithEmailLink ,signInWithEmailLink  } from "firebase/auth"; // Import the function
+import CurrentlySelectedBrands from './dashboard/CurrentlySelectedBrands';
+import DashboardSettings from './dashboard/DashboardSettings';
 
 // Importing the user
 import { UserContext } from "./CTX/UserContext"  
@@ -13,8 +16,11 @@ const Header = () => {
   const [headerScrolled, setHeaderScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const location = useLocation(); // Use the useLocation hook
-
   const { currentUser, setCurrentUser } = useContext(UserContext);
+  const [userData, setUserData] = useState({})
+  const [userId, setUserId] = useState({})
+  const navigate = useNavigate();
+
 
   useEffect(() => {
 
@@ -27,6 +33,21 @@ const Header = () => {
       event.preventDefault();
     }
     setNavbarOpen(!navbarOpen);
+  };
+
+  const handleLogOut = async (event) => {
+    try {
+      // Prevent default navigation
+      event.preventDefault();
+      
+      const auth = getAuth();
+      await signOut(auth);
+      console.log('User signed out');
+      setCurrentUser(null)
+      navigate("/");
+    } catch (error) {
+      console.error('Error signing out', error);
+    }
   };
   
 
@@ -63,10 +84,18 @@ const Header = () => {
       } else{
         return false
       }
-
-      
-
   }
+
+  const dashboardRender = () => {
+
+    if (location.pathname === '/dashboard'){
+      return true
+    } else if (location.pathname === '/dashboard/settings'){
+      return true
+    } else{
+      return false
+    }
+}
 
 
   return (
@@ -157,8 +186,7 @@ const Header = () => {
                     onClick={() => setNavbarOpen(!navbarOpen)}
                   >
                     Inloggen
-                  </Link>) 
-}
+                  </Link>)}
 
                 </li>
                 {!currentUser && 
@@ -175,8 +203,32 @@ const Header = () => {
                   >
                     Aan de slag!
                   </ScrollLink>
-                </li>
-}
+                </li>}
+
+                {dashboardRender() && isMobile ? (
+  <>
+    <li>
+      <NavLink onClick={() => handleNavbarToggle()} to="/dashboard" activeClassName="active">Your Brands<i class="bi bi-bag-heart dashboardicon"></i></NavLink>
+    </li>
+    <li>
+      <NavLink onClick={() => handleNavbarToggle()} to="/dashboard/settings" activeClassName="active">Settings<i class="bi bi-person-gear dashboardicon"></i></NavLink>
+    </li>
+    <li>
+      <NavLink  to="/" activeClassName="active" onClick={(event) => handleLogOut(event)}>
+        Log Out<i className="bi bi-door-closed dashboardicon"></i>
+      </NavLink>
+    </li>
+
+    <div>
+          <div className="content">
+            <Routes>
+              <Route path="/" element={<CurrentlySelectedBrands/>} />
+              <Route path="settings" element={<DashboardSettings userId={userId}  userData={userData} />} />
+            </Routes>
+          </div>
+          </div>
+  </>
+) : "" }
               </>
             )}
           </ul>
