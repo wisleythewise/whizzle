@@ -45,22 +45,24 @@ const Testimonials = () => {
         { 
           name : "Mark, V.", 
           quote : "Ik heb sinds ik Whizzle gebruik nooit meer de volle prijs betaald. Echt ideaal." ,
+          url : "https://i.imgur.com/psNuXKm.png"
         },
         { 
-          name : "Pieter, H.", 
+          name : "Pieter, B.", 
           quote : "Ik wil alleen weten wanneer bepaalde merken in de sale zijn, en Whizzle biedt precies dat." ,
+          url : "https://i.imgur.com/LZMk6XA.jpg"
         },
         { 
           name : "Vera, S.", 
-          quote : "Ik vind Whizzle echt geweldig. Nooit meer zelf op zoek naar sales!"
-           ,
+          quote : "Ik vind Whizzle echt geweldig. Nooit meer zelf op zoek naar sales!",
+          url : "https://i.imgur.com/wPHYTiS.jpg"          ,
         }
       ]
 
       setTestimonials(testimonialsData);
 
       const allCards = testimonialsData.map((testimonial, index) => {
-        return <TestimonialCards key={index} quote={testimonial.quote} name={testimonial.name} />
+        return <TestimonialCards key={index} quote={testimonial.quote} name={testimonial.name} url = {testimonial.url} />
       });
 
       setAllCards(allCards);

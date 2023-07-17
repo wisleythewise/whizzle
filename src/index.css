@@ -1149,6 +1149,15 @@ section {
   border: 6px solid #fff;
   position: absolute;
   left: -45px;
+    width: 100px;
+  height: 100px;
+  
+}
+
+.testimonials .testimonial-item .testimonial-img img {
+  width: 100%; /* This will make the image to fill the container */
+  height: 100%; /* This will make the image to fill the container */
+  object-fit: cover; /* This will make sure the image maintains its aspect ratio and the extra part of the larger dimension will be cropped */
 }
 
 .testimonials .testimonial-item h3 {
