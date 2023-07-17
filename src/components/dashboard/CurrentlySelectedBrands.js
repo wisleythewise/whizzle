@@ -16,11 +16,10 @@ function CurrentlySelectedBrands() {
   const [loading, setLoading] = useState(true)
   const [brands, setBrands] = useState([])
   const {currentUser , setCurrentUser } = useContext(UserContext)
+  const [initialized, setInitialized] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [docid, setDocId] = useState('')
-
   const [selectedBrandsDisplay, setSelectedBrandsDisplay ]= useState("")
-
   const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
@@ -31,27 +30,34 @@ function CurrentlySelectedBrands() {
 // Making sure I have the latest value of the selected brands
 useEffect(() => {
     // Filter the selected brands
-    const brandsOfUser = brands.filter(brand => selectedBrands.includes(brand.name)).map((brand, brandIndex) => {
-      return (
-      <div className="col-2" key={brandIndex}>
-        <BrandCardMiniature
-          url={brand.url}
-          name={brand.name}
-          callBack={empty}      
-        />
-      </div>
-    )})
+    if (initialized){
+      const brandsOfUser = brands.filter(brand => selectedBrands.includes(brand.name)).map((brand, brandIndex) => {
+        return (
+        <div className="col-2" key={brandIndex}>
+          <BrandCardMiniature
+            url={brand.url}
+            name={brand.name}
+            callBack={empty}      
+          />
+        </div>
+      )})
 
-    setSelectedBrandsDisplay(brandsOfUser)
+      setSelectedBrandsDisplay(brandsOfUser)
+    }
 
-}, [brands,selectedBrands]);
+
+    
+
+}, [brands,selectedBrands, initialized]);
 
 
-const loadData = () => {
+const loadData = async () => {
   const brandsOfUser = async () => {
       
     const userCollection = collection(db, "Users")
     const userSnapshot = await  getDocs(userCollection)
+    
+    console.log(userSnapshot)
 
     const preferredBrands = userSnapshot.docs.find((doc) => {
       const data = doc.data();
@@ -97,10 +103,13 @@ const loadData = () => {
       console.error('An error occurred:', error);
       // Optionally, you can set loading to false here too if you want to display an error message or something else when an error occurs
       setLoading(false);
+      setSelectedBrands("")
+      setBrands("");
     } 
 
 }
-fetchData()
+  await fetchData()
+  setInitialized(true);
 
 }
 

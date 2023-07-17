@@ -36,7 +36,7 @@ const PasswordReset = () => {
 
         // Get the URL parameters
         const params = new URLSearchParams(window.location.search);
-        // Get the oobCode
+        // Get the oobCod
         const oobCode = params.get('oobCode');
 
         // Use oobCode in the confirmPasswordReset function
