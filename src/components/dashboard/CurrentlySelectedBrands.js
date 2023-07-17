@@ -8,6 +8,8 @@ import BrandCard from '../BrandsCard';
 import { UserContext } from '../CTX/UserContext';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
+
 
 
 
@@ -21,6 +23,7 @@ function CurrentlySelectedBrands() {
   const [docid, setDocId] = useState('')
   const [selectedBrandsDisplay, setSelectedBrandsDisplay ]= useState("")
   const [isEditing, setIsEditing] = useState(false);
+  const navigate = useNavigate()
 
   useEffect(() => {
     loadData()
@@ -61,6 +64,12 @@ const loadData = async () => {
 
     const preferredBrands = userSnapshot.docs.find((doc) => {
       const data = doc.data();
+      
+      // if no user is login in navigate back to the home page
+      if (!currentUser){
+        navigate("/login")
+      }
+
       return data.id == currentUser.uid
       })
 
