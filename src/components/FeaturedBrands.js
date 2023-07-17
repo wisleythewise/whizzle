@@ -5,6 +5,7 @@ import { collection, addDoc, getDocs,query, where } from 'firebase/firestore';
 import { auth, db } from '../firebaseConfig'; 
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { UserContext } from './CTX/UserContext';
+import TapAnimation from './Lotties';
 
 // Pagination 
 import ReactPaginate from 'react-paginate';
@@ -31,6 +32,7 @@ const FeaturedBrands = () => {
   const [presentt, setPresent] = useState(false);
   const {currentUser, setCurrentUser} = useContext(UserContext)
   const [loading, setLoading] = useState(true); 
+  const [isBrandClicked, setIsBrandClicked] = useState(false);
 
   // All brands
   const [brand, setBrands] = useState([]);
@@ -270,7 +272,11 @@ const FeaturedBrands = () => {
 
   };
 
-
+//VOOR DE TAP ANIMATIE
+// This function will be used when a brand-logo is clicked
+const handleBrandClick = () => {
+    setIsBrandClicked(true);
+};
 
     // Function to chunk an array
     const chunk = (arr, size) =>
@@ -301,8 +307,7 @@ const FeaturedBrands = () => {
           </div>
         </div>
 
-        
-        
+  
         {isMobile ? (
           <Swiper
           className='swiper-container'
@@ -313,22 +318,27 @@ const FeaturedBrands = () => {
       onSwiper={(swiper) => console.log(swiper)}
       data-aos="fade-up"
     >
-      {chunkedBrands.map((chunk, index) => (
-        <SwiperSlide key={index}>
-          <div className="brand-grid" style = {{paddingbottom : "50px"}}>
-            {chunk.map((brand, brandIndex) => (
-              <div className="brand-container" key={brandIndex}>
-                <BrandCard
-                  url={brand.url}
-                  name={brand.name}
-                  callBack={selectedBrand}
-                  selected={selectedBrands.includes(brand.name)}
-                />
-              </div>
-            ))}
-          </div>
-        </SwiperSlide>
-      ))}
+    {chunkedBrands.map((chunk, chunkIndex) => (
+      <SwiperSlide key={chunkIndex}>
+        <div className="brand-grid" style = {{paddingbottom : "50px"}}>
+          {chunk.map((brand, brandIndex) => (
+            <div className="brand-container" key={brandIndex}>
+              <BrandCard
+                url={brand.url}
+                name={brand.name}
+                callBack={selectedBrand}
+                selected={selectedBrands.includes(brand.name)}
+                onClick={handleBrandClick}
+              />
+              {(chunkIndex === 0 && brandIndex === 0 && !isBrandClicked) && 
+                <TapAnimation />
+                
+              }
+            </div>
+          ))}
+        </div>
+      </SwiperSlide>
+    ))}
     </Swiper>
 
   ) : (

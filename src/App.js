@@ -17,10 +17,10 @@ import PasswordReset from './components/dashboard/PasswordReset';
 import AboutUs from './components/AboutUs';
 import Counts from './components/Counts';
 
-
 import { auth } from './firebaseConfig';
 import { UserContext } from './components/CTX/UserContext';
 import {onAuthStateChanged} from "firebase/auth"
+import TapAnimation from './components/Lotties';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
