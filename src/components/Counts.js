@@ -2,8 +2,12 @@
 import CountImg from '../assets/img/counts-img.svg';
 import React, { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
+import { useMediaQuery } from 'react-responsive';
+
+import CartAnimation from './lotties/cart-animation';
 
 const Counter = ({ start, end, duration }) => {
+
     const [count, setCount] = useState(start);
     const [ref, inView] = useInView({
       triggerOnce: true, // Change this to false if you want the animation to restart whenever it comes in view
@@ -37,6 +41,9 @@ const Counter = ({ start, end, duration }) => {
 
 
 const Counts = () => {
+    const isMobile = useMediaQuery({ query: '(max-width: 760px)' });
+    const isTablet = useMediaQuery({ query: '(min-width: 761px) and (max-width: 1024px)' });
+    const isDesktop = useMediaQuery({ query: '(min-width: 1025px)' });
     return (
 <section id="counts" className="counts">
     <div className="container">
@@ -74,6 +81,8 @@ const Counts = () => {
         </div>
 
     </div>
+    {(isTablet || isDesktop) && <CartAnimation  data-aos="fade-left" data-aos-delay="500"/>}
+
 </section>
 
     );

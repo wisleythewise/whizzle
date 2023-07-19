@@ -5,10 +5,8 @@ import DiscountTagAnimationData from '../../designs/lotties/discount-tag-animati
 
 const DiscountTagAnimation = () => {
     return (
-        <div className="lottie-container">
-            <Lottie animationData={DiscountTagAnimationData} />
-        </div>
-    )
+            <Lottie animationData={DiscountTagAnimationData} className='discounttag-animation-container'/>
+        )
 }
 
 export default DiscountTagAnimation;

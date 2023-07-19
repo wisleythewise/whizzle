@@ -1,9 +1,16 @@
 // HowItWorks.js
 import React, { useState } from 'react';
+import CartAnimation from './lotties/cart-animation';
+import { useMediaQuery } from 'react-responsive';
+
+
+
 
 const HowItWorks = () => {
   const [showDescriptionIndex, setShowDescriptionIndex] = useState(null);
-
+  const isMobile = useMediaQuery({ query: '(max-width: 760px)' });
+  const isTablet = useMediaQuery({ query: '(min-width: 761px) and (max-width: 1024px)' });
+  const isDesktop = useMediaQuery({ query: '(min-width: 1025px)' });
   const handleToggleDescription = (index) => {
     setShowDescriptionIndex(showDescriptionIndex === index ? null : index);
   };
@@ -66,6 +73,8 @@ const HowItWorks = () => {
         </div>
 
       </div>
+      {isMobile && <CartAnimation />}
+
       </section>
   );
 };

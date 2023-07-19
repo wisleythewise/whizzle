@@ -12,7 +12,10 @@
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
+  
 }
+
+
 
 a {
   color: #3498db;
@@ -2770,7 +2773,98 @@ input[type=checkbox]:disabled {
   pointer-events: none;
 
 }
+.cart-animation-container {
+  width: auto;
+  display: inline-block;
+  position: relative;
+  pointer-events: none;
+  width:60%;
+
+}
 
 .loading-animation-container {
   width: 100%;
+}
+
+
+/* text-gradients */
+
+.gradient-text-1 {
+  background: linear-gradient(to right, #00008B, #0000CD, #00008B);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.gradient-text-2 {
+  background: linear-gradient(to right, #00008B, #000080, #00008B);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.gradient-text-3 {
+  background: linear-gradient(to right, #000080, #0000CD, #000080);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.gradient-text-4 {
+  background: linear-gradient(to right, #0000CD, #00008B, #0000CD);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.gradient-text-5 {
+  background: linear-gradient(to right, #0000CD, #000080, #0000CD);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.gradient-text-6 {
+  background: linear-gradient(to right, #00008B, #0000CD, #000080);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.gradient-text-7 {
+  background: linear-gradient(to right, #00008B, #000080, #0000CD);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.gradient-text-8 {
+  background: linear-gradient(to right, #0000CD, #00008B, #000080);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.gradient-text-9 {
+  background: linear-gradient(to right, #0000CD, #000080, #00008B);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.gradient-text-10 {
+  background: linear-gradient(to right, #000080, #00008B, #0000CD);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-text-animated {
+  background: linear-gradient(-45deg, #000000, #070750, #000000);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradient 10s ease infinite;
 }

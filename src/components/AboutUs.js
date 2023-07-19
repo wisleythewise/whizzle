@@ -1,4 +1,11 @@
+import { useMediaQuery } from 'react-responsive';
+
+
+
 const AboutUs = () => {
+
+   
+
     return (
         <section id="about" className="about" >
             <div className="container">
@@ -37,6 +44,7 @@ const AboutUs = () => {
                 </div>
 
             </div>
+
         </section>
         
     );
