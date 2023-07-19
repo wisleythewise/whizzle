@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { auth } from "../../firebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth"; // Import the function
 import { UserContext } from "../CTX/UserContext"
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link  } from 'react-router-dom';
 
 const PasswordAuth = () => {
   const { currentUser, setCurrentUser } = useContext(UserContext);
@@ -91,9 +91,9 @@ const PasswordAuth = () => {
               <a href="/passwordforgotten" className="forgot-password-link">
                 Wachtwoord vergeten
               </a>
-              <a href="/#featuredbrands" className="register-link">
+              <Link to="/signin" className="register-link">
                 Nieuwe gebruiker
-              </a>
+              </Link>
             </div>
           </div>
         </section>

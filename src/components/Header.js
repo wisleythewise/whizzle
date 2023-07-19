@@ -81,6 +81,8 @@ const Header = () => {
         return true
       } else if (location.pathname === '/passwordreset'){
         return true
+      }else if (location.pathname === '/signin'){
+        return true
       } else{
         return false
       }

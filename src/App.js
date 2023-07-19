@@ -6,6 +6,7 @@ import HowItWorks from './components/HowItWorks';
 import Contact from './components/Contact';
 import FeaturedBrands from './components/FeaturedBrands';
 import Testimonials from './components/Testimonials';
+import NewUser from './components/NewUser';
 import FAQ from './components/FAQ';
 import Dashboard from './components/dashboard/UserDashboard';
 import Footer from './components/Footer';
@@ -71,8 +72,7 @@ function App() {
           <Route path="/passwordreset" element={<>
           <PasswordReset />
           </>} />
-          <Route path="/login2" element={<>
-          </>} />
+          <Route path="/signin" element={<NewUser  />} />
           <Route path="/dashboard/*" element={<Dashboard />} />
         </Routes>
         <Footer />
