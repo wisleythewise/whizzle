@@ -117,8 +117,7 @@ const FeaturedBrands = () => {
             onClick={handleBrandClick}
         />
         {(index === 0 && !isBrandClicked) && <TapAnimation />}
-{/* Dit werkt nog niet helemaal goed, deze animatie zit buiten de div van de brand card, moet een oplossing vinden 
-om de lottie container in de brand-container te krijgen */}
+
       </div>
     );
 

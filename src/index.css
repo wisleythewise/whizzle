@@ -2016,7 +2016,7 @@ section {
 
 @media (min-width : 768px) {
   #footer {
-    padding:30px 0px;
+    padding:20px 0px;
   }
 }
 
@@ -2117,8 +2117,7 @@ section {
 --------------------------------------------------------------*/
 .dashboard {
   display: flex;
-  padding-top: 100px;
-  height: 100vh;
+  height: 92vh;
   background-color: #f7fbfe;
 }
 
@@ -2133,6 +2132,7 @@ section {
   padding: 20px;
   overflow-y: auto;
 }
+
 
 .menu {
   flex: 1;
@@ -2193,6 +2193,13 @@ section {
 
 .dashboard-container::-webkit-scrollbar-thumb:hover {
   background-color: #a0a0a0; /* Color of the scrollbar thumb on hover */
+}
+
+@media (min-width: 768px) {
+  .dashboard-container {
+    margin-top:90px;
+  }
+
 }
 /* _________________________________________________________
 
@@ -2294,13 +2301,13 @@ featured brands
 
 @media (min-width: 480px) {
   .brand-grid {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
   }
 }
 
 @media (min-width: 768px) {
   .brand-grid {
-    grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
   }
   .brand-container {
     min-height: 90px;
@@ -2313,7 +2320,7 @@ featured brands
 
 @media (min-width: 1024px) {
   .brand-grid {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));    
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));    
     width:80%;
   }
   .brand-container {
@@ -2731,35 +2738,39 @@ input[type=checkbox]:disabled {
 .brand-grid-dashboard {
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
   max-width: 100%; /* ensure it doesn't exceed the parent container's width */
 }
 /* Responsive Design */
 @media screen and (max-width: 600px) {
   .brand-grid-dashboard {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
   }
 }
 
 @media screen and (min-width: 601px) and (max-width: 1024px) {
   .brand-grid-dashboard {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
   }
 }
 
 @media screen and (min-width: 1025px) {
   .brand-grid-dashboard {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
   }
 }
 
 /* Lottie animations */
 
 .lottie-container {
-  width: 50px;
-  height: 50px;
+  width: 100px;
+  height: 100px;
   display: inline-block;
   position: absolute;
   pointer-events: none;
 
+}
+
+.loading-animation-container {
+  width: 100%;
 }

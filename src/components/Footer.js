@@ -4,10 +4,16 @@ import Facebook from "../designs/facebook.png"
 import Twitter from "../designs/twitter.png"
 import Instagram from "../designs/instagram.png"
 import Logo from "../designs/whistleiconv2.png"
+import { useLocation } from 'react-router-dom';
+
 
 const Footer = (props) => {
+  const location = useLocation();
+  const isDashboard = location.pathname === '/dashboard';
+  const footerStyle = isDashboard ? { backgroundColor: '#f7fbfe' } : {};
+
   return (        
-    <footer id="footer">
+    <footer id="footer" style={footerStyle}>
     <div className="container">
       <div className="row d-flex align-items-center">
         <div className="col-lg-6 text-lg-left text-center">

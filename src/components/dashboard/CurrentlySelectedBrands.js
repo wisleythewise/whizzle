@@ -9,6 +9,7 @@ import { UserContext } from '../CTX/UserContext';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
+import CircleLoad from '../lotties/CircleLoad';
 
 
 
@@ -208,8 +209,9 @@ const loadData = async () => {
             {/* Conditionally render the brand selection when in edit mode */}
             {isEditing && (
               <>
-              <input type="text" name="brand-search" onChange= {(e) => setSearchKeyword(e.target.value)} className="brand-search form-control" id="brand-search" placeholder="Zoek naar je favoriete merken..." required=""></input>
-
+              <div className='brand-search-container'>
+                <input type="text" name="brand-search" onChange= {(e) => setSearchKeyword(e.target.value)} className="brand-search form-control" id="brand-search" placeholder="Zoek naar je favoriete merken..." required=""></input>
+              </div>
                 <div className="brand-grid-dashboard">
 
                   {filteredBrands
@@ -254,9 +256,13 @@ const loadData = async () => {
     
     
 
-  const loadingContainer = () => {
-    return  <p>Loading...</p>
-  }
+    const loadingContainer = () => {
+      return (
+        <div className='loading-animation-container d-flex justify-content-center align-items-center' style={{ height: '50vh' }}>
+        <CircleLoad />
+        </div>
+      );
+    }
   
 
   return loading ? loadingContainer() : containerWithSelectedBrands();

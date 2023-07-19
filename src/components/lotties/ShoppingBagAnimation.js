@@ -3,7 +3,7 @@ import '../../index.css';
 import Lottie from 'lottie-react';
 import shoppingBagAnimationData from '../../designs/lotties/shopping-bag-animation.json';
 
-const shoppingBagAnimation = () => {
+const ShoppingBagAnimation = () => {
     return (
         <div className="lottie-container">
             <Lottie animationData={shoppingBagAnimationData} />
@@ -11,4 +11,4 @@ const shoppingBagAnimation = () => {
     )
 }
 
-export default shoppingBagAnimation;
+export default ShoppingBagAnimation;
