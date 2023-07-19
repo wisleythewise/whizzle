@@ -10,6 +10,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 import CircleLoad from '../lotties/CircleLoad';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 
 
@@ -26,6 +27,7 @@ function CurrentlySelectedBrands() {
   const [isEditing, setIsEditing] = useState(false);
   const [searchKeyword, setSearchKeyword] = useState("");
   const [filteredBrands, setFilteredBrands] = useState([])
+  const [userLogin, setUserLogin] = useState(true)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -54,6 +56,12 @@ function CurrentlySelectedBrands() {
   useEffect(() => {
     loadData()
   }, [currentUser])
+
+  useEffect(() => {
+    if (!userLogin){
+        navigate("/login")
+    }
+  }, [userLogin])
 
 
 // Making sure I have the latest value of the selected brands
@@ -91,10 +99,6 @@ const loadData = async () => {
     const preferredBrands = userSnapshot.docs.find((doc) => {
       const data = doc.data();
       
-      // if no user is login in navigate back to the home page
-      if (!currentUser){
-        navigate("/login")
-      }
 
       return data.id == currentUser.uid
       })
@@ -108,6 +112,18 @@ const loadData = async () => {
     }
 
   }
+
+
+  const auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in, you can set the user state here.
+      setUserLogin(true);
+    } else {
+      // User is signed out.
+      setCurrentUser(false);
+    }
+  });
 
 
   const fetchData = async () => {
@@ -144,8 +160,12 @@ const loadData = async () => {
     } 
 
 }
+
+
   await fetchData()
   setInitialized(true);
+  
+
 
 }
 
